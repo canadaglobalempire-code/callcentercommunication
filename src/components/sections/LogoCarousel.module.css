@@ -1,0 +1,117 @@
+/* Trust badge strip — minimal icon tiles
+ * Clean certifications/standards row with small, constrained icons.
+ */
+
+.section {
+  position: relative;
+  padding: var(--space-16) 0;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  overflow: hidden;
+}
+
+/* Subtle orange accent line above */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+  opacity: 0.6;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-4);
+}
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-4);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.badgeLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--dark);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  .label {
+    margin-bottom: var(--space-6);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  .badge {
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}

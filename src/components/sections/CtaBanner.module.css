@@ -1,0 +1,88 @@
+.section {
+  padding: 80px 24px;
+  background-color: #ffffff;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 64px 48px;
+  border-radius: var(--radius-lg);
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+/* Subtle contained ambient warmth — not a neon glow */
+.glow {
+  position: absolute;
+  top: -160px;
+  right: -140px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: rgba(246, 120, 10, 0.12);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.text {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 16px;
+  }
+
+  .inner {
+    padding: 44px 24px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+  }
+
+  .text {
+    font-size: 0.98rem;
+  }
+
+  .actions > * {
+    width: 100%;
+    justify-content: center;
+  }
+}

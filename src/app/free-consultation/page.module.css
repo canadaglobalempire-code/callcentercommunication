@@ -1,0 +1,217 @@
+/* ===== Main Section ===== */
+.section {
+  padding: 128px 0 96px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: rgba(246, 120, 10, 0.14);
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ===== Left Column ===== */
+.left {
+  max-width: 620px;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.accent {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+/* ===== Right Column ===== */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===== Trust Cards ===== */
+.trustCard {
+  background: var(--gray-lighter);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: var(--transition);
+}
+
+.trustCard:hover {
+  background: #ffffff;
+}
+
+.trustIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trustIcon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.trustContent h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 4px;
+}
+
+.trustContent p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ===== Testimonial ===== */
+.testimonial {
+  background: var(--dark);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: transparent;
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.testimonialContent {
+  position: relative;
+}
+
+.quoteIcon {
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--primary);
+  font-family: Georgia, serif;
+  margin-bottom: 8px;
+}
+
+.quoteText {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.quoteAuthor {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.authorName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.authorTitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 104px 0 64px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .left {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    margin-bottom: 28px;
+  }
+
+  .trustCard {
+    padding: 20px 18px;
+  }
+
+  .testimonial {
+    padding: 24px 20px;
+  }
+}

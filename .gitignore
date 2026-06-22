@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# local agent worktrees & generated artifacts
+.claude/worktrees/
+/graphify-out/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

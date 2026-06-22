@@ -1,0 +1,375 @@
+/* ===== Hero ===== */
+.hero {
+  background-color: #ffffff;
+  padding: 128px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: rgba(246, 120, 10, 0.14);
+  pointer-events: none;
+}
+
+.heroContainer {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  color: var(--gray);
+  line-height: 1.7;
+  max-width: 640px;
+}
+
+.heroBreadcrumbs {
+  margin-bottom: 8px;
+}
+
+.heroBreadcrumbs nav {
+  padding: 0 0 12px;
+}
+
+
+
+.heroBreadcrumbs span[aria-current] {
+  color: var(--dark);
+}
+
+/* ===== Story ===== */
+.story {
+  padding: 96px 0;
+  background-color: var(--bg);
+}
+
+.storyContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.storyImageWrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-lg);
+}
+
+.storyImageWrap img {
+  object-fit: cover;
+}
+
+.storyContent h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.storyAccent {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.storyContent p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.storyContent p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Mission / Values ===== */
+.mission {
+  padding: 96px 0;
+  background-color: var(--gray-lighter);
+}
+
+.missionContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.valueCard {
+  padding: 28px 0 0;
+  border-top: 2px solid var(--border);
+  text-align: left;
+  transition: border-color var(--transition);
+}
+
+.valueCard:hover {
+  border-top-color: var(--primary);
+}
+
+.valueCard:hover .valueTitle {
+  color: var(--primary);
+}
+
+.valueIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 20px;
+}
+
+.valueIcon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.valueTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 12px;
+  transition: color var(--transition);
+}
+
+.valueDesc {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+
+/* ===== Stats Bar ===== */
+.stats {
+  background-color: var(--dark);
+  padding: 56px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: transparent;
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.statsContainer {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.statItem {}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statLabel {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* ===== What Makes Us Different ===== */
+.different {
+  padding: 96px 0;
+  background-color: var(--bg);
+}
+
+.differentContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.differentGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.diffItem {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--gray-lighter);
+  transition: var(--transition);
+}
+
+.diffItem:hover {
+  background: #ffffff;
+}
+
+.diffIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background-color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.diffIcon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diffContent h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.diffContent p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .storyGrid {
+    gap: 40px;
+  }
+
+  .differentGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0 48px;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+
+  .story {
+    padding: 64px 0;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .storyContent h2 {
+    font-size: 1.75rem;
+  }
+
+  .mission {
+    padding: 64px 0;
+  }
+
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .stats {
+    padding: 40px 0;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .statNumber {
+    font-size: 2rem;
+  }
+
+  .different {
+    padding: 64px 0;
+  }
+
+  .differentGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

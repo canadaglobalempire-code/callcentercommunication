@@ -1,0 +1,393 @@
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  background: var(--gradient-dark);
+  padding: var(--section-padding) 0;
+  overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 80%;
+  height: 200%;
+  background: transparent;
+  pointer-events: none;
+}
+
+.heroContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  position: relative;
+  z-index: 1;
+}
+
+.heroBreadcrumbs {
+  margin-bottom: var(--space-6);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.heroBadge {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: var(--space-5);
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: #ffffff;
+  margin-bottom: var(--space-6);
+}
+
+.heroDescription {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+  max-width: 550px;
+}
+
+.heroCtas {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.heroVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroClock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.clockFace {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+
+.clockHand1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 60px;
+  background: #ffffff;
+  transform-origin: top center;
+  transform: translate(-50%, -100%) rotate(0deg);
+  border-radius: 2px;
+  animation: clockRotate 60s linear infinite;
+}
+
+.clockHand2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 45px;
+  background: var(--primary);
+  transform-origin: top center;
+  transform: translate(-50%, -100%) rotate(90deg);
+  border-radius: 2px;
+  animation: clockRotate 5s linear infinite;
+}
+
+.clockCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes clockRotate {
+  from { transform: translate(-50%, -100%) rotate(0deg); }
+  to { transform: translate(-50%, -100%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clockHand1,
+  .clockHand2 {
+    animation: none;
+  }
+}
+
+.clockLabel {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ===== STATS BANNER ===== */
+.statsBanner {
+  background: var(--dark);
+  padding: var(--space-16) 0;
+}
+
+.statsContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
+  text-align: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+  padding: var(--section-padding) 0;
+  background: #ffffff;
+}
+
+.featuresContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-16);
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition:
+    transform var(--transition) ease,
+    box-shadow var(--transition) ease,
+    border-color var(--transition) ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-accent);
+}
+
+.featureIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: rgba(246, 120, 10, 0.1);
+  color: var(--primary);
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+
+.featureIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.featureTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.featureDescription {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ===== CTA BANNER ===== */
+.ctaBanner {
+  background: var(--gradient-dark);
+  padding: var(--space-20) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.ctaContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: var(--space-6);
+  letter-spacing: -0.5px;
+}
+
+.ctaText {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  margin: 0 auto var(--space-10);
+  line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .heroVisual {
+    order: -1;
+  }
+
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .statsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--section-padding-mobile) 0;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .heroDescription {
+    font-size: 1rem;
+  }
+
+  .heroCtas {
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .clockFace {
+    width: 160px;
+    height: 160px;
+  }
+
+  .clockHand1 {
+    height: 50px;
+  }
+
+  .clockHand2 {
+    height: 35px;
+  }
+
+  .clockLabel {
+    font-size: 1rem;
+  }
+
+  .statValue {
+    font-size: 2rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .featureCard {
+    padding: var(--space-6);
+  }
+
+  .featureIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .featureIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .ctaTitle {
+    font-size: 1.75rem;
+  }
+
+  .ctaText {
+    font-size: 1rem;
+  }
+
+}

@@ -1,0 +1,118 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  line-height: 1;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Sizes */
+.sm {
+  padding: 9px 18px;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+}
+
+.md {
+  padding: 12px 22px;
+  font-size: 0.9rem;
+}
+
+.lg {
+  padding: 14px 28px;
+  font-size: 0.95rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Variants — flat solid */
+.primary {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.secondary {
+  background: var(--dark);
+  color: #ffffff;
+  border-color: var(--dark);
+}
+
+.secondary:hover {
+  background: var(--dark-secondary);
+  border-color: var(--dark-secondary);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--dark);
+  border-color: var(--border);
+}
+
+.outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--dark);
+  border-color: transparent;
+}
+
+.ghost:hover {
+  color: var(--primary);
+}
+
+/* Icon with refined animation */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.icon svg {
+  width: 1.1em;
+  height: 1.1em;
+  display: block;
+}
+
+/* Focus state for accessibility */
+.button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Active state */
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Disabled state */
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -1,0 +1,123 @@
+/* ===== INDUSTRIES GRID — equal-height content cards ===== */
+.section {
+  padding: var(--section-padding) 0;
+  background: #ffffff;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* Responsive auto-fill — flows by viewport instead of a fixed 3-up row */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+/* Vertical card — equal height via flex + stretch */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-7);
+  text-decoration: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.cardLink svg {
+  transition: transform var(--transition);
+}
+
+.card:hover .cardLink svg {
+  transform: translateX(3px);
+}
+
+/* Icon tile */
+.iconCircle {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.iconCircle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cardTitle {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.cardTagline {
+  font-size: var(--text-sm);
+  color: var(--gray-medium);
+  line-height: 1.6;
+  /* push the link to the bottom so all cards align */
+  flex: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.cardLink svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .card {
+    padding: var(--space-6);
+  }
+}
