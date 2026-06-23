@@ -1,7 +1,8 @@
 'use client';
 
-import { useId, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
+import { DEFAULT_FAQ_ICONS, normalizeFaqItems } from './faqIcons';
 import styles from './FAQ.module.css';
 
 const faqData = [
@@ -9,76 +10,44 @@ const faqData = [
     question: 'How does Call Center Communications work?',
     answer:
       "We're a free outsourcing brokerage. You tell us your needs, and we match you with vetted call center providers from our global network. There's no cost to you — we earn from partnerships with providers.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-        <line x1="12" y1="17" x2="12.01" y2="17" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[0],
   },
   {
     question: 'Is the service really free?',
     answer:
       'Yes, 100% free for companies seeking call center services. Call Center Communications earns revenue through partnerships with providers in our network. You pay nothing for our consultation, matching, and introduction services.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[1],
   },
   {
     question: 'How do you vet your call center partners?',
     answer:
       'Every provider in our network must be PCI-compliant and certified by the PCI Security Standards Council. We verify redundant infrastructure, quality assurance processes, and track records before including any provider in our referral network.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[2],
   },
   {
     question: 'How quickly can I get matched with a provider?',
     answer:
       'Most businesses receive qualified provider matches within days of their initial consultation. Our 30 years of industry relationships allow us to move quickly while still ensuring the right fit.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[3],
   },
   {
     question: 'Do you work with companies of all sizes?',
     answer:
       'Yes. Whether you need 5 agents or 500+, we work with businesses of every size across 14 industries. Our provider network includes specialists for small-volume programs as well as enterprise-scale operations.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[4],
   },
   {
     question: 'What locations do you cover?',
     answer:
       'We connect businesses with call center providers onshore (USA/Canada), nearshore (Latin America), and offshore (Asia, Africa, Europe). We help you determine which location strategy best fits your budget and quality requirements.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <line x1="2" y1="12" x2="22" y2="12" />
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
+    icon: DEFAULT_FAQ_ICONS[5],
   },
 ];
 
 function FaqItem({ item, index, isOpen, onToggle, baseId }) {
   const buttonId = `${baseId}-q-${index}`;
   const panelId = `${baseId}-a-${index}`;
+  const isStringAnswer = typeof item.answer === 'string';
 
   return (
     <div className={`${styles.faqItem} ${isOpen ? styles.open : ''}`}>
@@ -91,11 +60,9 @@ function FaqItem({ item, index, isOpen, onToggle, baseId }) {
           aria-expanded={isOpen}
           aria-controls={panelId}
         >
-          {item.icon ? (
-            <span className={styles.questionIcon} aria-hidden="true">
-              {item.icon}
-            </span>
-          ) : null}
+          <span className={styles.questionIcon} aria-hidden="true">
+            {item.icon}
+          </span>
           <span className={styles.questionText}>{item.question}</span>
           <span className={styles.toggle} aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -112,7 +79,11 @@ function FaqItem({ item, index, isOpen, onToggle, baseId }) {
         className={styles.answerWrapper}
       >
         <div className={styles.answerInner}>
-          <p className={styles.answer}>{item.answer}</p>
+          {isStringAnswer ? (
+            <p className={styles.answer}>{item.answer}</p>
+          ) : (
+            <div className={styles.answer}>{item.answer}</div>
+          )}
         </div>
       </div>
     </div>
@@ -124,39 +95,70 @@ export default function FAQ({
   title = (<>Frequently Asked <span className="kw">Questions</span></>),
   subtitle = 'Everything you need to know about our services.',
   showCta = true,
+  showEyebrow = true,
+  id,
+  variant = 'default',
 }) {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndices, setOpenIndices] = useState(() => new Set([0]));
   const baseId = useId();
+  const normalizedItems = useMemo(() => normalizeFaqItems(items), [items]);
 
   const toggle = (index) => {
-    setOpenIndex((current) => (current === index ? null : index));
+    setOpenIndices((current) => {
+      const next = new Set(current);
+      if (next.has(index)) {
+        next.delete(index);
+      } else {
+        next.add(index);
+      }
+      return next;
+    });
   };
 
-  const mid = Math.ceil(items.length / 2);
-  const columns = [items.slice(0, mid), items.slice(mid)];
+  const expandAll = () => {
+    setOpenIndices(new Set(normalizedItems.map((_, index) => index)));
+  };
+
+  const collapseAll = () => {
+    setOpenIndices(new Set());
+  };
+
+  const sectionClass = [
+    styles.section,
+    variant === 'embedded' ? styles.sectionEmbedded : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <section className={styles.section}>
+    <section className={sectionClass} id={id}>
       <div className={styles.container}>
-        <SectionHeading eyebrow="FAQ" title={title} subtitle={subtitle} />
+        <SectionHeading
+          eyebrow={showEyebrow ? 'FAQ' : undefined}
+          title={title}
+          subtitle={subtitle}
+        />
+
+        <div className={styles.controls}>
+          <button type="button" className={styles.controlBtn} onClick={expandAll}>
+            Expand all
+          </button>
+          <span className={styles.controlDivider} aria-hidden="true" />
+          <button type="button" className={styles.controlBtn} onClick={collapseAll}>
+            Collapse all
+          </button>
+        </div>
 
         <div className={styles.list}>
-          {columns.map((column, columnIndex) => (
-            <div className={styles.column} key={columnIndex}>
-              {column.map((item, i) => {
-                const index = columnIndex === 0 ? i : mid + i;
-                return (
-                  <FaqItem
-                    key={index}
-                    item={item}
-                    index={index}
-                    isOpen={openIndex === index}
-                    onToggle={() => toggle(index)}
-                    baseId={baseId}
-                  />
-                );
-              })}
-            </div>
+          {normalizedItems.map((item, index) => (
+            <FaqItem
+              key={index}
+              item={item}
+              index={index}
+              isOpen={openIndices.has(index)}
+              onToggle={() => toggle(index)}
+              baseId={baseId}
+            />
           ))}
         </div>
 

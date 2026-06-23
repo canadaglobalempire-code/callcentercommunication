@@ -14,21 +14,51 @@
   z-index: 1;
 }
 
-/* Accordion list — two independent columns (3 + 3) */
+/* Accordion list — single centered column so every item lines up
+   on the same side at the same width. */
 .list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  gap: 14px;
-  margin: 48px 0;
-}
-
-/* Each column stacks its own items, so opening a card never
-   leaves blank space beside its neighbor in the other column. */
-.column {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   gap: 14px;
+  max-width: 760px;
+  margin: 24px auto 48px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.controlBtn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-medium);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition),
+    background-color var(--transition);
+}
+
+.controlBtn:hover {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.controlDivider {
+  width: 1px;
+  height: 16px;
+  background: var(--border);
 }
 
 /* ===== FAQ item ===== */
@@ -111,7 +141,7 @@
 }
 
 .faqItem.open .questionText {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.58);
 }
 
 /* Toggle chevron */
@@ -166,8 +196,62 @@
   margin: 0;
   padding: 0 22px 22px 74px;
   font-size: 0.975rem;
-  color: rgba(255, 255, 255, 0.82);
+  color: #ffffff;
   line-height: 1.7;
+}
+
+.answer a {
+  color: #fdba74;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.answer a:hover {
+  color: #ffffff;
+}
+
+.answer strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.answer ul,
+.answer ol {
+  margin: 0.75em 0 0;
+  padding-left: 1.25rem;
+}
+
+.answer li + li {
+  margin-top: 0.35em;
+}
+
+.answer p {
+  margin: 0;
+}
+
+.answer p + p {
+  margin-top: 0.75em;
+}
+
+/* Embedded variant (blog posts, in-article) */
+.sectionEmbedded {
+  padding: var(--space-12) 0 0;
+  background: transparent;
+}
+
+.sectionEmbedded .container {
+  max-width: none;
+  padding: 0;
+}
+
+.sectionEmbedded .wrapper {
+  text-align: left;
+  margin-bottom: var(--space-8);
+}
+
+.sectionEmbedded .subtitle {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ===== CTA ===== */
@@ -233,13 +317,16 @@
   }
 
   .list {
-    grid-template-columns: 1fr;
-    margin: 36px 0;
+    margin: 20px auto 36px;
     gap: 12px;
   }
 
-  .column {
-    gap: 12px;
+  .controls {
+    gap: var(--space-2);
+  }
+
+  .controlBtn {
+    font-size: 0.8rem;
   }
 
   .question {

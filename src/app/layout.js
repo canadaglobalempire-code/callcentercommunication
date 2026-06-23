@@ -2,6 +2,8 @@ import { Geist } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import JsonLd from '@/components/seo/JsonLd';
+import MicrosoftClarity from '@/components/analytics/MicrosoftClarity';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import { siteConfig } from '@/data/siteConfig';
 import './globals.css';
 
@@ -29,7 +31,10 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
-  }
+  },
+  verification: {
+    google: 'uDlpwivtYjkyHiNaz-O_G5m29xhNht756CzxunX4oPU',
+  },
 };
 
 const organizationSchema = {
@@ -48,6 +53,8 @@ export default function RootLayout({ children }) {
     <html lang="en" className={geist.variable}>
       <body>
         <JsonLd data={organizationSchema} />
+        <GoogleAnalytics />
+        <MicrosoftClarity />
         <Navbar />
         <main>{children}</main>
         <Footer />

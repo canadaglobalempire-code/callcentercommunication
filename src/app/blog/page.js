@@ -145,7 +145,8 @@ export default function BlogPage() {
       <section className={styles.ctaBand}>
         <div className={styles.ctaInner}>
           <h2 className={styles.ctaTitle}>
-            Not sure which provider fits? We will match you.
+            <span className={styles.ctaTitleLine}>Not sure which provider fits?</span>
+            <span className={styles.ctaTitleLine}>We will match you.</span>
           </h2>
           <p className={styles.ctaCopy}>
             Our brokerage service is free. Tell us your needs and get matched

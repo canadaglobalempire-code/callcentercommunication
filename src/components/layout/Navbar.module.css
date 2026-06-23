@@ -1,9 +1,6 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: var(--z-fixed);
+  position: relative;
+  z-index: 2;
   padding: var(--space-4) 0;
   background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: saturate(180%) blur(16px);
@@ -14,6 +11,19 @@
     box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.headerShell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-fixed);
+}
+
+.headerMegaOpen {
+  border-bottom-color: var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Premium scrolled state - more distinct */
@@ -79,7 +89,12 @@
   position: relative;
 }
 
-.navLink {
+.navItemOpen {
+  z-index: 1;
+}
+
+.navLink,
+.navTrigger {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -93,8 +108,12 @@
   transition:
     color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .navLink::after {
@@ -110,13 +129,21 @@
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navLink:hover {
+.navLink:hover,
+.navTrigger:hover {
   color: var(--primary);
   background-color: rgba(246, 120, 10, 0.06);
 }
 
 .navLink:hover::after {
   transform: scaleX(1);
+}
+
+.navTriggerOpen {
+  color: var(--primary);
+  background-color: rgba(246, 120, 10, 0.08);
+  border-color: rgba(246, 120, 10, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 .chevron {
@@ -207,183 +234,344 @@
               opacity var(--transition) ease;
 }
 
-/* ===== MEGA MENU - Simplified ===== */
+/* ===== MEGA MENU PANEL (70% centered) ===== */
 
-.megaMenu {
-  position: absolute;
-  top: 100%;
+.megaBackdrop {
+  position: fixed;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: rgba(10, 15, 28, 0.35);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 0;
+  cursor: pointer;
+  animation: megaFadeIn 0.2s ease;
+}
+
+.megaPanel {
+  position: fixed;
   left: 50%;
-  transform: translateX(-50%) translateY(-8px);
-  padding-top: var(--space-4);
+  width: 70%;
+  z-index: 1;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  box-shadow: var(--shadow-xl);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(-8px);
+  overflow: hidden;
   transition:
-    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: var(--z-dropdown);
+    opacity 0.25s ease,
+    visibility 0.25s ease,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.megaMenuOpen {
+.megaPanel::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: 0;
+  right: 0;
+  height: 24px;
+}
+
+.megaPanelOpen {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+  overflow-y: auto;
 }
 
-.megaInner {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  box-shadow:
-    0 20px 60px -15px rgba(10, 15, 28, 0.15),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-  backdrop-filter: blur(20px);
-  padding: var(--space-6) var(--space-7);
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: var(--space-7);
-  width: max-content;
-  max-width: min(760px, calc(100vw - 32px));
+.megaPanelContainer {
+  width: 100%;
+  margin: 0;
+  padding: var(--space-6) var(--space-8) var(--space-8);
 }
 
-.megaLabel {
-  font-size: 0.75rem;
+.megaTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.megaPanelTitle {
+  margin: 0;
+  font-size: 1.125rem;
   font-weight: 700;
+  color: var(--dark);
+  letter-spacing: -0.01em;
+}
+
+.megaTopActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.megaViewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--primary);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  margin-bottom: var(--space-3);
+  text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
+}
+
+.megaViewAll:hover {
+  background: var(--primary-light);
+}
+
+.megaViewAll svg {
+  width: 14px;
+  height: 14px;
+}
+
+.megaClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--gray-lighter);
+  color: var(--dark);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.megaClose:hover {
+  background: #ffffff;
+  border-color: var(--gray-medium);
+}
+
+.megaClose svg {
+  width: 18px;
+  height: 18px;
+}
+
+.megaBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.megaMain {
+  min-width: 0;
 }
 
 .megaServicesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-2);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
 }
 
 .megaServiceCard {
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3);
-  border-radius: var(--radius);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
   text-decoration: none;
   transition:
-    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
 }
 
 .megaServiceCard:hover {
-  background-color: rgba(246, 120, 10, 0.05);
+  border-color: rgba(246, 120, 10, 0.3);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .megaServiceIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
   border-radius: var(--radius);
-  background: rgba(246, 120, 10, 0.1);
+  background: var(--primary-light);
   color: var(--primary);
-  transition:
-    background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.megaServiceCard:hover .megaServiceIcon {
-  background: rgba(246, 120, 10, 0.15);
 }
 
 .megaServiceIcon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
 .megaServiceText {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .megaServiceName {
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: var(--dark);
   line-height: 1.3;
-  letter-spacing: -0.2px;
 }
 
 .megaServiceDesc {
   font-size: 0.78rem;
   color: var(--gray-medium);
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.megaCardArrow {
+  width: 16px;
+  height: 16px;
+  color: var(--gray-medium);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity var(--transition),
+    transform var(--transition),
+    color var(--transition);
+}
+
+.megaServiceCard:hover .megaCardArrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary);
 }
 
 .megaIndustriesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-1);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-2);
 }
 
 .megaIndustryLink {
+  display: block;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--dark);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
+  background: var(--bg-subtle);
   text-decoration: none;
   transition:
-    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color var(--transition),
+    background-color var(--transition),
+    color var(--transition),
+    transform var(--transition);
 }
 
 .megaIndustryLink:hover {
+  border-color: rgba(246, 120, 10, 0.25);
+  background: #ffffff;
   color: var(--primary);
-  background-color: rgba(246, 120, 10, 0.06);
+  transform: translateY(-1px);
 }
 
-.megaSidebar {
-  border-left: 1px solid var(--border-subtle);
-  padding-left: var(--space-6);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  background: transparent;
-  padding: var(--space-5);
-  border-radius: var(--radius-lg);
+.megaAside {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, var(--dark) 0%, var(--dark-secondary) 100%);
+  color: #ffffff;
+  position: sticky;
+  top: 0;
 }
 
-.megaSidebarTitle {
-  font-size: 0.9rem;
+.megaAsideEyebrow {
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--dark);
-  letter-spacing: -0.3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--space-2);
 }
 
-.megaSidebarText {
-  font-size: 0.8rem;
-  color: var(--gray-medium);
-  line-height: 1.5;
+.megaAsideTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: var(--space-3);
 }
 
-.megaSidebarCta {
+.megaAsideText {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: var(--space-5);
+}
+
+.megaAsideCta {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--primary);
+  color: #ffffff;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--primary);
   text-decoration: none;
-  margin-top: var(--space-1);
+  border-radius: var(--radius);
   transition:
-    color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color var(--transition),
+    transform var(--transition);
 }
 
-.megaSidebarCta:hover {
-  color: var(--primary-dark);
+.megaAsideCta:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+@keyframes megaFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes megaContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .megaBody {
+    grid-template-columns: 1fr;
+  }
+
+  .megaAside {
+    position: static;
+  }
+
+  .megaIndustriesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ===== RESPONSIVE ===== */
@@ -400,6 +588,11 @@
   .hamburger {
     display: flex;
   }
+
+  .megaPanel,
+  .megaBackdrop {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -411,6 +604,7 @@
 /* ===== ACCESSIBILITY ===== */
 
 .navLink:focus-visible,
+.navTrigger:focus-visible,
 .ctaButton:focus-visible,
 .hamburger:focus-visible {
   outline: 2px solid var(--primary);
@@ -421,17 +615,18 @@
   .header,
   .logoLink,
   .navLink,
+  .navTrigger,
   .navLink::after,
   .chevron,
   .ctaButton,
   .ctaButton::before,
   .hamburger,
   .hamburgerLine,
-  .megaMenu,
+  .megaPanel,
+  .megaBackdrop,
   .megaServiceCard,
-  .megaServiceIcon,
   .megaIndustryLink,
-  .megaSidebarCta {
+  .megaAsideCta {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

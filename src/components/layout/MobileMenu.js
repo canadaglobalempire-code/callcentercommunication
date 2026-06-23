@@ -5,6 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './MobileMenu.module.css';
 
+const DROPDOWN_TABS = [
+  { key: 'services', label: 'Services', href: '/services' },
+  { key: 'industries', label: 'Industries', href: '/industries' },
+];
+
 export default function MobileMenu({
   isOpen,
   onClose,
@@ -12,34 +17,29 @@ export default function MobileMenu({
   industries = [],
   navLinks = [],
 }) {
-  const [expandedSection, setExpandedSection] = useState(null);
+  const [activeTab, setActiveTab] = useState('services');
   const panelRef = useRef(null);
   const closeButtonRef = useRef(null);
   const previousFocusRef = useRef(null);
 
-  /* Lock body scroll when open */
+  const regularLinks = navLinks.filter((link) => !link.dropdown);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
-      setExpandedSection(null);
     }
     return () => {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
 
-  /* Focus management: move focus in on open, trap Tab, close on Escape,
-     and restore focus to the trigger on close. */
   useEffect(() => {
     if (!isOpen) return;
-
     if (typeof document === 'undefined') return;
 
-    // Remember what was focused so we can restore it when the menu closes.
     previousFocusRef.current = document.activeElement;
-
     const panel = panelRef.current;
 
     const getFocusable = () => {
@@ -51,7 +51,6 @@ export default function MobileMenu({
       ).filter((el) => el.offsetParent !== null || el === document.activeElement);
     };
 
-    // Move focus to the close button (or first focusable) once the panel mounts.
     const focusTimer = window.setTimeout(() => {
       if (closeButtonRef.current) {
         closeButtonRef.current.focus();
@@ -79,7 +78,6 @@ export default function MobileMenu({
       const last = focusable[focusable.length - 1];
       const activeEl = document.activeElement;
 
-      // Keep focus inside the panel.
       if (panel && !panel.contains(activeEl)) {
         e.preventDefault();
         first.focus();
@@ -102,7 +100,6 @@ export default function MobileMenu({
     return () => {
       window.clearTimeout(focusTimer);
       document.removeEventListener('keydown', handleKeyDown);
-      // Restore focus to the element that opened the menu (e.g. the hamburger).
       const previous = previousFocusRef.current;
       if (previous && typeof previous.focus === 'function') {
         previous.focus();
@@ -110,30 +107,21 @@ export default function MobileMenu({
     };
   }, [isOpen, onClose]);
 
-  const toggleSection = useCallback((section) => {
-    setExpandedSection((prev) => (prev === section ? null : section));
-  }, []);
-
   const handleLinkClick = useCallback(() => {
     onClose();
   }, [onClose]);
 
-  const getSubLinks = (key) => {
-    if (key === 'services') return services;
-    if (key === 'industries') return industries;
-    return [];
-  };
+  const activeTabMeta = DROPDOWN_TABS.find((tab) => tab.key === activeTab);
+  const activeLinks = activeTab === 'services' ? services : industries;
 
   return (
     <>
-      {/* Overlay */}
       <div
         className={`${styles.overlay} ${isOpen ? styles.overlayOpen : ''}`}
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Panel */}
       <div
         ref={panelRef}
         className={`${styles.panel} ${isOpen ? styles.panelOpen : ''}`}
@@ -141,7 +129,6 @@ export default function MobileMenu({
         aria-modal="true"
         aria-label="Navigation menu"
       >
-        {/* Panel Header */}
         <div className={styles.panelHeader}>
           <Link href="/" onClick={handleLinkClick} className={styles.logoLink}>
             <Image
@@ -176,84 +163,78 @@ export default function MobileMenu({
           </button>
         </div>
 
-        {/* Nav Links */}
         <nav className={styles.nav} aria-label="Mobile navigation">
           <ul className={styles.navList}>
-            {navLinks.map((link) => (
+            {regularLinks.map((link) => (
               <li key={link.label} className={styles.navItem}>
-                {link.dropdown ? (
-                  <>
-                    <button
-                      className={styles.accordionTrigger}
-                      onClick={() => toggleSection(link.dropdown)}
-                      aria-expanded={expandedSection === link.dropdown}
-                    >
-                      <span>{link.label}</span>
-                      <svg
-                        className={`${styles.accordionChevron} ${
-                          expandedSection === link.dropdown
-                            ? styles.accordionChevronOpen
-                            : ''
-                        }`}
-                        width="12"
-                        height="8"
-                        viewBox="0 0 12 8"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M1 1.5L6 6.5L11 1.5"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-
-                    <div
-                      className={`${styles.accordionContent} ${
-                        expandedSection === link.dropdown
-                          ? styles.accordionContentOpen
-                          : ''
-                      }`}
-                    >
-                      <div className={styles.subLinks}>
-                        <Link
-                          href={link.href}
-                          className={styles.viewAllLink}
-                          onClick={handleLinkClick}
-                        >
-                          View All {link.label}
-                        </Link>
-                        {getSubLinks(link.dropdown).map((sub) => (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            className={styles.subLink}
-                            onClick={handleLinkClick}
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className={styles.navLink}
-                    onClick={handleLinkClick}
-                  >
-                    {link.label}
-                  </Link>
-                )}
+                <Link
+                  href={link.href}
+                  className={styles.navLink}
+                  onClick={handleLinkClick}
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
+
+          <div className={styles.tabSection}>
+            <div className={styles.tabList} role="tablist" aria-label="Browse by category">
+              {DROPDOWN_TABS.map((tab) => (
+                <button
+                  key={tab.key}
+                  type="button"
+                  role="tab"
+                  id={`mobile-tab-${tab.key}`}
+                  aria-selected={activeTab === tab.key}
+                  aria-controls={`mobile-panel-${tab.key}`}
+                  className={`${styles.tabButton} ${
+                    activeTab === tab.key ? styles.tabButtonActive : ''
+                  }`}
+                  onClick={() => setActiveTab(tab.key)}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            <div
+              id={`mobile-panel-${activeTab}`}
+              role="tabpanel"
+              aria-labelledby={`mobile-tab-${activeTab}`}
+              className={styles.tabPanel}
+            >
+              <Link
+                href={activeTabMeta?.href || '/'}
+                className={styles.viewAllLink}
+                onClick={handleLinkClick}
+              >
+                View all {activeTabMeta?.label.toLowerCase()}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </Link>
+
+              <div className={styles.subLinks}>
+                {activeLinks.map((sub) => (
+                  <Link
+                    key={sub.href}
+                    href={sub.href}
+                    className={styles.subLink}
+                    onClick={handleLinkClick}
+                  >
+                    <span className={styles.subLinkLabel}>{sub.label}</span>
+                    {sub.desc ? (
+                      <span className={styles.subLinkDesc}>{sub.desc}</span>
+                    ) : null}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </nav>
 
-        {/* Footer */}
         <div className={styles.panelFooter}>
           <Link
             href="/free-consultation"
@@ -262,7 +243,6 @@ export default function MobileMenu({
           >
             Free Consultation
           </Link>
-
         </div>
       </div>
     </>

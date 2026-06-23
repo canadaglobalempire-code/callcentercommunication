@@ -572,79 +572,17 @@
   overflow: hidden;
 }
 
-/* ── FAQ ── */
+/* ── FAQ heading line breaks ── */
 
-.faq {
-  padding: 96px 0;
-  background-color: #ffffff;
+.faqHeading {
+  display: inline;
 }
 
-.faqContainer {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 24px;
+.faqHeadingSuffix {
+  white-space: nowrap;
 }
 
-.faqList {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.faqItem {
-  border-bottom: 1px solid var(--border);
-}
-
-.faqItem:last-child {
-  border-bottom: none;
-}
-
-.faqQuestion {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--dark);
-  cursor: pointer;
-  list-style: none;
-  transition: background-color 0.2s ease;
-}
-
-.faqQuestion::-webkit-details-marker {
-  display: none;
-}
-
-.faqQuestion::after {
-  content: '+';
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary);
-  flex-shrink: 0;
-  margin-left: 16px;
-}
-
-.faqItem[open] .faqQuestion::after {
-  content: '\2212';
-}
-
-.faqItem[open] .faqQuestion {
-  background-color: var(--gray-lighter);
-}
-
-.faqAnswer {
-  padding: 0 24px 20px;
-  font-size: 0.95rem;
-  color: var(--gray);
-  line-height: 1.7;
-}
-
-/* ── Responsive ── */
+/* ── Related Industries ── */
 
 @media (max-width: 1024px) {
   .heroContainer {

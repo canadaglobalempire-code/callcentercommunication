@@ -625,4 +625,52 @@ As the global BPO market continues to grow, businesses that carefully evaluate s
     author: "Call Center Communications",
     category: "Industry Insights",
   },
+  {
+    slug: "onshore-nearshore-offshore-call-centers",
+    title: "Onshore vs Nearshore vs Offshore Call Centers: How to Choose (2026 Guide)",
+    excerpt:
+      "Onshore, nearshore, or offshore? A plain-English breakdown of cost, quality, time zones, and risk to help you pick the right call center location strategy.",
+    content: `Choosing where your call center team sits is one of the biggest decisions in outsourcing — and it comes down to three options: onshore, nearshore, and offshore. Each one trades cost, convenience, and control in a different way, and the right choice depends entirely on what you are trying to fix.
+
+This guide breaks down all three in plain English, so you can match the right location strategy to your budget, your customers, and your goals.
+
+![Global call center team supporting businesses around the world](/images/hd-office-team.jpg)
+
+### Key Takeaways
+- Onshore means your team is in the same country as your customers — the highest quality and easiest oversight, but the most expensive.
+- Nearshore means a nearby country in a similar time zone — a popular middle ground on cost and convenience.
+- Offshore means a distant, lower-cost country — the biggest savings, with more to manage on quality and time zones.
+- Many companies blend models, keeping complex work onshore or nearshore and sending high-volume work offshore.
+- The right choice depends on your budget, the complexity of your calls, and how much real-time overlap you need.
+
+## Onshore: closest to home
+
+Onshore outsourcing keeps your call center in the same country as your customers — for a US business, that means US-based agents. You get native-level language, deep cultural familiarity, the same time zone, and the simplest compliance with local rules.
+
+The trade-off is cost. Onshore is the most expensive option, so it tends to make the most sense for sensitive, high-value, or heavily regulated conversations where quality matters more than price.
+
+## Nearshore: the middle ground
+
+Nearshore means outsourcing to a nearby country — for US companies, that usually means Latin America and the Caribbean. You keep strong time-zone overlap and often strong English and cultural alignment, at a meaningfully lower cost than onshore.
+
+For many businesses, nearshore hits the sweet spot: real-time collaboration during your business hours, solid quality, and a budget that works. It is a great fit for customer support, sales, and bilingual English and Spanish programs.
+
+## Offshore: the biggest savings
+
+Offshore outsourcing sends work to a more distant, lower-cost region — think Asia, Africa, or parts of Eastern Europe. The headline benefit is cost: offshore typically delivers the largest savings, plus access to huge, experienced talent pools and easy 24/7 coverage across time zones.
+
+The trade-offs are time-zone gaps and the need for stronger onboarding and quality processes. Done well — with a vetted partner and clear training — offshore can deliver excellent results at a fraction of onshore cost.
+
+## How to choose
+
+Start with the work itself. Simple, high-volume tasks like order status, FAQs, and tier-1 support are easy to send offshore for maximum savings. Complex, sensitive, or brand-critical conversations are better kept onshore or nearshore. Many companies blend all three.
+
+Then weigh three things: your budget, how much live overlap you need with your customers' hours, and the level of compliance your industry requires. The answer is rarely all offshore or all onshore — it is the mix that fits your business.
+
+If you are not sure where to start, you do not have to figure it out alone. A free consultation is the simplest way to get matched with vetted providers across onshore, nearshore, and offshore locations — with no pressure and no cost. Tell us what you are trying to solve, and we will point you toward the right fit.`,
+    date: "2026-06-22",
+    image: "/images/hd-office-team.jpg",
+    author: "Call Center Communications",
+    category: "Outsourcing Strategy",
+  },
 ];

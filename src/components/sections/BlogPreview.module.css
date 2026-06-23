@@ -12,31 +12,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-8);
   margin-top: var(--space-12);
-}
-
-/* Lead post is featured wide — breaks the generic 3-up row */
-.card:first-child {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  align-items: stretch;
-}
-
-.card:first-child .imageWrapper {
-  aspect-ratio: auto;
-  height: 100%;
-  min-height: 260px;
-}
-
-.card:first-child .body {
-  justify-content: center;
-}
-
-.card:first-child .title {
-  font-size: var(--text-xl);
 }
 
 @media (min-width: 1440px) {
@@ -217,7 +195,7 @@
 
 .viewAll {
   text-align: center;
-  margin-top: var(--space-14);
+  margin-top: var(--space-16);
   position: relative;
 }
 

@@ -24,8 +24,11 @@
 .DS_Store
 *.pem
 
-# local agent worktrees & generated artifacts
-.claude/worktrees/
+# local agent / IDE config
+.claude/
+.mcp.json
+
+# generated analysis artifacts
 /graphify-out/
 
 # debug
@@ -34,8 +37,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files
+.env
+.env.local
+.env.*.local
+!.env.example
 
 # vercel
 .vercel

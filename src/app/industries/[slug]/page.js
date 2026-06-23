@@ -8,6 +8,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import { industries } from '@/data/industries';
 import { services } from '@/data/services';
 import CtaBanner from '@/components/sections/CtaBanner';
+import FAQ from '@/components/sections/FAQ';
 import styles from './page.module.css';
 
 /* Qualitative capability highlights per industry — no invented metrics. */
@@ -312,22 +313,18 @@ export default async function IndustryPage({ params }) {
       </section>
 
       {/* ── f) FAQ ── */}
-      <section className={styles.faq}>
-        <div className={styles.faqContainer}>
-          <SectionHeading
-            title={`${industry.title} Call Center FAQ`}
-            subtitle="Common questions about call center services for your industry"
-          />
-          <div className={styles.faqList}>
-            {faqItems.map((item, idx) => (
-              <details key={idx} className={styles.faqItem}>
-                <summary className={styles.faqQuestion}>{item.question}</summary>
-                <p className={styles.faqAnswer}>{item.answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQ
+        items={faqItems}
+        title={
+          <span className={styles.faqHeading}>
+            {industry.title}{' '}
+            <span className={styles.faqHeadingSuffix}>Call Center FAQ</span>
+          </span>
+        }
+        subtitle="Common questions about call center services for your industry"
+        showCta={false}
+        showEyebrow
+      />
 
       {/* ── g) CTA Banner ── */}
       <CtaBanner

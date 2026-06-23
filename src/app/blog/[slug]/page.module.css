@@ -682,39 +682,7 @@
   transform: translateX(3px);
 }
 
-/* ===== FAQ ===== */
-.faqList {
-  display: flex;
-  flex-direction: column;
-}
-
-.faqItem {
-  border-top: 1px solid var(--border);
-  padding: var(--space-6) 0;
-}
-
-.faqItem:last-child {
-  border-bottom: 1px solid var(--border);
-}
-
-.faqQ {
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1.4;
-  margin-bottom: var(--space-3);
-}
-
-.faqA {
-  max-width: 72ch;
-  font-size: 1.0625rem;
-  line-height: 1.75;
-  color: var(--gray);
-}
-
-.faqA > * + * {
-  margin-top: var(--space-3);
-}
+/* ===== FAQ (uses shared FAQ component) ===== */
 
 /* ===== Author strip ===== */
 .author {
@@ -789,6 +757,14 @@
   color: #ffffff;
   letter-spacing: var(--ls-tight);
   margin-bottom: var(--space-4);
+}
+
+.ctaTitleLine {
+  display: block;
+}
+
+.ctaTitleLine:last-child {
+  white-space: nowrap;
 }
 
 .ctaCopy {

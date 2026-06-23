@@ -12,7 +12,7 @@ const locations = [
   { name: 'South Africa', image: '/images/cc-team-desk.jpg', agents: '45K+' },
   { name: 'Canada', image: '/images/cc-team-huddle.jpg', agents: '50K+' },
   { name: 'Jamaica', image: '/images/cc-support-team.jpg', agents: '25K+' },
-  { name: 'Puerto Rico', image: '/images/cc-team-meeting.jpg', agents: '20K+' },
+  { name: 'Puerto Rico', image: '/images/cc-team-plan.jpg', agents: '20K+' },
 ];
 
 export default function PopularLocations() {

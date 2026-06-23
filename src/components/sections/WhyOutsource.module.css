@@ -24,10 +24,10 @@
   z-index: 1;
 }
 
-/* Grid layout - 2 columns (avoids the generic 3-up feature row) */
+/* Grid layout - 3 columns per row */
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-8);
   margin-bottom: var(--space-16);
 }

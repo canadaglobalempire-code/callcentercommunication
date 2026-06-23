@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/ui/Breadcrumbs';
 import Button from '@/components/ui/Button';
 import JsonLd from '@/components/seo/JsonLd';
 import ReadingProgress from '@/components/blog/ReadingProgress';
+import FAQ from '@/components/sections/FAQ';
 import { blogPosts } from '@/data/blogPosts';
 import { generateMetadata as genMeta } from '@/lib/metadata';
 import { renderMarkdown } from '@/lib/markdown';
@@ -261,17 +262,17 @@ export default async function BlogPostPage({ params }) {
       )}
 
       {post.faq?.length > 0 && (
-        <section id="faq" className={styles.faq}>
-          <h2 className={styles.sectionTitle}>Frequently asked questions</h2>
-          <div className={styles.faqList}>
-            {post.faq.map((f, i) => (
-              <div className={styles.faqItem} key={i}>
-                <h3 className={styles.faqQ}>{f.q}</h3>
-                <div className={styles.faqA}>{renderMarkdown(f.a)}</div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <FAQ
+          id="faq"
+          variant="embedded"
+          items={post.faq.map((f) => ({
+            question: f.q,
+            answer: renderMarkdown(f.a),
+          }))}
+          title="Frequently asked questions"
+          showEyebrow={false}
+          showCta={false}
+        />
       )}
 
       {post.closing && (
@@ -384,7 +385,10 @@ export default async function BlogPostPage({ params }) {
       {/* ===== CTA band ===== */}
       <section className={styles.ctaBand}>
         <div className={styles.ctaInner}>
-          <h2 className={styles.ctaTitle}>Not sure which provider fits?</h2>
+          <h2 className={styles.ctaTitle}>
+            <span className={styles.ctaTitleLine}>Not sure which provider fits?</span>
+            <span className={styles.ctaTitleLine}>We will match you.</span>
+          </h2>
           <p className={styles.ctaCopy}>
             Our brokerage service is free. Tell us your needs and get matched with
             vetted call center partners in days.

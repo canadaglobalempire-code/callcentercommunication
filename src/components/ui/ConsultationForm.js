@@ -17,6 +17,7 @@ function validateForm(data) {
 
   if (!data.name.trim()) errors.name = 'Name is required.';
   if (!data.company.trim()) errors.company = 'Company name is required.';
+  if (!data.website.trim()) errors.website = 'Website is required.';
 
   if (!data.email.trim()) {
     errors.email = 'Email address is required.';
@@ -165,7 +166,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-website" className={styles.label}>
-          Website <span className={styles.optional}>(optional)</span>
+          Website<span className={styles.required}>*</span>
         </label>
         <input
           id="cons-website"

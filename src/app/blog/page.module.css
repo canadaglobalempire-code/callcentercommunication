@@ -394,6 +394,14 @@
   margin-bottom: var(--space-4);
 }
 
+.ctaTitleLine {
+  display: block;
+}
+
+.ctaTitleLine:last-child {
+  white-space: nowrap;
+}
+
 .ctaCopy {
   font-size: var(--text-lg);
   color: rgba(255, 255, 255, 0.78);

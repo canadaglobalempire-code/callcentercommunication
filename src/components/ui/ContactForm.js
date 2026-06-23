@@ -16,16 +16,6 @@ const CALL_PURPOSE_OPTIONS = [
 
 const AGENT_COUNT_OPTIONS = ['5-25', '25-50', '50-100', '100+'];
 
-const DAYS_OF_WEEK = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-];
-
 const initialFormData = {
   companyName: '',
   name: '',
@@ -35,15 +25,10 @@ const initialFormData = {
   website: '',
   callDirection: '',
   callLength: '',
-  contactType: '',
   productService: '',
-  programHours: '',
   monthlyCallVolume: '',
   callPurpose: '',
-  programStart: '',
   agentCount: '',
-  programDays: [],
-  additionalComments: '',
 };
 
 function validateForm(data) {
@@ -65,11 +50,10 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
 
+  if (!data.website.trim()) errors.website = 'Website is required.';
   if (!data.callLength.trim()) errors.callLength = 'Anticipated call length is required.';
   if (!data.productService.trim()) errors.productService = 'This field is required.';
-  if (!data.programHours.trim()) errors.programHours = 'Program hours are required.';
   if (!data.monthlyCallVolume.trim()) errors.monthlyCallVolume = 'Monthly call estimate is required.';
-  if (!data.programStart.trim()) errors.programStart = 'Anticipated start date is required.';
 
   return errors;
 }
@@ -91,16 +75,6 @@ export default function ContactForm() {
         return next;
       });
     }
-  }
-
-  function handleCheckbox(e) {
-    const { value, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      programDays: checked
-        ? [...prev.programDays, value]
-        : prev.programDays.filter((d) => d !== value),
-    }));
   }
 
   async function handleSubmit(e) {
@@ -252,7 +226,7 @@ export default function ContactForm() {
         </div>
         <div className={styles.field}>
           <label htmlFor="website" className={styles.label}>
-            Website <span className={styles.optional}>(optional)</span>
+            Website<span className={styles.required}>*</span>
           </label>
           <input
             id="website"
@@ -309,30 +283,6 @@ export default function ContactForm() {
         {errors.callLength && <p className={styles.errorMsg}>{errors.callLength}</p>}
       </div>
 
-      {/* Contact Type */}
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.legend}>
-          Will call contact be with Businesses or Consumers?
-        </legend>
-        <div className={styles.radioGroup}>
-          {['Business', 'Consumer', 'Both'].map((option) => (
-            <label
-              key={option}
-              className={`${styles.radioLabel} ${formData.contactType === option ? styles.radioLabelChecked : ''}`}
-            >
-              <input
-                type="radio"
-                name="contactType"
-                value={option}
-                checked={formData.contactType === option}
-                onChange={handleChange}
-              />
-              {option}
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
       {/* Product / Service */}
       <div className={styles.field}>
         <label htmlFor="productService" className={styles.label}>
@@ -353,26 +303,8 @@ export default function ContactForm() {
         )}
       </div>
 
-      {/* Row: Program Hours / Monthly Volume */}
+      {/* Row: Monthly Volume / Call Purpose */}
       <div className={styles.row}>
-        <div className={styles.field}>
-          <label htmlFor="programHours" className={styles.label}>
-            What are the daily program hours?
-            <span className={styles.required}>*</span>
-          </label>
-          <input
-            id="programHours"
-            name="programHours"
-            type="text"
-            className={`${styles.input} ${errors.programHours ? styles.inputError : ''}`}
-            value={formData.programHours}
-            onChange={handleChange}
-            placeholder="e.g., 8am - 8pm EST"
-          />
-          {errors.programHours && (
-            <p className={styles.errorMsg}>{errors.programHours}</p>
-          )}
-        </div>
         <div className={styles.field}>
           <label htmlFor="monthlyCallVolume" className={styles.label}>
             Estimated inbound/outbound calls per month?
@@ -391,10 +323,6 @@ export default function ContactForm() {
             <p className={styles.errorMsg}>{errors.monthlyCallVolume}</p>
           )}
         </div>
-      </div>
-
-      {/* Row: Call Purpose / Program Start */}
-      <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="callPurpose" className={styles.label}>
             What is the purpose of the call?
@@ -413,24 +341,6 @@ export default function ContactForm() {
               </option>
             ))}
           </select>
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="programStart" className={styles.label}>
-            When do you anticipate your program will begin?
-            <span className={styles.required}>*</span>
-          </label>
-          <input
-            id="programStart"
-            name="programStart"
-            type="text"
-            className={`${styles.input} ${errors.programStart ? styles.inputError : ''}`}
-            value={formData.programStart}
-            onChange={handleChange}
-            placeholder="e.g., Q3 2026"
-          />
-          {errors.programStart && (
-            <p className={styles.errorMsg}>{errors.programStart}</p>
-          )}
         </div>
       </div>
 
@@ -453,45 +363,6 @@ export default function ContactForm() {
             </option>
           ))}
         </select>
-      </div>
-
-      {/* Program Days */}
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.legend}>
-          What days of the week will the program run?
-        </legend>
-        <div className={styles.checkboxGroup}>
-          {DAYS_OF_WEEK.map((day) => (
-            <label
-              key={day}
-              className={`${styles.checkboxLabel} ${formData.programDays.includes(day) ? styles.checkboxLabelChecked : ''}`}
-            >
-              <input
-                type="checkbox"
-                value={day}
-                checked={formData.programDays.includes(day)}
-                onChange={handleCheckbox}
-              />
-              {day}
-            </label>
-          ))}
-        </div>
-      </fieldset>
-
-      {/* Additional Comments */}
-      <div className={styles.field}>
-        <label htmlFor="additionalComments" className={styles.label}>
-          Additional Comments
-        </label>
-        <textarea
-          id="additionalComments"
-          name="additionalComments"
-          className={styles.textarea}
-          value={formData.additionalComments}
-          onChange={handleChange}
-          rows={4}
-          placeholder="Any other information you would like us to know"
-        />
       </div>
 
       {/* Submit */}

@@ -391,4 +391,30 @@ Our real estate call center partners deliver lead qualification, appointment and
     ],
     relatedServices: ["inbound-call-center-services", "outbound-call-center-services", "interactive-automated-services"],
   },
+  {
+    slug: "education-call-center-services",
+    title: "Education",
+    tagline: "Enrollment, student, and family support that keeps learners engaged",
+    description: `Educational institutions field a constant flow of inquiries from prospective students, current learners, parents, and alumni — and that flow spikes hard around admissions deadlines, enrollment periods, and the start of every term. From admissions and financial aid questions to registration help, learning-platform troubleshooting, and after-hours assistance, each interaction shapes how supported a student feels and whether they stay enrolled.
+
+Call Center Communications connects universities, colleges, K-12 districts, and edtech and online-learning companies with call center partners experienced in the education sector. These providers train agents on admissions workflows, financial aid programs, student information systems, and the patient, encouraging tone that learners and families expect. Whether you are guiding applicants through enrollment, resetting a student portal login, or absorbing a start-of-semester surge, they make sure no student is left waiting.
+
+Our education call center partners deliver admissions and enrollment support, financial aid and registration assistance, student and IT helpdesk services, multilingual support for diverse families, and outbound outreach for alumni and donor campaigns — helping institutions improve retention and satisfaction while staff stay focused on teaching and learning.`,
+    image: "/images/internet-office-team-meeting.jpg",
+    icon: "GraduationCap",
+    challenges: [
+      "Handling enrollment and admissions surges around application and start-of-term deadlines",
+      "Supporting students, parents, and alumni across many channels and time zones",
+      "Providing knowledgeable help for financial aid, registration, and learning platforms",
+      "Serving multilingual, diverse student and family populations with consistent quality",
+    ],
+    solutions: [
+      "Admissions & enrollment support",
+      "Financial aid & registration assistance",
+      "Student & IT helpdesk",
+      "Multilingual family support",
+      "Alumni & donor outreach",
+    ],
+    relatedServices: ["inbound-call-center-services", "interactive-automated-services", "multilingual-call-center-services"],
+  },
 ];

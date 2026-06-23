@@ -91,6 +91,7 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
   if (!data.company.trim()) errors.company = 'Company is required.';
+  if (!data.website.trim()) errors.website = 'Website is required.';
   if (!data.serviceType) errors.serviceType = 'Please select a service.';
   if (!data.callVolume) errors.callVolume = 'Please select a call volume.';
   return errors;
@@ -306,7 +307,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="website" className={styles.formLabel}>
-                    Website <span className={styles.optional}>(optional)</span>
+                    Website<span className={styles.required}>*</span>
                   </label>
                   <input
                     type="text"
