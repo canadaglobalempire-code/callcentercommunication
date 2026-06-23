@@ -89,39 +89,32 @@ export default function Navbar() {
   const shellRef = useRef(null);
   const headerRef = useRef(null);
   const sentinelRef = useRef(null);
-  const megaCloseTimerRef = useRef(null);
+  const dropdownTriggerRefs = useRef({});
+  const servicesPanelRef = useRef(null);
+  const industriesPanelRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(72);
 
   const isMegaOpen = openDropdown !== null;
 
-  const clearMegaCloseTimer = useCallback(() => {
-    if (megaCloseTimerRef.current) {
-      clearTimeout(megaCloseTimerRef.current);
-      megaCloseTimerRef.current = null;
-    }
+  const closeMega = useCallback(() => {
+    setOpenDropdown(null);
   }, []);
 
-  const closeMega = useCallback(() => {
-    clearMegaCloseTimer();
-    setOpenDropdown(null);
-  }, [clearMegaCloseTimer]);
-
   const showDropdown = useCallback((key) => {
-    clearMegaCloseTimer();
     setOpenDropdown(key);
-  }, [clearMegaCloseTimer]);
-
-  const scheduleMegaClose = useCallback(() => {
-    clearMegaCloseTimer();
-    megaCloseTimerRef.current = setTimeout(() => {
-      setOpenDropdown(null);
-    }, 280);
-  }, [clearMegaCloseTimer]);
+  }, []);
 
   const toggleDropdown = useCallback((key) => {
-    clearMegaCloseTimer();
     setOpenDropdown((current) => (current === key ? null : key));
-  }, [clearMegaCloseTimer]);
+  }, []);
+
+  const setDropdownTriggerRef = useCallback((key) => (node) => {
+    if (node) {
+      dropdownTriggerRefs.current[key] = node;
+    } else {
+      delete dropdownTriggerRefs.current[key];
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -186,7 +179,52 @@ export default function Navbar() {
     };
   }, [isMegaOpen, closeMega]);
 
-  useEffect(() => () => clearMegaCloseTimer(), [clearMegaCloseTimer]);
+  useEffect(() => {
+    if (!isMegaOpen) return undefined;
+
+    const handlePointerMove = (e) => {
+      const header = headerRef.current;
+      const trigger = dropdownTriggerRefs.current[openDropdown];
+      const panel = openDropdown === 'services'
+        ? servicesPanelRef.current
+        : industriesPanelRef.current;
+
+      if (!header || !trigger || !panel) return;
+
+      const isPointInRect = (rect, padding = 0) => (
+        e.clientX >= rect.left - padding &&
+        e.clientX <= rect.right + padding &&
+        e.clientY >= rect.top - padding &&
+        e.clientY <= rect.bottom + padding
+      );
+
+      const headerRect = header.getBoundingClientRect();
+      const triggerRect = trigger.getBoundingClientRect();
+      const panelRect = panel.getBoundingClientRect();
+
+      if (isPointInRect(headerRect) || isPointInRect(panelRect)) return;
+
+      const safeZone = {
+        left: Math.min(triggerRect.left, panelRect.left) - 40,
+        right: Math.max(triggerRect.right, panelRect.right) + 40,
+        top: Math.min(triggerRect.bottom, panelRect.top) - 16,
+        bottom: panelRect.bottom + 8,
+      };
+      const isInTravelLane =
+        e.clientX >= safeZone.left &&
+        e.clientX <= safeZone.right &&
+        e.clientY >= safeZone.top &&
+        e.clientY <= safeZone.bottom;
+
+      if (!isInTravelLane) closeMega();
+    };
+
+    document.addEventListener('pointermove', handlePointerMove);
+
+    return () => {
+      document.removeEventListener('pointermove', handlePointerMove);
+    };
+  }, [isMegaOpen, openDropdown, closeMega]);
 
   const toggleMobile = useCallback(() => {
     setMobileOpen((prev) => !prev);
@@ -225,7 +263,7 @@ export default function Navbar() {
       <div className={styles.headerShell} ref={shellRef}>
         <header className={headerClasses} ref={headerRef}>
           <div className={styles.container}>
-            <Link href="/" className={styles.logoLink} aria-label="Home">
+            <Link href="/" className={styles.logoLink} aria-label="Home" onMouseEnter={closeMega}>
               <Image
                 src="/images/logo.png"
                 alt="Call Center Communications"
@@ -242,12 +280,12 @@ export default function Navbar() {
                   <li
                     key={link.label}
                     className={styles.navItem}
-                    onMouseEnter={link.dropdown ? () => showDropdown(link.dropdown) : undefined}
-                    onMouseLeave={link.dropdown ? scheduleMegaClose : undefined}
+                    onMouseEnter={link.dropdown ? () => showDropdown(link.dropdown) : closeMega}
                   >
                     {link.dropdown ? (
                       <button
                         type="button"
+                        ref={setDropdownTriggerRef(link.dropdown)}
                         className={`${styles.navTrigger} ${
                           openDropdown === link.dropdown ? styles.navTriggerOpen : ''
                         }`}
@@ -286,7 +324,12 @@ export default function Navbar() {
             </nav>
 
             <div className={styles.actions}>
-              <Link href="/free-consultation" className={styles.ctaButton} onClick={closeMega}>
+              <Link
+                href="/free-consultation"
+                className={styles.ctaButton}
+                onClick={closeMega}
+                onMouseEnter={closeMega}
+              >
                 Free Consultation
                 <svg
                   className={styles.ctaIcon}
@@ -323,19 +366,16 @@ export default function Navbar() {
             className={styles.megaBackdrop}
             aria-label="Close menu"
             onClick={closeMega}
-            onMouseEnter={clearMegaCloseTimer}
-            onMouseLeave={scheduleMegaClose}
           />
         )}
 
         <div
           id="mega-menu-services"
+          ref={servicesPanelRef}
           className={`${styles.megaPanel} ${openDropdown === 'services' ? styles.megaPanelOpen : ''}`}
           role="region"
           aria-label="Services menu"
           aria-hidden={openDropdown !== 'services'}
-          onMouseEnter={clearMegaCloseTimer}
-          onMouseLeave={scheduleMegaClose}
           style={panelStyle}
         >
           <div className={styles.megaPanelContainer}>
@@ -381,12 +421,11 @@ export default function Navbar() {
 
         <div
           id="mega-menu-industries"
+          ref={industriesPanelRef}
           className={`${styles.megaPanel} ${openDropdown === 'industries' ? styles.megaPanelOpen : ''}`}
           role="region"
           aria-label="Industries menu"
           aria-hidden={openDropdown !== 'industries'}
-          onMouseEnter={clearMegaCloseTimer}
-          onMouseLeave={scheduleMegaClose}
           style={panelStyle}
         >
           <div className={styles.megaPanelContainer}>
