@@ -463,31 +463,64 @@
 .megaIndustriesGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .megaIndustryLink {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--dark);
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-subtle);
+  border-radius: var(--radius-lg);
+  background: #ffffff;
   text-decoration: none;
   transition:
     border-color var(--transition),
     background-color var(--transition),
     color var(--transition),
-    transform var(--transition);
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.megaIndustryIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: var(--radius);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.megaIndustryIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.megaIndustryName {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.35;
 }
 
 .megaIndustryLink:hover {
-  border-color: rgba(246, 120, 10, 0.25);
+  border-color: rgba(246, 120, 10, 0.3);
   background: #ffffff;
   color: var(--primary);
   transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.megaIndustryLink:hover .megaCardArrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--primary);
 }
 
 .megaAside {

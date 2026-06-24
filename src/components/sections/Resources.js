@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styles from './Resources.module.css';
 
 const featured = {
-  image: '/images/cc-management.jpg',
+  image: '/images/internet-call-center-agent-working.jpg',
   category: 'Pricing Guide',
   title: 'The 2026 Call Center Pricing Playbook',
   description:

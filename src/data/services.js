@@ -10,7 +10,8 @@ export const services = [
 Our vetted inbound partners specialize in high-volume environments where quality cannot be compromised. From 24/7 technical support desks staffed by certified professionals to dedicated retail order processing teams trained on your product catalog, these providers operate as a true extension of your brand. They bring the infrastructure, the talent, and the operational expertise — you retain full control over service standards and customer outcomes.
 
 With omnichannel capabilities spanning phone, email, live chat, text, and social media, our inbound call center partners ensure your customers receive consistent, responsive support no matter how they choose to connect. Disaster recovery protocols guarantee business continuity, while customer retention programs work proactively to reduce churn and maximize lifetime value.`,
-    image: "/images/cc-agent-headset.jpg",
+    image: "/images/inbound-call-center-card.png",
+    processImage: "/images/cc-team-huddle.jpg",
     icon: "PhoneIncoming",
     features: [
       "Order Processing",
@@ -51,7 +52,8 @@ With omnichannel capabilities spanning phone, email, live chat, text, and social
 Our network of outbound providers brings deep expertise in B2B and B2C sales environments, with agents trained in consultative selling, objection handling, and compliance-first practices. Whether you need appointment setters filling your sales team's calendar, fundraising professionals engaging donors, or collections agents recovering outstanding accounts, we match you with providers whose track record speaks for itself.
 
 Every outbound campaign is built on data-driven strategy. Our partners leverage advanced dialing technology, CRM integrations, and real-time analytics to optimize contact rates, conversion metrics, and campaign ROI. With rigorous quality assurance programs and full regulatory compliance — including TCPA, DNC, and PCI-DSS — you can scale outbound operations with confidence.`,
-    image: "/images/cc-agent-pro.jpg",
+    image: "/images/outbound-call-center-card.png",
+    processImage: "/images/agents-row.jpg",
     icon: "PhoneOutgoing",
     features: [
       "Lead Generation",
@@ -93,6 +95,7 @@ Call Center Communications connects you with BPO providers who combine human exp
 
 Modern BPO goes far beyond basic data entry. Our partners deliver sophisticated services including image sorting and classification, form processing with intelligent data extraction, content moderation across text and visual media, and document format conversion. With scalable staffing models and secure data handling practices, you can outsource with confidence — knowing your sensitive information is protected and your processes run without interruption.`,
     image: "/images/cc-team-work.jpg",
+    processImage: "/images/team-thumbsup.jpg",
     icon: "Database",
     features: [
       "Document Translations",
@@ -134,6 +137,7 @@ Call Center Communications partners with providers at the forefront of contact c
 
 Omnichannel customer support ties every channel together — phone, email, chat, SMS, social media, and self-service portals — into a unified experience. Customers move between channels without repeating themselves, and agents see the full interaction history in one view. The result is faster resolution times, higher satisfaction scores, and significantly lower cost per contact across your entire support operation.`,
     image: "/images/cc-agent-laptop.jpg",
+    processImage: "/images/cc-agent-1.jpg",
     icon: "Bot",
     features: [
       "Avatar Lead Generation",
@@ -167,6 +171,7 @@ Call Center Communications prioritizes providers who deliver transparency at eve
 
 Beyond the data, high-touch account management means you always have a responsive partner who understands your business goals. Dedicated account managers conduct regular performance reviews, recommend optimization strategies, and ensure your programs continuously improve. When you need answers, you get them fast — accurate analytics delivered on demand, not on a schedule that suits someone else.`,
     image: "/images/cc-management.jpg",
+    processImage: "/images/office-phone.jpg",
     icon: "BarChart3",
     features: [
       "Dedicated Account Management",
@@ -204,6 +209,7 @@ Call Center Communications connects you with call center providers staffed by pr
 
 Whether you need full multilingual support around the clock or targeted language capabilities for specific markets and campaigns, our providers build flexible staffing models to match your requirements. Multilingual agents support inbound and outbound programs alike — from customer care and technical support to sales campaigns and market research conducted in-language for higher response rates and more accurate insights.`,
     image: "/images/cc-diverse-team.jpg",
+    processImage: "/images/hd-agents-row.jpg",
     icon: "Languages",
     features: [
       "Multi-Language Customer Support",

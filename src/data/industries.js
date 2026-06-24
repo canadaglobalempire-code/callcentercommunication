@@ -60,7 +60,7 @@ Our financial services call center partners excel at customer care, account acti
 Call Center Communications partners insurance carriers, agencies, and MGAs with call center providers who specialize in insurance operations. These partners train agents on insurance terminology, coverage types, claims workflows, and state-specific regulatory requirements. Whether handling Medicare enrollment surges, auto claims after severe weather, or commercial policy renewals, they deliver the responsiveness and accuracy insurers demand.
 
 Our insurance call center partners support inbound and outbound sales, cross-selling, warranty and policy inquiries, and automated claims processing — streamlining operations while ensuring every policyholder receives the knowledgeable, respectful service that builds long-term loyalty.`,
-    image: "/images/cc-agent-pro.jpg",
+    image: "/images/agent-focused.jpg",
     icon: "Shield",
     challenges: [
       "Processing high volumes of claims accurately during catastrophic events",
@@ -112,7 +112,7 @@ Our telecom call center partners deliver billing support, customer care, collect
 Call Center Communications matches retailers of all sizes with call center providers who understand the retail customer journey. These partners staff trained agents who know your products, handle orders efficiently, process returns with empathy, and turn service interactions into sales opportunities through professional upselling and cross-selling.
 
 Our retail call center partners provide 24/7 order taking, refunds and returns processing, customer retention programs, and upsell/cross-sell capabilities. With seasonal scalability built into their staffing models, they help retailers handle Black Friday surges, holiday rushes, and promotional spikes without compromising the service quality your customers expect.`,
-    image: "/images/cc-agent-smile.jpg",
+    image: "/images/agent-smiling.jpg",
     icon: "ShoppingCart",
     challenges: [
       "Scaling support operations for massive seasonal demand fluctuations",
@@ -320,7 +320,7 @@ Our energy and utility call center partners help manage demand spikes, credit ma
 Call Center Communications connects cable, broadband, and media companies with call center providers who specialize in the unique demands of this industry. These partners train agents on cable billing systems, broadband tiers, equipment configuration, and the tiered technical support escalation paths that complex network environments require.
 
 Our cable and media call center partners deliver billing and collection support, customer care, technical troubleshooting, back office operations, and HSD tier 1 through tier 3 technical support. With the technical depth to resolve complex connectivity issues and the sales skills to save cancelling subscribers, they help cable and media companies protect revenue while delivering the service quality their customers expect.`,
-    image: "/images/agents-working.jpg",
+    image: "/images/cc-headset-desk.jpg",
     icon: "Tv",
     challenges: [
       "Competing for subscribers against streaming services and alternative providers",
@@ -347,7 +347,7 @@ Our cable and media call center partners deliver billing and collection support,
 Call Center Communications connects organizations with call center providers who specialize in disaster and emergency response operations. These partners maintain standby capacity, redundant infrastructure, and pre-trained agent pools that can be activated rapidly. They operate around the clock with backup power, geographic redundancy, and the protocols needed to deliver accurate, life-critical information under extreme pressure.
 
 Our disaster and emergency call center partners provide critical information during crises, scale disaster hotlines fast, staff weather and natural disaster hotlines, operate 24/7 emergency centers, and execute outbound notification campaigns. When the unexpected happens, they ensure your organization can communicate at the speed and scale the situation demands — protecting your stakeholders and your reputation.`,
-    image: "/images/cc-support-team.jpg",
+    image: "/images/cc-office-wide.jpg",
     icon: "AlertTriangle",
     challenges: [
       "Activating hundreds of trained agents within hours of an emergency declaration",
@@ -374,7 +374,7 @@ Our disaster and emergency call center partners provide critical information dur
 Call Center Communications connects brokerages, property management firms, mortgage lenders, and proptech companies with call center partners experienced in real estate operations. These providers train agents on listing details, qualification criteria, scheduling workflows, and the local-market nuance that builds trust with clients. Whether you are fielding rental inquiries, booking showings, or following up on web leads, they ensure every prospect reaches a knowledgeable professional.
 
 Our real estate call center partners deliver lead qualification, appointment and showing scheduling, tenant and owner support, transaction follow-up, and outbound nurture campaigns — helping agents and firms stay in front of every opportunity while focusing their own time on closing.`,
-    image: "/images/cc-team-meeting.jpg",
+    image: "/images/cc-woman-headset.jpg",
     icon: "Home",
     challenges: [
       "Capturing and qualifying leads instantly before they contact a competitor",

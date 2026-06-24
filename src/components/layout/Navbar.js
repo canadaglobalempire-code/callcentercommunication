@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import MobileMenu from './MobileMenu';
+import { getIndustryIconKey, industryIcons } from '@/lib/industryIcons';
 import styles from './Navbar.module.css';
 
 const services = [
@@ -22,6 +23,7 @@ const industries = [
   { label: 'Cable & Media', href: '/industries/cable-media-call-center-services' },
   { label: 'Disaster & Emergency', href: '/industries/disaster-call-center-services' },
   { label: 'Ecommerce', href: '/industries/ecommerce-call-center-services' },
+  { label: 'Education', href: '/industries/education-call-center-services' },
   { label: 'Energy', href: '/industries/energy-call-center-services' },
   { label: 'Government', href: '/industries/government-call-center-services' },
   { label: 'Healthcare', href: '/industries/healthcare-call-center-services' },
@@ -433,16 +435,26 @@ export default function Navbar() {
             <div className={styles.megaBody}>
               <div className={styles.megaMain}>
                 <div className={styles.megaIndustriesGrid}>
-                  {industries.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={styles.megaIndustryLink}
-                      onClick={closeMega}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
+                  {industries.map((item) => {
+                    const iconKey = getIndustryIconKey(item.href);
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={styles.megaIndustryLink}
+                        onClick={closeMega}
+                      >
+                        <span className={styles.megaIndustryIcon} aria-hidden="true">
+                          {industryIcons[iconKey]}
+                        </span>
+                        <span className={styles.megaIndustryName}>{item.label}</span>
+                        <svg className={styles.megaCardArrow} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
               <aside className={styles.megaAside}>

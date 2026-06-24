@@ -314,7 +314,7 @@ export const blogPosts = [
     ],
     "closing": "## Finding your right fit\n\nThe truth is, there is no single best BPO company for everyone. The best one for you is the one that matches your goal, fits your budget, and feels easy to work with. A business that just wants to stop missing calls needs something very different from one chasing aggressive sales growth. Use this list as a starting point, pick two or three that sound right for your situation, and talk to them before you decide.\n\nIf all of this still feels like a lot, you do not have to sort through it alone. A free consultation is the simplest way to get matched with the right partner, with no pressure and no obligation. Tell us what you are trying to fix, and we will point you toward providers that actually fit. You can learn more about how that works on our [services page](/services), or reach out for a free consultation whenever you are ready.",
     "date": "2026-06-19",
-    "image": "/images/cc-team-meeting.jpg",
+    "image": "/images/call-center-team.jpg",
     "author": "Call Center Communications",
     "category": "BPO Rankings"
   },
@@ -621,7 +621,7 @@ Global Empire Corporation stands out as a leading BPO provider by combining oper
 
 As the global BPO market continues to grow, businesses that carefully evaluate service quality, scalability, industry expertise, and security standards will be best positioned to succeed. By comparing the top BPO companies in the world and aligning them with your specific needs, you can select a strategic outsourcing partner that drives efficiency, customer satisfaction, and long-term business growth.`,
     date: "2026-06-19",
-    image: "/images/call-center-team.jpg",
+    image: "/images/global-bpo-rankings-hero.png",
     author: "Call Center Communications",
     category: "Industry Insights",
   },
@@ -634,7 +634,7 @@ As the global BPO market continues to grow, businesses that carefully evaluate s
 
 This guide breaks down all three in plain English, so you can match the right location strategy to your budget, your customers, and your goals.
 
-![Global call center team supporting businesses around the world](/images/hd-office-team.jpg)
+![Global call center team supporting businesses around the world](/images/cc-agent-writing.jpg)
 
 ### Key Takeaways
 - Onshore means your team is in the same country as your customers — the highest quality and easiest oversight, but the most expensive.
@@ -669,7 +669,7 @@ Then weigh three things: your budget, how much live overlap you need with your c
 
 If you are not sure where to start, you do not have to figure it out alone. A free consultation is the simplest way to get matched with vetted providers across onshore, nearshore, and offshore locations — with no pressure and no cost. Tell us what you are trying to solve, and we will point you toward the right fit.`,
     date: "2026-06-22",
-    image: "/images/hd-office-team.jpg",
+    image: "/images/cc-agent-writing.jpg",
     author: "Call Center Communications",
     category: "Outsourcing Strategy",
   },

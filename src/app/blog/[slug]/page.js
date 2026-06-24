@@ -40,18 +40,21 @@ function cleanUrl(url = '') {
 /* Editorial photo rotation for ranked-company panels (no per-company logos available).
    A company can override with its own `image` field. */
 const COMPANY_IMAGES = [
-  '/images/hd-office-team.jpg',
-  '/images/cc-diverse-team.jpg',
-  '/images/agents-team-row.jpg',
-  '/images/cc-team-huddle.jpg',
-  '/images/cc-support-team.jpg',
-  '/images/internet-office-team-meeting.jpg',
-  '/images/cc-team-desk.jpg',
-  '/images/hd-agents-row.jpg',
-  '/images/cc-management.jpg',
-  '/images/team-collaboration.jpg',
-  '/images/cc-team-work.jpg',
-  '/images/cc-discussion.jpg',
+  '/images/cc-agent-pro.jpg',
+  '/images/cc-man-laptop.jpg',
+  '/images/cc-man-headset.jpg',
+  '/images/agent-female-office.jpg',
+  '/images/agent-close.jpg',
+  '/images/cc-agent-focus.jpg',
+  '/images/cc-agent-desk.jpg',
+  '/images/internet-call-center-headset-pair.jpg',
+  '/images/internet-office-planning-meeting.jpg',
+  '/images/diverse-team.jpg',
+  '/images/hd-agents-working.jpg',
+  '/images/cc-team-row-2.jpg',
+  '/images/cc-agent-blue.jpg',
+  '/images/agents-office-pair.jpg',
+  '/images/new-flag.jpg',
 ];
 
 /* ===== Page ===== */

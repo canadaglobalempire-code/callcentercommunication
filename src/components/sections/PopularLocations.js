@@ -6,9 +6,9 @@ import styles from './PopularLocations.module.css';
 const locations = [
   { name: 'Philippines', image: '/images/agents-working.jpg', agents: '150K+' },
   { name: 'United States', image: '/images/america.jpg', agents: '200K+' },
-  { name: 'India', image: '/images/agents-team-row.jpg', agents: '300K+' },
+  { name: 'India', image: '/images/india-call-center-agent.png', agents: '300K+' },
   { name: 'Mexico', image: '/images/cc-team-collab.jpg', agents: '80K+' },
-  { name: 'Colombia', image: '/images/cc-diverse-team.jpg', agents: '60K+' },
+  { name: 'Colombia', image: '/images/hd-agents-pair.jpg', agents: '60K+' },
   { name: 'South Africa', image: '/images/cc-team-desk.jpg', agents: '45K+' },
   { name: 'Canada', image: '/images/cc-team-huddle.jpg', agents: '50K+' },
   { name: 'Jamaica', image: '/images/cc-support-team.jpg', agents: '25K+' },

@@ -528,7 +528,7 @@ export default async function ServiceDetailPage({ params }) {
         <div className={styles.processContainer}>
           <div className={styles.processImageWrapper}>
             <Image
-              src="/images/cc-team-huddle.jpg"
+              src={service.processImage || '/images/cc-discussion.jpg'}
               alt="Call Center Communications advisory team"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
