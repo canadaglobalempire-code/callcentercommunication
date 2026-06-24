@@ -35,6 +35,11 @@ const industries = [
   { label: 'Travel', href: '/industries/travel-call-center-services' },
 ];
 
+/* 15 items for a balanced 3-column mega menu grid; full list stays on /industries */
+const megaMenuIndustries = industries.filter(
+  (item) => item.href !== '/industries/travel-call-center-services'
+);
+
 const serviceIcons = {
   inbound: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/><path d="M14.5 2v6"/><path d="M11.5 5l3 3 3-3"/></svg>,
   outbound: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/><path d="M14.5 8V2"/><path d="M11.5 5l3-3 3 3"/></svg>,
@@ -435,7 +440,7 @@ export default function Navbar() {
             <div className={styles.megaBody}>
               <div className={styles.megaMain}>
                 <div className={styles.megaIndustriesGrid}>
-                  {industries.map((item) => {
+                  {megaMenuIndustries.map((item) => {
                     const iconKey = getIndustryIconKey(item.href);
                     return (
                       <Link
@@ -461,7 +466,7 @@ export default function Navbar() {
                 <p className={styles.megaAsideEyebrow}>Industry expertise</p>
                 <h3 className={styles.megaAsideTitle}>Don&rsquo;t see your industry?</h3>
                 <p className={styles.megaAsideText}>
-                  We work across 14+ sectors. Our team can find specialists for your niche.
+                  We work across 15+ sectors. Our team can find specialists for your niche.
                 </p>
                 <Link href="/contact" className={styles.megaAsideCta} onClick={closeMega}>
                   Talk to an expert
