@@ -15,7 +15,6 @@ const REQUIRED_BY_TYPE = {
     'title',
     'phone',
     'email',
-    'website',
     'callLength',
     'productService',
     'monthlyCallVolume',
@@ -51,12 +50,26 @@ export async function POST(request) {
 
     delete fields.formType;
 
+    // If no form backend is configured, log the submission and succeed gracefully
+    // so the site works in development/preview. Configure SPLITFORMS_ACCESS_KEY to
+    // actually deliver submissions.
+    if (!process.env.SPLITFORMS_ACCESS_KEY) {
+      console.warn(
+        '[contact] SPLITFORMS_ACCESS_KEY not set — logging submission instead of sending.'
+      );
+      console.log('[contact] Submission received:', fields);
+      return Response.json({
+        success: true,
+        message: 'Thank you! We will contact you shortly.',
+      });
+    }
+
     const result = await submitToSplitForms({
       subject: SUBJECTS[formType] || SUBJECTS.contact,
       fields,
     });
 
-    if (!result.success) {
+    if (!result.success && !result.ok) {
       return Response.json(
         { success: false, message: result.message || 'Unable to send your message. Please try again.' },
         { status: 502 }

@@ -94,6 +94,7 @@ function validateForm(data) {
   if (!data.website.trim()) errors.website = 'Website is required.';
   if (!data.serviceType) errors.serviceType = 'Please select a service.';
   if (!data.callVolume) errors.callVolume = 'Please select a call volume.';
+  if (!data.message.trim()) errors.message = 'Please tell us a bit more about your needs.';
   return errors;
 }
 
@@ -371,17 +372,18 @@ export default function ContactForm() {
 
               <div className={styles.formField}>
                 <label htmlFor="message" className={styles.formLabel}>
-                  Tell us more <span className={styles.optional}>(optional)</span>
+                  Tell us more <span className={styles.required}>*</span>
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  className={styles.formTextarea}
+                  className={`${styles.formTextarea} ${errors.message ? styles.inputError : ''}`}
                   placeholder="Industries, languages, timelines, anything you'd like us to know..."
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
                 />
+                {errors.message && <p className={styles.errorMsg}>{errors.message}</p>}
               </div>
 
               <button
