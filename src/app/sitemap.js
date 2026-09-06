@@ -5,6 +5,7 @@ import { caseStudies } from '@/data/caseStudies';
 import { siteConfig } from '@/data/siteConfig';
 
 const BASE_URL = siteConfig.url.replace(/\/$/, '');
+const CONTENT_UPDATED = new Date('2026-09-05T00:00:00.000Z');
 
 /**
  * Dynamic XML sitemap — served at /sitemap.xml
@@ -12,7 +13,7 @@ const BASE_URL = siteConfig.url.replace(/\/$/, '');
  * and it automatically appears here.
  */
 export default function sitemap() {
-  const lastModified = new Date();
+  const lastModified = CONTENT_UPDATED;
 
   // Static, hand-curated pages with intentional priorities.
   const staticRoutes = [

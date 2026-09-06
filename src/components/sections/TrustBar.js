@@ -17,11 +17,29 @@ function easeOutQuart(t) {
 export default function TrustBar({ stats = DEFAULT_STATS, standalone = false }) {
   const barRef = useRef(null);
   const hasAnimated = useRef(false);
-  const [counts, setCounts] = useState(stats.map(() => 0));
+  const [counts, setCounts] = useState(() => stats.map((stat) => stat.value));
 
   useEffect(() => {
     const el = barRef.current;
     if (!el) return;
+
+    const animateCounts = () => {
+      const duration = 2000;
+      const startTime = performance.now();
+      setCounts(stats.map(() => 0));
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOutQuart(progress);
+
+        setCounts(stats.map((stat) => Math.round(eased * stat.value)));
+
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,26 +54,7 @@ export default function TrustBar({ stats = DEFAULT_STATS, standalone = false }) 
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
-
-  function animateCounts() {
-    const duration = 2000;
-    const startTime = performance.now();
-
-    function tick(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeOutQuart(progress);
-
-      setCounts(stats.map((stat) => Math.round(eased * stat.value)));
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    }
-
-    requestAnimationFrame(tick);
-  }
+  }, [stats]);
 
   const classes = [styles.trustBar, standalone ? styles.standalone : '']
     .filter(Boolean)

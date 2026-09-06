@@ -20,7 +20,9 @@ export const metadata = {
   },
   description: 'Leading call center brokerage connecting businesses with vetted call center providers. Free matching service for inbound, outbound, BPO, & multilingual support. Get matched in days with pre-screened partners.',
   metadataBase: new URL('https://callcentercommunications.com'),
+  alternates: { canonical: '/' },
   openGraph: {
+    url: 'https://callcentercommunications.com',
     siteName: 'Call Center Communications',
     type: 'website',
     locale: 'en_US',

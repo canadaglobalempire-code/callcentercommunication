@@ -5,7 +5,7 @@ export function generateMetadata({ title, description, path = '', ogImage }) {
   const url = `${SITE_URL}${path}`;
 
   return {
-    title: `${title} | ${SITE_NAME}`,
+    title,
     description,
     openGraph: {
       title: `${title} | ${SITE_NAME}`,

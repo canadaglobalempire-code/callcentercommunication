@@ -56,14 +56,15 @@ export async function generateMetadata({ params }) {
     travel: 'Travel & Hospitality Call Center | Booking & Guest Services',
   };
 
-  const title = seoTitles[slug.replace('-call-center-services', '')] || `${industry.title} Call Center Solutions | Call Center Communications`;
+  const title = seoTitles[slug.replace('-call-center-services', '')] || `${industry.title} Call Center Solutions`;
+  const description = `${industry.tagline}. Connect with vetted call center providers specializing in ${industry.title} operations.`;
 
   return {
     title,
-    description: `${industry.shortDescription} ${industry.tagline}. Connect with vetted call center providers specializing in ${industry.title} operations.`,
+    description,
     openGraph: {
       title,
-      description: `${industry.shortDescription} ${industry.tagline}.`,
+      description,
       url: `https://callcentercommunications.com/industries/${slug}`,
       siteName: 'Call Center Communications',
       type: 'website',

@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.callcentercommunications.com' }],
+        destination: 'https://callcentercommunications.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/about-us',
+        destination: '/about',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

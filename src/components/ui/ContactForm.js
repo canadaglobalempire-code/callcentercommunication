@@ -34,13 +34,9 @@ const initialFormData = {
 function validateForm(data) {
   const errors = {};
 
-  if (!data.companyName.trim()) errors.companyName = 'Company name is required.';
   if (!data.name.trim()) errors.name = 'Name is required.';
-  if (!data.title.trim()) errors.title = 'Title is required.';
 
-  if (!data.phone.trim()) {
-    errors.phone = 'Phone number is required.';
-  } else if (!/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
+  if (data.phone.trim() && !/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
     errors.phone = 'Please enter a valid phone number.';
   }
 
@@ -50,10 +46,7 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
 
-  if (!data.website.trim()) errors.website = 'Website is required.';
-  if (!data.callLength.trim()) errors.callLength = 'Anticipated call length is required.';
   if (!data.productService.trim()) errors.productService = 'This field is required.';
-  if (!data.monthlyCallVolume.trim()) errors.monthlyCallVolume = 'Monthly call estimate is required.';
 
   return errors;
 }
@@ -143,7 +136,7 @@ export default function ContactForm() {
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="companyName" className={styles.label}>
-            Company Name<span className={styles.required}>*</span>
+            Company Name
           </label>
           <input
             id="companyName"
@@ -177,7 +170,7 @@ export default function ContactForm() {
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="title" className={styles.label}>
-            Title<span className={styles.required}>*</span>
+            Title
           </label>
           <input
             id="title"
@@ -192,7 +185,7 @@ export default function ContactForm() {
         </div>
         <div className={styles.field}>
           <label htmlFor="phone" className={styles.label}>
-            Phone Number<span className={styles.required}>*</span>
+            Phone Number
           </label>
           <input
             id="phone"
@@ -226,7 +219,7 @@ export default function ContactForm() {
         </div>
         <div className={styles.field}>
           <label htmlFor="website" className={styles.label}>
-            Website<span className={styles.required}>*</span>
+            Website
           </label>
           <input
             id="website"
@@ -269,7 +262,6 @@ export default function ContactForm() {
       <div className={styles.field}>
         <label htmlFor="callLength" className={styles.label}>
           What is the anticipated length of the call (in minutes)?
-          <span className={styles.required}>*</span>
         </label>
         <input
           id="callLength"
@@ -308,7 +300,6 @@ export default function ContactForm() {
         <div className={styles.field}>
           <label htmlFor="monthlyCallVolume" className={styles.label}>
             Estimated inbound/outbound calls per month?
-            <span className={styles.required}>*</span>
           </label>
           <input
             id="monthlyCallVolume"

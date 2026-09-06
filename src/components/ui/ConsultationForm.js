@@ -16,8 +16,6 @@ function validateForm(data) {
   const errors = {};
 
   if (!data.name.trim()) errors.name = 'Name is required.';
-  if (!data.company.trim()) errors.company = 'Company name is required.';
-  if (!data.website.trim()) errors.website = 'Website is required.';
 
   if (!data.email.trim()) {
     errors.email = 'Email address is required.';
@@ -25,9 +23,7 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
 
-  if (!data.phone.trim()) {
-    errors.phone = 'Phone number is required.';
-  } else if (!/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
+  if (data.phone.trim() && !/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
     errors.phone = 'Please enter a valid phone number.';
   }
 
@@ -150,7 +146,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-company" className={styles.label}>
-          Company<span className={styles.required}>*</span>
+          Company
         </label>
         <input
           id="cons-company"
@@ -166,7 +162,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-website" className={styles.label}>
-          Website<span className={styles.required}>*</span>
+          Website
         </label>
         <input
           id="cons-website"
@@ -182,7 +178,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-phone" className={styles.label}>
-          Phone<span className={styles.required}>*</span>
+          Phone
         </label>
         <input
           id="cons-phone"

@@ -84,16 +84,11 @@ const INITIAL_DATA = {
 function validateForm(data) {
   const errors = {};
   if (!data.firstName.trim()) errors.firstName = 'First name is required.';
-  if (!data.lastName.trim()) errors.lastName = 'Last name is required.';
   if (!data.email.trim()) {
     errors.email = 'Work email is required.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
     errors.email = 'Please enter a valid email address.';
   }
-  if (!data.company.trim()) errors.company = 'Company is required.';
-  if (!data.website.trim()) errors.website = 'Website is required.';
-  if (!data.serviceType) errors.serviceType = 'Please select a service.';
-  if (!data.callVolume) errors.callVolume = 'Please select a call volume.';
   if (!data.message.trim()) errors.message = 'Please tell us a bit more about your needs.';
   return errors;
 }
@@ -255,7 +250,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="lastName" className={styles.formLabel}>
-                    Last name <span className={styles.required}>*</span>
+                    Last name
                   </label>
                   <input
                     type="text"
@@ -291,7 +286,7 @@ export default function ContactForm() {
               <div className={styles.formRow}>
                 <div className={styles.formField}>
                   <label htmlFor="company" className={styles.formLabel}>
-                    Company <span className={styles.required}>*</span>
+                    Company
                   </label>
                   <input
                     type="text"
@@ -308,7 +303,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="website" className={styles.formLabel}>
-                    Website<span className={styles.required}>*</span>
+                    Website
                   </label>
                   <input
                     type="text"
@@ -327,7 +322,7 @@ export default function ContactForm() {
               <div className={styles.formRow}>
                 <div className={styles.formField}>
                   <label htmlFor="serviceType" className={styles.formLabel}>
-                    Service type <span className={styles.required}>*</span>
+                    Service type
                   </label>
                   <select
                     id="serviceType"
@@ -349,7 +344,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="callVolume" className={styles.formLabel}>
-                    Monthly call volume <span className={styles.required}>*</span>
+                    Monthly call volume
                   </label>
                   <select
                     id="callVolume"
