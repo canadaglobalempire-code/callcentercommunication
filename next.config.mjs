@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Hostinger must not keep HTML from an obsolete deployment for a year.
+  expireTime: 600,
   async redirects() {
     return [
       {

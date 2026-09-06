@@ -7,6 +7,8 @@ import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import { siteConfig } from '@/data/siteConfig';
 import './globals.css';
 
+export const revalidate = 300;
+
 const geist = Geist({
   subsets: ['latin'],
   display: 'swap',

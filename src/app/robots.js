@@ -1,5 +1,7 @@
 import { siteConfig } from '@/data/siteConfig';
 
+export const revalidate = 300;
+
 const BASE_URL = siteConfig.url.replace(/\/$/, '');
 
 /**

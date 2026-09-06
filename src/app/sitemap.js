@@ -4,6 +4,8 @@ import { blogPosts } from '@/data/blogPosts';
 import { caseStudies } from '@/data/caseStudies';
 import { siteConfig } from '@/data/siteConfig';
 
+export const revalidate = 300;
+
 const BASE_URL = siteConfig.url.replace(/\/$/, '');
 const CONTENT_UPDATED = new Date('2026-09-05T00:00:00.000Z');
 
