@@ -334,7 +334,7 @@ export default async function BlogPostPage({ params }) {
               <span className={styles.bylineName}>{post.author}</span>
               <span className={styles.bylineMeta}>
                 {dateText} <span className={styles.dot} aria-hidden="true" /> {readingTime} min read
-                {post.updated && <> · Updated <time dateTime={post.updated}>{new Date(post.updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></>}
+                {post.updated && <span>Updated <time dateTime={post.updated}>{new Date(post.updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></span>}
               </span>
             </div>
           </div>
