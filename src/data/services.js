@@ -1,10 +1,23 @@
 export const services = [
   {
+    faqs: [
+      {
+        "question": "Does Call Center Communications answer calls or match me with a provider?",
+        "answer": "Call Center Communications is an outsourcing brokerage. We help you compare providers for inbound customer support, order handling and related contact-center work. Your brief should identify the channels, hours and tasks you want covered so the proposed provider's responsibilities are clear before you choose a service."
+      },
+      {
+        "question": "What should I prepare for an inbound call center quote?",
+        "answer": "Bring typical call volumes, busy periods, average handling time if available, coverage hours, languages and the systems agents need. Include examples of enquiries they can resolve and situations that must reach your team. If you only need overflow or after-hours coverage, specify that instead of requesting a full replacement for your internal operation."
+      },
+      {
+        "question": "Is the matching service free, and what does the provider charge for?",
+        "answer": "Our provider-matching service is free to businesses. The chosen provider charges for the agreed delivery scope. Compare quotes using the same workload, hours, training, management and reporting requirements, and ask about minimum commitments and additional charges. Provider matching and launching a trained team are separate stages with different timelines."
+      }
+    ],
     slug: "inbound-call-center-services",
     title: "Inbound Call Center Services",
     seoTitle: "Inbound Call Center Services | Outsource Customer Support",
-    shortDescription:
-      "Professional inbound call handling that turns every customer interaction into a positive, on-brand experience across every channel.",
+    shortDescription: "Compare inbound call center providers for customer support, order handling and overflow coverage. Free brokerage matching around your call volume and service needs.",
     description: `Inbound call center services are the frontline of your customer experience. Whether your customers are placing orders, seeking technical assistance, or reaching out on social media, every interaction is an opportunity to build loyalty and drive revenue. Call Center Communications connects you with inbound call center providers who deliver exceptional service across every channel your customers prefer.
 
 Our vetted inbound partners specialize in high-volume environments where quality cannot be compromised. From 24/7 technical support desks staffed by certified professionals to dedicated retail order processing teams trained on your product catalog, these providers operate as a true extension of your brand. They bring the infrastructure, the talent, and the operational expertise — you retain full control over service standards and customer outcomes.
@@ -42,11 +55,24 @@ With omnichannel capabilities spanning phone, email, live chat, text, and social
     ],
   },
   {
+    faqs: [
+      {
+        "question": "Which outbound campaign should I ask a provider to run?",
+        "answer": "Start with the outcome: qualifying interested prospects, setting appointments, conducting research or contacting existing customers. Each needs different messaging, agent skills and reporting. Call Center Communications matches the brief to outbound providers; describe one clear campaign goal before combining several activities into the same quote."
+      },
+      {
+        "question": "Who supplies the contact list and approves outreach?",
+        "answer": "Make these responsibilities explicit in the proposal. Identify the source of the contact data, the audience and locations involved, the approved script, and how opt-outs and exclusions are handled. Confirm the provider's process with your own compliance team before launch. The brokerage introduction does not replace approval of the campaign's data and operating rules."
+      },
+      {
+        "question": "How do I compare outbound pricing and performance?",
+        "answer": "Compare the same target audience, calling hours, channels and definition of an accepted lead or appointment. Ask what is included in setup, agent management, reporting and follow-up. Review attended appointments and accepted opportunities alongside activity counts. Neither a high call volume nor a quoted cost per lead establishes that a campaign will generate profitable sales."
+      }
+    ],
     slug: "outbound-call-center-services",
     title: "Outbound Call Center Services",
     seoTitle: "Outbound Call Center Services | Lead Generation & Sales Campaigns",
-    shortDescription:
-      "Strategic outbound campaigns that generate qualified leads, close more sales, and grow your revenue pipeline.",
+    shortDescription: "Find outbound call center providers for lead qualification, appointment setting and customer outreach. Compare campaign scope through our free matching service.",
     description: `Outbound call center services are the engine behind proactive customer engagement. From targeted lead generation campaigns to market research surveys and collections recovery, outbound operations require a unique blend of persistence, professionalism, and persuasion. Call Center Communications pairs you with outbound specialists who consistently deliver measurable results.
 
 Our network of outbound providers brings deep expertise in B2B and B2C sales environments, with agents trained in consultative selling, objection handling, and compliance-first practices. Whether you need appointment setters filling your sales team's calendar, fundraising professionals engaging donors, or collections agents recovering outstanding accounts, we match you with providers whose track record speaks for itself.
@@ -84,11 +110,24 @@ Every outbound campaign is built on data-driven strategy. Our partners leverage 
     ],
   },
   {
+    faqs: [
+      {
+        "question": "Which back-office processes are suitable for BPO?",
+        "answer": "Start with recurring work whose inputs and expected outputs can be described clearly, such as data entry, document processing, transcription or data cleansing. Record the exceptions as well as the normal steps. Call Center Communications helps match that brief to providers so you can compare relevant capabilities instead of a general list of services."
+      },
+      {
+        "question": "What should I include in a BPO request for proposal?",
+        "answer": "Provide representative work samples with sensitive details removed, expected volumes, turnaround requirements and your definition of an acceptable result. State which systems are involved, what access can be granted and who approves exceptions. Ask how the provider handles quality sampling, corrections and the return of completed work."
+      },
+      {
+        "question": "How should I compare BPO costs?",
+        "answer": "Compare like-for-like work, whether quotes use hourly, team-based or transaction pricing. Include training, supervision, quality review, rework and any software charges in the comparison. A pilot with agreed acceptance criteria can help assess the scope before a larger commitment. Savings depend on the process and delivery model, so request a specific proposal rather than assuming a fixed percentage."
+      }
+    ],
     slug: "business-process-outsourcing",
     title: "Business Process Outsourcing (BPO)",
     seoTitle: "Business Process Outsourcing (BPO) | Back-Office Solutions",
-    shortDescription:
-      "Skilled back-office teams that handle data entry, document processing, and content moderation accurately at scale.",
+    shortDescription: "Compare BPO providers for data entry, document processing and back-office support. Free provider matching based on workload, accuracy and access requirements.",
     description: `Business Process Outsourcing frees your organization from the operational burden of repetitive, labor-intensive back-office tasks. From data entry and document processing to content moderation and transcription, BPO services let your team focus on core business activities while trained specialists handle the rest with precision and speed.
 
 Call Center Communications connects you with BPO providers who combine human expertise with technology-driven workflows. Whether you need thousands of invoices processed daily, multilingual document translations delivered on deadline, or vast datasets cleansed and standardized for analytics, our vetted partners maintain the accuracy and throughput your business demands. Every provider in our network operates under strict quality control protocols with built-in audit trails.

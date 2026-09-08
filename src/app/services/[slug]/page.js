@@ -274,6 +274,7 @@ const indKey = (s) => s.replace('-call-center-services', '');
 
 /* ===== FAQ generator ===== */
 function buildFaqs(service, shortName) {
+  if (service.faqs) return service.faqs;
   const topFeatures = service.features.slice(0, 4).join(', ');
   return [
     {
