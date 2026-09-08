@@ -26,6 +26,16 @@ if (process.argv[2]) {
     assert.ok(html.includes(article.companies.find(company => company.name === name).blurb), `${name}: rendered correction missing`);
   }
   assert.ok(html.includes('Ownership disclosure'));
+  const schemas = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]));
+  const schema = schemas.find(item => item['@type'] === 'Article');
+  const organization = schemas.find(item => item['@type'] === 'Organization');
+  assert.equal(schema.dateModified, article.updated);
+  assert.equal(schema.publisher['@id'], organization['@id']);
+  assert.equal(schema.url, `https://callcentercommunications.com/blog/${article.slug}`);
+  assert.ok(schema.image.startsWith('https://'));
+  assert.ok(html.toLowerCase().includes(`datetime="${article.updated}"`));
+  const sitemap = await fetch(new URL('/sitemap.xml', process.argv[2])).then(response => response.text());
+  assert.ok(sitemap.replace(/>\s+</g, '><').includes(`<loc>${schema.url}</loc><lastmod>${article.updated}`));
   console.log(`Rendered article verified: ${url}`);
 }
 console.log('World BPO article: 15 companies retained; corrected profiles and comparison rows agree.');

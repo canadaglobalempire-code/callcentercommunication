@@ -320,6 +320,7 @@ export const blogPosts = [
   },
   {
     slug: "top-15-bpo-companies-in-the-world",
+    updated: "2026-09-08",
     title: "Top 15 BPO Companies in the World (2026 Rankings)",
     excerpt:
       "Compare 15 BPO companies, specialist service providers, and call center brokers by their service focus, industries, and delivery model.",

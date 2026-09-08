@@ -44,12 +44,18 @@ export const metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${siteConfig.url}/#organization`,
   name: 'Call Center Communications',
   url: 'https://callcentercommunications.com',
   description: siteConfig.description,
   foundingDate: siteConfig.founded,
   ...(siteConfig.email ? { email: siteConfig.email } : {}),
   sameAs: Object.values(siteConfig.social).filter(Boolean),
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'sales',
+    url: `${siteConfig.url}/free-consultation`,
+  },
 };
 
 export default function RootLayout({ children }) {

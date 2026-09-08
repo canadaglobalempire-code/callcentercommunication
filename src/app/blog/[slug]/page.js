@@ -7,6 +7,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import ReadingProgress from '@/components/blog/ReadingProgress';
 import FAQ from '@/components/sections/FAQ';
 import { blogPosts } from '@/data/blogPosts';
+import { siteConfig } from '@/data/siteConfig';
 import { generateMetadata as genMeta } from '@/lib/metadata';
 import { renderMarkdown } from '@/lib/markdown';
 import styles from './page.module.css';
@@ -70,22 +71,28 @@ export default async function BlogPostPage({ params }) {
   const words = post.content.split(/\s+/).filter(Boolean).length;
   const readingTime = Math.max(1, Math.round(words / 200));
   const dateText = new Date(post.date).toLocaleDateString('en-US', {
+    timeZone: 'UTC',
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
   const hasRanking = post.companies?.length > 0;
+  const articleUrl = `${siteConfig.url}/blog/${post.slug}`;
 
   /* ===== Structured data (Article + additive FAQPage / ItemList) ===== */
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${articleUrl}#article`,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
-    image: post.image,
-    author: { '@type': 'Organization', name: post.author },
-    publisher: { '@type': 'Organization', name: 'Call Center Communications' },
+    dateModified: post.updated || post.date,
+    image: new URL(post.image, siteConfig.url).href,
+    author: { '@type': 'Organization', name: post.author, url: `${siteConfig.url}/about` },
+    publisher: { '@id': `${siteConfig.url}/#organization` },
   };
   const faqSchema =
     post.faq?.length > 0
@@ -327,6 +334,7 @@ export default async function BlogPostPage({ params }) {
               <span className={styles.bylineName}>{post.author}</span>
               <span className={styles.bylineMeta}>
                 {dateText} <span className={styles.dot} aria-hidden="true" /> {readingTime} min read
+                {post.updated && <> · Updated <time dateTime={post.updated}>{new Date(post.updated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time></>}
               </span>
             </div>
           </div>

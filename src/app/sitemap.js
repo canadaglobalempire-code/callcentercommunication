@@ -42,7 +42,7 @@ export default function sitemap() {
   const collection = (items, prefix, changeFrequency, priority) =>
     items.map((item) => ({
       url: `${BASE_URL}${prefix}/${item.slug}`,
-      lastModified,
+      lastModified: item.updated ? new Date(item.updated) : lastModified,
       changeFrequency,
       priority,
     }));
