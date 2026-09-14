@@ -4,12 +4,20 @@ const SUBJECTS = {
   consultation: 'New free consultation request',
   lead: 'New homepage lead form submission',
   contact: 'New contact form submission',
+  newsletter: 'New newsletter signup',
 };
 
+// Every field on each lead form is required. Newsletter signups only carry an
+// email; without their own entry they fell through to the contact list below
+// and were rejected for missing name and productService.
 const REQUIRED_BY_TYPE = {
-  consultation: ['name', 'email', 'needs'],
-  lead: ['firstName', 'email', 'message'],
-  contact: ['name', 'email', 'productService'],
+  consultation: ['name', 'email', 'company', 'website', 'phone', 'needs'],
+  lead: ['firstName', 'lastName', 'email', 'company', 'website', 'serviceType', 'callVolume', 'message'],
+  contact: [
+    'companyName', 'name', 'title', 'phone', 'email', 'website', 'callDirection',
+    'callLength', 'productService', 'monthlyCallVolume', 'callPurpose', 'agentCount',
+  ],
+  newsletter: ['email'],
 };
 
 export async function POST(request) {

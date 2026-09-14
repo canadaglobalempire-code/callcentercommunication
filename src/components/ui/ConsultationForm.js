@@ -23,7 +23,15 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
 
-  if (data.phone.trim() && !/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
+  if (!data.company.trim()) errors.company = 'Company is required.';
+
+  if (!data.website.trim()) {
+    errors.website = 'Website is required. Enter N/A if you do not have one.';
+  }
+
+  if (!data.phone.trim()) {
+    errors.phone = 'Phone number is required.';
+  } else if (!/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
     errors.phone = 'Please enter a valid phone number.';
   }
 
@@ -146,7 +154,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-company" className={styles.label}>
-          Company
+          Company<span className={styles.required}>*</span>
         </label>
         <input
           id="cons-company"
@@ -162,7 +170,7 @@ export default function ConsultationForm() {
 
       <div className={styles.field}>
         <label htmlFor="cons-website" className={styles.label}>
-          Website
+          Website<span className={styles.required}>*</span>
         </label>
         <input
           id="cons-website"
@@ -171,14 +179,14 @@ export default function ConsultationForm() {
           className={`${styles.input} ${errors.website ? styles.inputError : ''}`}
           value={formData.website}
           onChange={handleChange}
-          placeholder="yourcompany.com"
+          placeholder="yourcompany.com or N/A"
         />
         {errors.website && <p className={styles.errorMsg}>{errors.website}</p>}
       </div>
 
       <div className={styles.field}>
         <label htmlFor="cons-phone" className={styles.label}>
-          Phone
+          Phone<span className={styles.required}>*</span>
         </label>
         <input
           id="cons-phone"

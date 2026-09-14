@@ -84,11 +84,16 @@ const INITIAL_DATA = {
 function validateForm(data) {
   const errors = {};
   if (!data.firstName.trim()) errors.firstName = 'First name is required.';
+  if (!data.lastName.trim()) errors.lastName = 'Last name is required.';
   if (!data.email.trim()) {
     errors.email = 'Work email is required.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
     errors.email = 'Please enter a valid email address.';
   }
+  if (!data.company.trim()) errors.company = 'Company is required.';
+  if (!data.website.trim()) errors.website = 'Website is required. Enter N/A if you do not have one.';
+  if (!data.serviceType) errors.serviceType = 'Please select a service.';
+  if (!data.callVolume) errors.callVolume = 'Please select your monthly call volume.';
   if (!data.message.trim()) errors.message = 'Please tell us a bit more about your needs.';
   return errors;
 }
@@ -250,7 +255,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="lastName" className={styles.formLabel}>
-                    Last name
+                    Last name <span className={styles.required}>*</span>
                   </label>
                   <input
                     type="text"
@@ -286,7 +291,7 @@ export default function ContactForm() {
               <div className={styles.formRow}>
                 <div className={styles.formField}>
                   <label htmlFor="company" className={styles.formLabel}>
-                    Company
+                    Company <span className={styles.required}>*</span>
                   </label>
                   <input
                     type="text"
@@ -303,14 +308,14 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="website" className={styles.formLabel}>
-                    Website
+                    Website <span className={styles.required}>*</span>
                   </label>
                   <input
                     type="text"
                     id="website"
                     name="website"
                     className={`${styles.formInput} ${errors.website ? styles.inputError : ''}`}
-                    placeholder="yourcompany.com"
+                    placeholder="yourcompany.com or N/A"
                     value={formData.website}
                     onChange={handleChange}
                     aria-invalid={!!errors.website}
@@ -322,7 +327,7 @@ export default function ContactForm() {
               <div className={styles.formRow}>
                 <div className={styles.formField}>
                   <label htmlFor="serviceType" className={styles.formLabel}>
-                    Service type
+                    Service type <span className={styles.required}>*</span>
                   </label>
                   <select
                     id="serviceType"
@@ -344,7 +349,7 @@ export default function ContactForm() {
 
                 <div className={styles.formField}>
                   <label htmlFor="callVolume" className={styles.formLabel}>
-                    Monthly call volume
+                    Monthly call volume <span className={styles.required}>*</span>
                   </label>
                   <select
                     id="callVolume"

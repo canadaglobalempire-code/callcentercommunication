@@ -34,9 +34,15 @@ const initialFormData = {
 function validateForm(data) {
   const errors = {};
 
+  if (!data.companyName.trim()) errors.companyName = 'Company name is required.';
+
   if (!data.name.trim()) errors.name = 'Name is required.';
 
-  if (data.phone.trim() && !/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
+  if (!data.title.trim()) errors.title = 'Title is required.';
+
+  if (!data.phone.trim()) {
+    errors.phone = 'Phone number is required.';
+  } else if (!/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
     errors.phone = 'Please enter a valid phone number.';
   }
 
@@ -46,7 +52,21 @@ function validateForm(data) {
     errors.email = 'Please enter a valid email address.';
   }
 
+  if (!data.website.trim()) {
+    errors.website = 'Website is required. Enter N/A if you do not have one.';
+  }
+
+  if (!data.callDirection) errors.callDirection = 'Please choose inbound, outbound, or both.';
+
+  if (!data.callLength.trim()) errors.callLength = 'This field is required.';
+
   if (!data.productService.trim()) errors.productService = 'This field is required.';
+
+  if (!data.monthlyCallVolume.trim()) errors.monthlyCallVolume = 'This field is required.';
+
+  if (!data.callPurpose) errors.callPurpose = 'Please select the purpose of the call.';
+
+  if (!data.agentCount) errors.agentCount = 'Please select how many agents you need.';
 
   return errors;
 }
@@ -136,7 +156,7 @@ export default function ContactForm() {
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="companyName" className={styles.label}>
-            Company Name
+            Company Name<span className={styles.required}>*</span>
           </label>
           <input
             id="companyName"
@@ -170,7 +190,7 @@ export default function ContactForm() {
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="title" className={styles.label}>
-            Title
+            Title<span className={styles.required}>*</span>
           </label>
           <input
             id="title"
@@ -185,7 +205,7 @@ export default function ContactForm() {
         </div>
         <div className={styles.field}>
           <label htmlFor="phone" className={styles.label}>
-            Phone Number
+            Phone Number<span className={styles.required}>*</span>
           </label>
           <input
             id="phone"
@@ -219,7 +239,7 @@ export default function ContactForm() {
         </div>
         <div className={styles.field}>
           <label htmlFor="website" className={styles.label}>
-            Website
+            Website<span className={styles.required}>*</span>
           </label>
           <input
             id="website"
@@ -228,7 +248,7 @@ export default function ContactForm() {
             className={`${styles.input} ${errors.website ? styles.inputError : ''}`}
             value={formData.website}
             onChange={handleChange}
-            placeholder="yourcompany.com"
+            placeholder="yourcompany.com or N/A"
           />
           {errors.website && <p className={styles.errorMsg}>{errors.website}</p>}
         </div>
@@ -238,6 +258,7 @@ export default function ContactForm() {
       <fieldset className={styles.fieldset}>
         <legend className={styles.legend}>
           Does your program require inbound calls, outbound calls, or both?
+          <span className={styles.required}>*</span>
         </legend>
         <div className={styles.radioGroup}>
           {['Inbound', 'Outbound', 'Both'].map((option) => (
@@ -256,12 +277,14 @@ export default function ContactForm() {
             </label>
           ))}
         </div>
+        {errors.callDirection && <p className={styles.errorMsg}>{errors.callDirection}</p>}
       </fieldset>
 
       {/* Call Length */}
       <div className={styles.field}>
         <label htmlFor="callLength" className={styles.label}>
           What is the anticipated length of the call (in minutes)?
+          <span className={styles.required}>*</span>
         </label>
         <input
           id="callLength"
@@ -300,6 +323,7 @@ export default function ContactForm() {
         <div className={styles.field}>
           <label htmlFor="monthlyCallVolume" className={styles.label}>
             Estimated inbound/outbound calls per month?
+            <span className={styles.required}>*</span>
           </label>
           <input
             id="monthlyCallVolume"
@@ -317,11 +341,12 @@ export default function ContactForm() {
         <div className={styles.field}>
           <label htmlFor="callPurpose" className={styles.label}>
             What is the purpose of the call?
+            <span className={styles.required}>*</span>
           </label>
           <select
             id="callPurpose"
             name="callPurpose"
-            className={styles.select}
+            className={`${styles.select} ${errors.callPurpose ? styles.inputError : ''}`}
             value={formData.callPurpose}
             onChange={handleChange}
           >
@@ -332,6 +357,7 @@ export default function ContactForm() {
               </option>
             ))}
           </select>
+          {errors.callPurpose && <p className={styles.errorMsg}>{errors.callPurpose}</p>}
         </div>
       </div>
 
@@ -339,11 +365,12 @@ export default function ContactForm() {
       <div className={styles.field}>
         <label htmlFor="agentCount" className={styles.label}>
           How many call center agents do you require?
+          <span className={styles.required}>*</span>
         </label>
         <select
           id="agentCount"
           name="agentCount"
-          className={styles.select}
+          className={`${styles.select} ${errors.agentCount ? styles.inputError : ''}`}
           value={formData.agentCount}
           onChange={handleChange}
         >
@@ -354,6 +381,7 @@ export default function ContactForm() {
             </option>
           ))}
         </select>
+        {errors.agentCount && <p className={styles.errorMsg}>{errors.agentCount}</p>}
       </div>
 
       {/* Submit */}
