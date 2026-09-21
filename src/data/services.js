@@ -12,6 +12,26 @@ export const services = [
       {
         "question": "Is the matching service free, and what does the provider charge for?",
         "answer": "Our provider-matching service is free to businesses. The chosen provider charges for the agreed delivery scope. Compare quotes using the same workload, hours, training, management and reporting requirements, and ask about minimum commitments and additional charges. Provider matching and launching a trained team are separate stages with different timelines."
+      },
+      {
+        "question": "Which inbound call center tasks do providers usually take on, and which should stay in-house?",
+        "answer": "Providers typically take on order taking, account and billing questions, first-line technical support, helpdesk tickets, returns, appointment booking and overflow when your own queue is full. Work that usually stays with you includes policy exceptions, refunds above an agreed limit, complaints with legal or reputational weight, and anything that needs a judgment call your documentation does not cover. Draw that line in writing before you ask for proposals. A provider that knows exactly where its authority ends can resolve more on the first contact and pass the rest to your team with useful notes attached."
+      },
+      {
+        "question": "What data-handling questions should I ask an inbound call center provider that takes card payments or opens customer records?",
+        "answer": "PCI DSS governs cardholder data, so if agents take card payments by phone, ask each shortlisted provider how card numbers are captured, whether call recordings pause or mask during payment, and for its current PCI DSS attestation of compliance covering the site that would serve you. For customer records, ask who gets access, how access is removed when an agent leaves, where recordings and screen captures are stored, and how long they are kept. If your calls touch health information or financial accounts, say so at the first consultation so the shortlist only includes providers already working under those rules."
+      },
+      {
+        "question": "How does knowledge transfer work when onboarding an inbound call center provider?",
+        "answer": "Expect the provider to ask for your call types, knowledge base articles, system logins, escalation contacts and recordings or transcripts of real calls. Its trainers turn that material into a curriculum, your team reviews it, and the first agent class is usually signed off with mock calls before going live. Plan for a period where your own staff listen to early calls and correct answers quickly. The most common cause of a rough launch is undocumented knowledge held by your longest-serving employees, so book time for those people to be interviewed during the transfer."
+      },
+      {
+        "question": "How do inbound call center providers cover seasonal peaks and after-hours volume?",
+        "answer": "Ask each provider how it forecasts, how much notice it needs to add agents, and whether the extra agents are dedicated to your account or shared across several clients. Shared teams cost less to hold in reserve but know your business less deeply, so they suit simple call types. For after-hours work, confirm where the night team sits, what it can resolve alone, and how urgent issues reach your on-call person. Give providers your historical volume by hour and by week so their staffing plan rests on real patterns instead of a guess."
+      },
+      {
+        "question": "Is onshore, nearshore or offshore the better fit for inbound call center work?",
+        "answer": "It depends on the calls. Onshore teams in the US and Canada fit conversations that are emotionally sensitive, regulated, or dependent on local knowledge. Nearshore teams in Latin America work in overlapping time zones and are a common choice when you need bilingual support. Offshore teams in Asia, Europe and Africa suit high-volume, well-documented call types and overnight coverage, since their daytime is your night. Many buyers split the work and keep complex calls closer to home. The local labor market, language requirements and hours of coverage are what drive the difference in cost."
       }
     ],
     slug: "inbound-call-center-services",
@@ -67,6 +87,26 @@ With omnichannel capabilities spanning phone, email, live chat, text, and social
       {
         "question": "How do I compare outbound pricing and performance?",
         "answer": "Compare the same target audience, calling hours, channels and definition of an accepted lead or appointment. Ask what is included in setup, agent management, reporting and follow-up. Review attended appointments and accepted opportunities alongside activity counts. Neither a high call volume nor a quoted cost per lead establishes that a campaign will generate profitable sales."
+      },
+      {
+        "question": "Which outbound call center work do providers typically run, and what should my own sales team keep?",
+        "answer": "Providers usually run the high-volume first steps: lead qualification, appointment setting, surveys, market research, win-back calls to lapsed customers, renewal reminders and simple telesales with a fixed offer. Your own team usually keeps negotiated deals, pricing exceptions, key accounts and any conversation where the caller needs authority to commit the company. A clean handoff matters more than the split itself. Define what counts as a qualified lead or a kept appointment, how it lands in your CRM, and how fast your team follows up, because a slow follow-up wastes the work the provider did."
+      },
+      {
+        "question": "Who is responsible for consent and Do Not Call compliance in an outbound call center campaign?",
+        "answer": "Both of you carry duties. The TCPA covers autodialed and prerecorded calls and texts and the consent they require, and Do Not Call obligations apply alongside it. In practice the buyer usually controls how consent was collected and documented, while the provider controls the dialing method, list scrubbing and opt-out capture during calls. A contract can assign tasks, but do not assume it moves your exposure to the provider. Ask each shortlisted provider how it records opt-outs, how quickly it sends them back to you, and how it keeps proof. Have your counsel review the campaign before launch. This is not legal advice."
+      },
+      {
+        "question": "What should I ask an outbound call center provider before it makes collections calls for me?",
+        "answer": "The FDCPA and Regulation F cover third-party debt collection communications, so start by asking whether the provider already runs collections programs for other clients and how its agents are trained and tested on those rules. Ask how contact attempts are tracked per account, how disputes and requests to stop contact are logged and returned to you, how payments are taken, and how calls are monitored. If agents take card payments, PCI DSS governs that cardholder data. Licensing and state-level requirements vary, so confirm them with your counsel before any provider places a call."
+      },
+      {
+        "question": "What knowledge transfer does an outbound call center provider need before the first dial?",
+        "answer": "Give the provider your ideal customer profile, the offer, approved scripts or talk tracks, common objections with approved responses, disqualifying criteria, and recordings of your best in-house calls if you have them. Agree on the definition of a qualified lead and the fields agents must capture. Most providers then run classroom training, role play and a calibration session where your team and theirs score the same calls. Start with a small group of agents and a limited list. Early calls will expose gaps in the script, and it is cheaper to fix them before the full team is dialing."
+      },
+      {
+        "question": "How do outbound call center providers handle calling windows, time zones and short seasonal campaigns?",
+        "answer": "Ask each provider how it schedules dialing by the contact's local time zone and how its system blocks calls outside the hours you approve. For short campaigns such as enrollment periods, event follow-up or year-end fundraising, ask how much notice it needs to staff up, whether the agents come from a trained bench or are newly hired, and what happens to them when the campaign ends. Short campaigns carry proportionally more training time, which is one of the things that drives cost. Sharing dates and list sizes early gets you a more accurate staffing plan."
       }
     ],
     slug: "outbound-call-center-services",
@@ -122,6 +162,26 @@ Every outbound campaign is built on data-driven strategy. Our partners leverage 
       {
         "question": "How should I compare BPO costs?",
         "answer": "Compare like-for-like work, whether quotes use hourly, team-based or transaction pricing. Include training, supervision, quality review, rework and any software charges in the comparison. A pilot with agreed acceptance criteria can help assess the scope before a larger commitment. Savings depend on the process and delivery model, so request a specific proposal rather than assuming a fixed percentage."
+      },
+      {
+        "question": "Which parts of a back-office workflow should stay in-house when I use business process outsourcing?",
+        "answer": "Keep the decisions and hand over the processing. Approval of payments, credit decisions, policy exceptions, vendor disputes and anything that requires signing authority normally stays with your staff. The provider takes the repeatable steps around those decisions: keying invoices and purchase orders, indexing documents, cleansing records, transcription, form processing and sorting shared mailboxes. Build an exception queue so that anything outside the written rules comes back to a named person on your team with the reason attached. That queue also shows you which rules need rewriting, which steadily reduces how much comes back."
+      },
+      {
+        "question": "What data security questions should I put to a business process outsourcing provider that will see sensitive documents?",
+        "answer": "Ask where the work is performed, whether staff work on site or from home, how access to your systems is granted and removed, whether documents can be downloaded or printed, and whether any subcontractor will touch your data. Ask for the provider's written security policies and any independent audit reports it holds. If the documents contain protected health information, a vendor handling it signs a Business Associate Agreement under HIPAA. Financial institutions should account for the GLBA Safeguards Rule, and PCI DSS governs cardholder data. Confirm anything beyond that with your counsel."
+      },
+      {
+        "question": "How does knowledge transfer work at the start of a business process outsourcing engagement?",
+        "answer": "Most engagements begin with the provider documenting your process as it is actually performed, which often differs from the written procedure. Expect its team leads to shadow your staff, record screens, and write step-by-step instructions that you then approve. A parallel run usually follows, where both teams process the same batch and the results are compared line by line. Differences show you where the instructions are unclear. Only after the results match at the accuracy level you set does the provider take over live work. Assign one process owner on your side to answer questions quickly."
+      },
+      {
+        "question": "How do business process outsourcing providers handle month-end, seasonal spikes and turnaround deadlines?",
+        "answer": "Back-office volume tends to arrive in waves, such as month-end invoices, open enrollment forms or a post-holiday returns backlog. Ask each provider how it forecasts with you, how many cross-trained staff it can move onto your work, and how much notice it needs. Agree turnaround times by work type, and separate standard items from rush items so the provider can staff for both. Offshore teams can process overnight and return finished work by your morning. Ask what happens when a deadline is missed, how you are told, and how the backlog is cleared."
+      },
+      {
+        "question": "Is onshore, nearshore or offshore the better fit for business process outsourcing?",
+        "answer": "Because most back-office work does not involve live conversation, location matters less for accent and more for data rules, turnaround and oversight. Offshore teams in Asia, Europe and Africa are a common fit for high-volume data entry, document processing and overnight turnaround. Nearshore teams in Latin America suit work that needs real-time collaboration with your staff during your business day. Onshore teams in the US and Canada fit work where contracts or regulators restrict where data may be processed. If you are unsure whether such a restriction applies to you, confirm with your counsel before choosing."
       }
     ],
     slug: "business-process-outsourcing",
@@ -197,6 +257,40 @@ Omnichannel customer support ties every channel together — phone, email, chat,
       "ecommerce-call-center-services",
       "banking-call-center-services",
     ],
+    faqs: [
+      {
+        "question": "What can IVR and automated call center services handle, and what should still reach a live agent?",
+        "answer": "Automation suits requests with a clear answer that lives in one of your systems: order status, account balances, store hours, appointment confirmations, payment reminders, password resets and routing a caller to the right team. Conversations that involve a complaint, a cancellation, a vulnerable caller, a complicated billing dispute or a sale that needs persuasion should reach a person quickly. The design question is where the exit sits. Ask any provider you are matched with how a caller leaves the automated flow, how long that takes, and whether the agent sees what the caller already entered."
+      },
+      {
+        "question": "What should I prepare before a first consultation about IVR and automated call center services?",
+        "answer": "Bring a list of your top call reasons with rough volumes for each, because that list decides what is worth automating. Add your current call flow or phone menu, the systems that hold the answers, such as your CRM, order management or scheduling platform, and whether those systems can share data with outside tools. Note your hours, languages, and any calls that must never be automated. It also helps to know what you want out of the project: shorter queues, after-hours coverage, or fewer repetitive calls reaching your skilled staff."
+      },
+      {
+        "question": "What consent and data questions should I ask a provider of automated outbound services and payment IVR?",
+        "answer": "The TCPA covers autodialed and prerecorded calls and texts and the consent they require, which applies directly to automated reminders, notifications and survey messages. Ask the provider how consent records are checked before a message goes out and how opt-outs are captured and returned to you. Responsibility for consent is shared between you and the provider, so review the program with your counsel. If callers pay through an automated menu, PCI DSS governs that cardholder data. Ask how card details are captured, whether they are stored, and what documentation the provider can show you."
+      },
+      {
+        "question": "How does onboarding work for IVR and automated call center services?",
+        "answer": "A typical setup moves through discovery, design, build, testing and tuning. The provider maps your call reasons, drafts the prompts and menus, and connects the flow to your systems so it can look up real information. You should review every prompt for wording and tone, then test with real scenarios, including callers who say nothing, say the wrong thing or ask for a person. After launch, review where callers drop out or ask for an agent, and adjust the flow. Plan for regular changes after go-live, and ask who makes them and how quickly."
+      },
+      {
+        "question": "How do IVR and automated services help with call peaks and after-hours coverage?",
+        "answer": "An automated flow answers every call at once, so it absorbs the routine share of a spike that would otherwise sit in a queue. During an outage, a weather event or a product launch, a provider can add a temporary message or a self-service option for the most common question, which frees live agents for the calls that need them. After hours, automation can take messages, confirm appointments, and route true emergencies to your on-call contact. Ask providers how quickly an emergency message can be changed and who on your side is allowed to request it."
+      },
+      {
+        "question": "How does a broker shortlist for IVR and call center automation differ from searching alone?",
+        "answer": "A search for automation mostly returns software sellers, and buying software leaves you to design, run and maintain the flows yourself. We match you with call center providers that operate IVR and automated services as part of a managed program, with live agents behind the automation for the calls that need them. Providers in our network are pre-vetted before we recommend them, and most buyers receive qualified matches within 7 to 10 days of the first consultation. The service is free to you because providers pay us. We do not recommend or resell any particular product."
+      },
+      {
+        "question": "How should I compare the IVR and automated services providers I am matched with?",
+        "answer": "Ask each provider for a live demonstration built around two or three of your real call reasons instead of a generic demo. Judge how natural the prompts sound, how errors are handled and how fast a caller can reach a person. Ask who designs and updates the flows, how long a change takes, how the automation connects to your systems, and what reporting shows where callers give up. Find out who owns the call flows and recordings if you leave. Cost is driven by call volume, the number of integrations and how much design work the provider carries."
+      },
+      {
+        "question": "When are IVR and automated call center services the wrong move?",
+        "answer": "Automation is a poor fit when call volume is low, when most calls are unique or emotional, or when the information callers want is not available in any system the flow can read. It also backfires when the goal is to keep callers away from agents instead of helping them faster, because callers notice and complaints rise. If your customers are mostly calling about problems your own process creates, fix the process first. A short, honest menu with a quick route to a person usually serves customers better than a long one that tries to do everything."
+      }
+    ],
   },
   {
     slug: "responsiveness-reporting",
@@ -235,6 +329,40 @@ Beyond the data, high-touch account management means you always have a responsiv
       "telecommunications-call-center-services",
       "retail-call-center-services",
     ],
+    faqs: [
+      {
+        "question": "What call center reporting should a provider supply as standard, and what should I keep measuring myself?",
+        "answer": "Most providers supply volume, service level, abandonment, handle time, quality scores and outcome counts on a daily or weekly schedule, often with a live dashboard. What you should keep measuring yourself are the results that only your systems can confirm: repeat contacts, customer satisfaction gathered through your own survey, sales that actually closed, refunds and complaints. Comparing the two views is how you catch a program that looks healthy on activity but is not producing outcomes. Ask every shortlisted provider for a sample of its standard report pack before you discuss anything custom."
+      },
+      {
+        "question": "What should I prepare before a consultation about call center reporting and account management?",
+        "answer": "Write down the handful of metrics you would act on, how you define each one, and your current results if you have them. Definitions matter, since two providers can calculate service level or first-contact resolution differently. List who on your side will read reports, how often they want them, and which of your systems, such as a CRM or business intelligence tool, should receive the data. Note how quickly you expect a reply from an account manager on a normal day and during an incident. We use those points to match you with providers whose reporting fits."
+      },
+      {
+        "question": "What data-access questions should I ask about call center reporting dashboards and call recordings?",
+        "answer": "Ask who owns the interaction data and recordings, whether you can export raw data instead of only viewing charts, how long recordings are kept, and what you receive if the contract ends. Ask who at the provider can see your dashboard and how your own users are added and removed. Recordings deserve particular care. PCI DSS governs cardholder data, so ask how payment details are kept out of recordings. If calls include protected health information, the vendor handling it signs a Business Associate Agreement under HIPAA, and access should follow the minimum necessary standard."
+      },
+      {
+        "question": "How is call center reporting set up during provider onboarding?",
+        "answer": "Reporting should be built before the first call, not after the first complaint. During onboarding, agree on metric definitions in writing, the report schedule, the dashboard users, and the disposition codes agents will select, since those codes feed most outcome reports. Hold a calibration session where your team and the provider's quality staff score the same calls, so a quality score means the same thing to both sides. Agree on a regular review meeting with the account manager and a standing agenda. Check the first few reports against your own system data to confirm the numbers reconcile."
+      },
+      {
+        "question": "How should call center reporting and account manager responsiveness work during peaks, outages and after hours?",
+        "answer": "Routine reporting is rarely the problem. The test is what you hear when something goes wrong. Ask each provider whether it sends interval reports during a peak day, who contacts you when service level drops or a system fails, how fast, and by what channel. Ask who covers for your account manager at night, on weekends and during leave, and whether that person has the authority to move staff. Request an example of an incident notice and the follow-up summary the provider sent to another client, with identifying details removed."
+      },
+      {
+        "question": "How does a broker shortlist help me judge call center reporting and responsiveness before I sign?",
+        "answer": "Every provider promises transparency in a proposal, and it is difficult to test that claim from the outside. We have worked with call center providers since 1996, and the providers in our network are pre-vetted before we recommend them. When you tell us that reporting and account management are priorities, we shortlist providers known for them and tell you what to ask each one to demonstrate. Most buyers receive qualified matches within 7 to 10 days of the first consultation. The service is free to you, since providers in our network pay us, and the decision remains yours."
+      },
+      {
+        "question": "How do I compare the reporting and account management of the call center providers I am matched with?",
+        "answer": "Ask each provider to log you into a live dashboard, not a screenshot, and to show a real report pack from a comparable program with client details removed. Meet the account manager who would actually be assigned to you and ask how many accounts that person carries. Compare written response commitments for routine questions and for incidents. Ask what custom reports involve, who builds them and how long they take, because custom work is one of the things that drives cost. Finally, ask a reference client how often they had to chase the provider for answers."
+      },
+      {
+        "question": "When is a heavy custom call center reporting requirement the wrong move?",
+        "answer": "Custom dashboards and daily bespoke reports take analyst time, and on a small program that overhead can outweigh the value of the insight. If nobody on your team has time to read a report and act on it, more reporting will not improve the program. Start with the provider's standard pack and a weekly conversation with the account manager, then add a custom view only when a specific decision depends on it. The same applies to real-time dashboards: they matter for large or volatile programs, and much less for steady, low-volume work."
+      }
+    ],
   },
   {
     slug: "multilingual-call-center-services",
@@ -272,6 +400,40 @@ Whether you need full multilingual support around the clock or targeted language
       "banking-call-center-services",
       "technology-call-center-services",
       "government-call-center-services",
+    ],
+    faqs: [
+      {
+        "question": "Which multilingual call center work do providers take on, and what should stay with my in-house team?",
+        "answer": "Providers commonly take on customer care, order support, technical support, surveys and sales calls in the languages your customers speak, across phone, chat and email. What usually stays in-house is ownership of the source content. Your team should approve the master version of scripts, policies, disclosures and knowledge articles, decide which terms are never translated, such as product names, and sign off on translated legal wording. Escalations that need a specialist can be handled through the provider's agent acting as a bridge, or passed to your team with a translated summary."
+      },
+      {
+        "question": "What should I prepare before a first consultation about multilingual call center services?",
+        "answer": "Bring your contact volume broken out by language, even if the figures are estimates, along with the hours each language needs coverage and the channels involved. Note whether your knowledge base, website and customer emails already exist in those languages or only in English. Tell us which regions your customers are in, because dialect and regional usage affect which providers fit. Mention any written work, such as chat or email, since speaking and writing a language well are different skills. With that, we can shortlist providers that already staff your languages at your scale."
+      },
+      {
+        "question": "How do multilingual call center providers test and monitor agent fluency?",
+        "answer": "Ask each shortlisted provider how it assesses language ability at hiring, who performs the assessment, and whether it covers speaking, listening and writing separately. Then ask who scores quality on live calls in each language. A quality reviewer who does not speak the language can only check process steps, not accuracy or tone. Ask whether agents are native or near-native speakers, how regional dialects are matched to your customers, and whether you can listen to sample calls or run your own test calls with a fluent member of your staff before you commit."
+      },
+      {
+        "question": "What compliance and data-handling questions apply to multilingual call center services?",
+        "answer": "Any disclosure, consent wording or required statement you use in English needs an approved equivalent in each supported language, and you should control those translations instead of leaving agents to improvise them. Ask how the provider monitors calls in each language for required wording. If agents handle protected health information, the vendor signs a Business Associate Agreement under HIPAA, and PCI DSS governs cardholder data in every language. When a provider serves you from another country, questions about moving customer data across borders can arise. Confirm those with your counsel."
+      },
+      {
+        "question": "How does knowledge transfer work when onboarding a multilingual call center provider?",
+        "answer": "Training usually starts from your English material, so its quality sets the ceiling for every other language. Agree on a glossary first: product names, plan names, technical terms and phrases that must be said a certain way. Decide who translates knowledge articles and scripts, who reviews them, and who updates them when the English version changes, because translated content that falls out of date is a common source of wrong answers. Many buyers launch one language first, confirm the training approach works, and then add further languages using the same glossary and process."
+      },
+      {
+        "question": "How do multilingual call center providers cover low-volume languages and after-hours calls?",
+        "answer": "A language with steady volume can justify dedicated agents. A language with a few contacts a day usually cannot, so providers cover it with bilingual agents who also take calls in a main language, with a shared team that serves several clients, or with a telephone interpreter joined to the call. Each option trades depth of knowledge about your business against cost. After hours, ask which languages are staffed live, which fall back to an interpreter or a callback, and how the caller is told. Volume per language and hours of coverage are the main cost drivers."
+      },
+      {
+        "question": "Is onshore, nearshore or offshore the better fit for multilingual call center services?",
+        "answer": "The best location is usually where fluent speakers of your languages live in large numbers, which is why multilingual programs are often spread across more than one site. Onshore providers in the US and Canada can draw on bilingual local communities and suit regulated or sensitive calls. Nearshore providers in Latin America share North American time zones. Offshore providers in Europe, Asia and Africa include multilingual hubs that staff many languages under one roof. Our network covers all three, and we shortlist pre-vetted providers by language mix and hours, at no cost to you."
+      },
+      {
+        "question": "When is outsourcing multilingual call center services the wrong move?",
+        "answer": "If only a small number of customers need another language, a dedicated multilingual program may be more than you need. An interpreter line used by your existing team, or one bilingual hire, can cover that demand. Outsourcing is also premature when your product, website and written communications exist only in English, because agents will be translating on the fly with nothing to refer customers to. Translate the essentials first. It is also worth checking your contact data before assuming demand, since the languages customers actually call in can differ from what your market plans suggest."
+      }
     ],
   },
 ];

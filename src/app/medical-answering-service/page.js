@@ -123,6 +123,14 @@ const MEDICAL_FAQ = [
       </svg>
     ),
   },
+  {
+    question: "What should I ask a medical answering service provider about its Business Associate Agreement and access to patient information?",
+    answer: "A vendor that handles protected health information for your practice signs a Business Associate Agreement under HIPAA, so ask each shortlisted provider for its standard agreement early and have your counsel review it. Then ask how the minimum necessary standard is applied in practice: which patient details agents collect, what they can see in your scheduling or records system, and who at the provider can open messages and recordings. Ask how messages reach your clinicians, whether by secure app, portal or another method, how long they are retained, and how you would be told about an incident.",
+  },
+  {
+    question: "How does onboarding work for a medical answering service, and what should my practice prepare?",
+    answer: "Prepare your on-call schedule and who maintains it, written criteria for what counts as urgent, the contact method and backup for each clinician, office locations and hours, and scripts for common requests such as refills, results and appointment changes. State clearly that agents take messages and follow your protocol, and that clinical advice stays with your licensed staff. The provider builds this into its call scripts and trains its agents. Before go-live, place test calls for each scenario, including an urgent call at night, and confirm the message arrives with the right person in the expected time.",
+  },
 ];
 
 const jsonLdData = {

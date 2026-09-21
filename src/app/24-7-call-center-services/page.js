@@ -120,6 +120,14 @@ const CONTINUOUS_FAQ = [
       </svg>
     ),
   },
+  {
+    question: "Is onshore, nearshore or offshore the better fit for 24/7 call center coverage?",
+    answer: "Overnight shifts are the hardest hours to staff well in any single location, so geography is a practical tool for round-the-clock coverage. Offshore providers in Asia, Europe and Africa can take your night calls during their normal working day, which helps with agent alertness and retention. Nearshore providers in Latin America share North American time zones and often cover evenings and weekends. Onshore providers in the US and Canada run night shifts for calls that must stay domestic. Many round-the-clock programs combine sites. We shortlist pre-vetted providers from all three groups.",
+  },
+  {
+    question: "How should I compare the overnight performance of the 24/7 call center providers I am matched with?",
+    answer: "Most providers look alike at midday, so judge them on the night shift. Ask each one whether a supervisor is on the floor overnight, whether night and weekend calls are quality-reviewed at the same rate as daytime calls, and how long its overnight agents typically stay in the role. Request service level and abandonment figures broken out by hour instead of a daily average. Ask what an overnight agent can resolve without waking your on-call contact. If a provider allows it, place a few test calls late at night and on a holiday before you decide.",
+  },
 ];
 
 const jsonLdData = {

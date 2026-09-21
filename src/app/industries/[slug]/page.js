@@ -123,7 +123,8 @@ export default async function IndustryPage({ params }) {
     'Cost-efficient scaling',
   ];
 
-  const faqItems = [
+  // Hand-written, industry-specific FAQs win; the formula below is only the fallback.
+  const faqItems = industry.faqs ?? [
     { question: `What call center services does Call Center Communications offer for the ${industry.title} industry?`, answer: `We connect ${industry.title.toLowerCase()} companies with pre-vetted call center providers specializing in ${industry.title.toLowerCase()} support — including customer service, technical support, order processing, and more. Our matching service is 100% free.` },
     { question: 'How quickly can you match me with a provider?', answer: 'Most businesses receive qualified provider matches within 7-10 days of their initial consultation. Our 30+ years of industry relationships allow us to move quickly.' },
     { question: 'Is there any cost to use your service?', answer: 'No. Call Center Communications is completely free for businesses seeking call center services. We earn revenue through partnerships with providers in our network.' },
