@@ -2,12 +2,16 @@ import { services } from '@/data/services';
 import { industries } from '@/data/industries';
 import { blogPosts } from '@/data/blogPosts';
 import { caseStudies } from '@/data/caseStudies';
+import { rankings } from '@/data/rankings';
+import { costPages } from '@/data/costPages';
 import { siteConfig } from '@/data/siteConfig';
 
 export const revalidate = 300;
 
 const BASE_URL = siteConfig.url.replace(/\/$/, '');
 const CONTENT_UPDATED = new Date('2026-09-05T00:00:00.000Z');
+// Industry and service pages gained their own FAQs (09-21) and primary-source links (09-22).
+const DETAIL_UPDATED = new Date('2026-09-22T00:00:00.000Z');
 
 /**
  * Dynamic XML sitemap — served at /sitemap.xml
@@ -25,32 +29,36 @@ export default function sitemap() {
     { path: '/free-consultation', changeFrequency: 'monthly', priority: 0.9 },
     { path: '/contact', changeFrequency: 'yearly', priority: 0.8 },
     { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
-    { path: '/24-7-call-center-services', changeFrequency: 'monthly', priority: 0.8 },
-    { path: '/medical-answering-service', changeFrequency: 'monthly', priority: 0.8 },
+    { path: '/24-7-call-center-services', changeFrequency: 'monthly', priority: 0.8, updated: DETAIL_UPDATED },
+    { path: '/medical-answering-service', changeFrequency: 'monthly', priority: 0.8, updated: DETAIL_UPDATED },
+    { path: '/best', changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/cost', changeFrequency: 'weekly', priority: 0.9 },
     { path: '/case-studies', changeFrequency: 'monthly', priority: 0.7 },
     { path: '/blog', changeFrequency: 'weekly', priority: 0.7 },
     { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
     { path: '/terms', changeFrequency: 'yearly', priority: 0.3 },
   ].map((route) => ({
     url: `${BASE_URL}${route.path}`,
-    lastModified,
+    lastModified: route.updated ?? lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
 
   // Detail pages generated from the data layer.
-  const collection = (items, prefix, changeFrequency, priority) =>
+  const collection = (items, prefix, changeFrequency, priority, fallback = lastModified) =>
     items.map((item) => ({
       url: `${BASE_URL}${prefix}/${item.slug}`,
-      lastModified: item.updated ? new Date(item.updated) : lastModified,
+      lastModified: item.updated ? new Date(item.updated) : fallback,
       changeFrequency,
       priority,
     }));
 
   return [
     ...staticRoutes,
-    ...collection(services, '/services', 'monthly', 0.8),
-    ...collection(industries, '/industries', 'monthly', 0.8),
+    ...collection(rankings, '/best', 'monthly', 0.8),
+    ...collection(costPages, '/cost', 'monthly', 0.8),
+    ...collection(services, '/services', 'monthly', 0.8, DETAIL_UPDATED),
+    ...collection(industries, '/industries', 'monthly', 0.8, DETAIL_UPDATED),
     ...collection(caseStudies, '/case-studies', 'monthly', 0.6),
     ...collection(blogPosts, '/blog', 'monthly', 0.6),
   ];
