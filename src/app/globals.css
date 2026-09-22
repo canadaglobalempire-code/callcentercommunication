@@ -868,3 +868,16 @@ h6, .h6 {
   transform: scaleX(1);
   transform-origin: left;
 }
+
+/* Primary-source citation links inside body copy and FAQ answers. */
+.cite-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 3px;
+}
+.cite-link:hover {
+  color: var(--accent-dark);
+  text-decoration-color: currentColor;
+}

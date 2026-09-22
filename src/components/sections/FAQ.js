@@ -4,6 +4,7 @@ import { useId, useMemo, useState } from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { DEFAULT_FAQ_ICONS, normalizeFaqItems } from './faqIcons';
 import styles from './FAQ.module.css';
+import { citeSources } from '@/lib/citeSources';
 
 const faqData = [
   {
@@ -44,7 +45,7 @@ const faqData = [
   },
 ];
 
-function FaqItem({ item, index, isOpen, onToggle, baseId }) {
+function FaqItem({ item, index, isOpen, onToggle, baseId, cited }) {
   const buttonId = `${baseId}-q-${index}`;
   const panelId = `${baseId}-a-${index}`;
   const isStringAnswer = typeof item.answer === 'string';
@@ -80,7 +81,7 @@ function FaqItem({ item, index, isOpen, onToggle, baseId }) {
       >
         <div className={styles.answerInner}>
           {isStringAnswer ? (
-            <p className={styles.answer}>{item.answer}</p>
+            <p className={styles.answer}>{citeSources(item.answer, cited)}</p>
           ) : (
             <div className={styles.answer}>{item.answer}</div>
           )}
@@ -100,6 +101,8 @@ export default function FAQ({
   variant = 'default',
 }) {
   const [openIndices, setOpenIndices] = useState(() => new Set([0]));
+  // Rebuilt every render so each law is linked once per page, on first mention.
+  const cited = new Set();
   const baseId = useId();
   const normalizedItems = useMemo(() => normalizeFaqItems(items), [items]);
 
@@ -158,6 +161,7 @@ export default function FAQ({
               isOpen={openIndices.has(index)}
               onToggle={() => toggle(index)}
               baseId={baseId}
+              cited={cited}
             />
           ))}
         </div>
