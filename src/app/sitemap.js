@@ -2,8 +2,6 @@ import { services } from '@/data/services';
 import { industries } from '@/data/industries';
 import { blogPosts } from '@/data/blogPosts';
 import { caseStudies } from '@/data/caseStudies';
-import { rankings } from '@/data/rankings';
-import { costPages } from '@/data/costPages';
 import { siteConfig } from '@/data/siteConfig';
 
 export const revalidate = 300;
@@ -31,8 +29,6 @@ export default function sitemap() {
     { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
     { path: '/24-7-call-center-services', changeFrequency: 'monthly', priority: 0.8, updated: DETAIL_UPDATED },
     { path: '/medical-answering-service', changeFrequency: 'monthly', priority: 0.8, updated: DETAIL_UPDATED },
-    { path: '/best', changeFrequency: 'weekly', priority: 0.9 },
-    { path: '/cost', changeFrequency: 'weekly', priority: 0.9 },
     { path: '/case-studies', changeFrequency: 'monthly', priority: 0.7 },
     { path: '/blog', changeFrequency: 'weekly', priority: 0.7 },
     { path: '/privacy-policy', changeFrequency: 'yearly', priority: 0.3 },
@@ -55,8 +51,6 @@ export default function sitemap() {
 
   return [
     ...staticRoutes,
-    ...collection(rankings, '/best', 'monthly', 0.8),
-    ...collection(costPages, '/cost', 'monthly', 0.8),
     ...collection(services, '/services', 'monthly', 0.8, DETAIL_UPDATED),
     ...collection(industries, '/industries', 'monthly', 0.8, DETAIL_UPDATED),
     ...collection(caseStudies, '/case-studies', 'monthly', 0.6),
