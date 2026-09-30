@@ -450,7 +450,10 @@ export default async function ServiceDetailPage({ params }) {
             <div className={styles.overviewContent}>
               {(overviewContent[svcKey(slug)] || service.description.split('\n\n')).map(
                 (paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
+                  <p key={i}>{paragraph.includes('24/7') ? (() => {
+                    const at = paragraph.indexOf('24/7');
+                    return <>{paragraph.slice(0, at)}<Link href="/24-7-call-center-services">24/7</Link>{paragraph.slice(at + 4)}</>;
+                  })() : paragraph}</p>
                 )
               )}
             </div>

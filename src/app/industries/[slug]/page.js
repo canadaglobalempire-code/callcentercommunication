@@ -10,6 +10,7 @@ import { services } from '@/data/services';
 import CtaBanner from '@/components/sections/CtaBanner';
 import FAQ from '@/components/sections/FAQ';
 import styles from './page.module.css';
+import { generateMetadata as genMeta } from '@/lib/metadata';
 
 /* Qualitative capability highlights per industry — no invented metrics. */
 const industryHighlights = {
@@ -59,20 +60,7 @@ export async function generateMetadata({ params }) {
   const title = seoTitles[slug.replace('-call-center-services', '')] || `${industry.title} Call Center Solutions`;
   const description = `${industry.tagline}. Connect with vetted call center providers specializing in ${industry.title} operations.`;
 
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://callcentercommunications.com/industries/${slug}`,
-      siteName: 'Call Center Communications',
-      type: 'website',
-    },
-    alternates: {
-      canonical: `https://callcentercommunications.com/industries/${slug}`,
-    },
-  };
+  return genMeta({ title, description, path: `/industries/${slug}` });
 }
 
 /* ── Inline SVG icons ── */
@@ -230,7 +218,20 @@ export default async function IndustryPage({ params }) {
           </div>
           <p className={styles.challengeNote}>
             These challenges demand a call center partner with deep{' '}
-            {industry.title.toLowerCase()} expertise, proven processes, and the
+            {industry.slug === 'healthcare-call-center-services'
+              ? <Link href="/medical-answering-service">{industry.title.toLowerCase()} expertise</Link>
+              : <>{industry.title.toLowerCase()} expertise</>}, {' '}
+            {({
+              'healthcare-call-center-services': 'healthcare-patient-support-transformation',
+              'ecommerce-call-center-services': 'ecommerce-seasonal-scaling-success',
+              'banking-call-center-services': 'financial-services-compliance-excellence',
+            })[industry.slug]
+              ? <Link href={`/case-studies/${({
+                  'healthcare-call-center-services': 'healthcare-patient-support-transformation',
+                  'ecommerce-call-center-services': 'ecommerce-seasonal-scaling-success',
+                  'banking-call-center-services': 'financial-services-compliance-excellence',
+                })[industry.slug]}`}>proven processes</Link>
+              : 'proven processes'}, and the
             ability to scale with your business. That is exactly what Call Center
             Communications delivers.
           </p>

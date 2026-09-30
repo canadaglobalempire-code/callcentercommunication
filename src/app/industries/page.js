@@ -79,7 +79,9 @@ export default function IndustriesPage() {
                 </div>
                 <div className={styles.cardBody}>
                   <h3 className={styles.cardTitle}>{industry.title}</h3>
-                  <p className={styles.cardTagline}>{industry.tagline}</p>
+                  <p className={styles.cardTagline}>{industry.slug === 'healthcare-call-center-services'
+                    ? <Link href="/medical-answering-service">{industry.tagline}</Link>
+                    : industry.tagline}</p>
                   <span className={styles.cardLink}>
                     Learn More <span aria-hidden="true">&rarr;</span>
                   </span>
