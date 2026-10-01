@@ -28,9 +28,11 @@ export const metadata = {
     siteName: 'Call Center Communications',
     type: 'website',
     locale: 'en_US',
+    images: [{ url: '/images/call-center-team.jpg', width: 1600, height: 1066 }],
   },
   twitter: {
     card: 'summary_large_image',
+    images: ['/images/call-center-team.jpg'],
   },
   robots: {
     index: true,

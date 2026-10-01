@@ -9,6 +9,7 @@ import { industries } from '@/data/industries';
 import { services } from '@/data/services';
 import CtaBanner from '@/components/sections/CtaBanner';
 import FAQ from '@/components/sections/FAQ';
+import { DEFAULT_OG_IMAGE } from '@/lib/metadata';
 import styles from './page.module.css';
 
 /* Qualitative capability highlights per industry — no invented metrics. */
@@ -68,6 +69,7 @@ export async function generateMetadata({ params }) {
       url: `https://callcentercommunications.com/industries/${slug}`,
       siteName: 'Call Center Communications',
       type: 'website',
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1600, height: 1066 }],
     },
     alternates: {
       canonical: `https://callcentercommunications.com/industries/${slug}`,
