@@ -17,19 +17,25 @@ const geist = Geist({
 
 export const metadata = {
   title: {
-    default: 'Call Center Brokerage | Free Outsourcing Provider Matching Service',
+    default: 'Call Center Brokerage: Free Outsourcing Provider Matching',
     template: '%s | Call Center Communications'
   },
-  description: 'Leading call center brokerage connecting businesses with vetted call center providers. Free matching service for inbound, outbound, BPO, & multilingual support. Get matched in days with pre-screened partners.',
+  description: 'Compare vetted call center providers for inbound, outbound, BPO and multilingual support. Get free matching based on your business requirements.',
   metadataBase: new URL('https://callcentercommunications.com'),
   alternates: { canonical: '/' },
   openGraph: {
+    title: 'Call Center Brokerage: Free Outsourcing Provider Matching',
+    description: 'Compare vetted call center providers for inbound, outbound, BPO and multilingual support. Get free matching based on your business requirements.',
+    images: [{ url: '/images/cc-agent-pro.jpg' }],
     url: 'https://callcentercommunications.com',
     siteName: 'Call Center Communications',
     type: 'website',
     locale: 'en_US',
   },
   twitter: {
+    title: 'Call Center Brokerage: Free Outsourcing Provider Matching',
+    description: 'Compare vetted call center providers for inbound, outbound, BPO and multilingual support. Get free matching based on your business requirements.',
+    images: ['/images/cc-agent-pro.jpg'],
     card: 'summary_large_image',
   },
   robots: {

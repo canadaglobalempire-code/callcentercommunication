@@ -3,8 +3,7 @@ const SITE_URL = 'https://callcentercommunications.com';
 
 export function generateMetadata({ title, description, path = '', ogImage }) {
   const url = `${SITE_URL}${path}`;
-  // Preserve the owner's published ranked-company pages exactly.
-  const protectedPage = !path || path === '/' || /\/(?:top-\d+|best-)[^/]*$/.test(path);
+  // Head-only repairs preserve all visible ranked-list content.
   const descriptions = {
     '/blog': 'Expert insights on call center outsourcing, BPO strategy and customer experience. Read practical guidance from Call Center Communications.',
     '/case-studies': 'Explore call center outsourcing case studies showing improvements in customer service, cost savings and operational efficiency.',
@@ -35,13 +34,13 @@ export function generateMetadata({ title, description, path = '', ogImage }) {
   });
   const conciseTitle = titles[path] ?? title;
   const brandedTitle = `${conciseTitle} | ${SITE_NAME}`;
-  const pageTitle = protectedPage ? title : (brandedTitle.length <= 60 ? brandedTitle : conciseTitle);
-  const pageDescription = protectedPage ? description : (descriptions[path] ?? description);
-  const socialTitle = protectedPage ? `${title} | ${SITE_NAME}` : pageTitle;
-  const image = protectedPage ? ogImage : (ogImage || '/images/cc-agent-pro.jpg');
+  const pageTitle = brandedTitle.length <= 60 ? brandedTitle : conciseTitle;
+  const pageDescription = descriptions[path] ?? description;
+  const socialTitle = pageTitle;
+  const image = ogImage || '/images/cc-agent-pro.jpg';
 
   return {
-    title: protectedPage ? title : { absolute: pageTitle },
+    title: { absolute: pageTitle },
     description: pageDescription,
     openGraph: {
       title: socialTitle,
@@ -53,7 +52,7 @@ export function generateMetadata({ title, description, path = '', ogImage }) {
     },
     twitter: {
       card: 'summary_large_image',
-      ...(!protectedPage && { images: [image] }),
+      images: [image],
       title: socialTitle,
       description: pageDescription,
     },
