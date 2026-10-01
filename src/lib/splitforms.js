@@ -20,10 +20,11 @@ export async function submitToSplitForms({ subject, fields }) {
     method: 'POST',
     body: formData,
     headers: { Accept: 'application/json' },
+    signal: AbortSignal.timeout(10000),
   });
 
   const json = await res.json();
-  return { ok: res.ok, ...json };
+  return { ...json, ok: res.ok };
 }
 
 export function buildContactSummary(data) {
