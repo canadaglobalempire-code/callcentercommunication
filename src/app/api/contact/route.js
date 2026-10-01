@@ -38,6 +38,12 @@ export async function POST(request) {
   }
   try {
     const formType = data.formType || 'contact';
+    if (typeof formType !== 'string' || !Object.hasOwn(REQUIRED_BY_TYPE, formType)) {
+      return Response.json(
+        { success: false, message: 'Invalid form type.' },
+        { status: 400 }
+      );
+    }
     const required = REQUIRED_BY_TYPE[formType] || REQUIRED_BY_TYPE.contact;
 
     const missing = required.filter((field) => typeof data[field] !== 'string' || !data[field].trim());
