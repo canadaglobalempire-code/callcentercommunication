@@ -656,9 +656,9 @@ The trade-off is cost. Onshore is the most expensive option, so it tends to make
 
 ## Nearshore: the middle ground
 
-Nearshore means outsourcing to a nearby country — for US companies, that usually means Latin America and the Caribbean. You keep strong time-zone overlap and often strong English and cultural alignment, at a meaningfully lower cost than onshore.
+[Nearshore](/services/nearshore-call-center-services) means outsourcing to a nearby country — for US companies, that usually means Latin America and the Caribbean. You keep strong time-zone overlap and often strong English and cultural alignment, at a meaningfully lower cost than onshore.
 
-For many businesses, nearshore hits the sweet spot: real-time collaboration during your business hours, solid quality, and a budget that works. It is a great fit for customer support, sales, and bilingual English and Spanish programs.
+For many businesses, nearshore hits the sweet spot: real-time collaboration during your business hours, solid quality, and a budget that works. It is a great fit for [customer support](/services/customer-service-outsourcing), sales, and bilingual English and Spanish programs.
 
 ## Offshore: the biggest savings
 
@@ -668,7 +668,7 @@ The trade-offs are time-zone gaps and the need for stronger onboarding and quali
 
 ## How to choose
 
-Start with the work itself. Simple, high-volume tasks like order status, FAQs, and tier-1 support are easy to send offshore for maximum savings. Complex, sensitive, or brand-critical conversations are better kept onshore or nearshore. Many companies blend all three.
+Start with the work itself. Simple, high-volume tasks like order status, FAQs, and [tier-1 support](/services/technical-support-outsourcing) are easy to send offshore for maximum savings. Complex, sensitive, or brand-critical conversations are better kept onshore or nearshore. Many companies blend all three.
 
 Then weigh three things: your budget, how much live overlap you need with your customers' hours, and the level of compliance your industry requires. The answer is rarely all offshore or all onshore — it is the mix that fits your business.
 

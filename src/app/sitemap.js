@@ -1,4 +1,5 @@
 import { services } from '@/data/services';
+import { additionalServices } from '@/data/additionalServices';
 import { industries } from '@/data/industries';
 import { blogPosts } from '@/data/blogPosts';
 import { caseStudies } from '@/data/caseStudies';
@@ -10,6 +11,8 @@ const BASE_URL = siteConfig.url.replace(/\/$/, '');
 const CONTENT_UPDATED = new Date('2026-09-05T00:00:00.000Z');
 // Industry and service pages gained their own FAQs (09-21) and primary-source links (09-22).
 const DETAIL_UPDATED = new Date('2026-09-22T00:00:00.000Z');
+// Customer service, technical support and nearshore service pages published 10-02.
+const ADDITIONAL_SERVICES_PUBLISHED = new Date('2026-10-02T00:00:00.000Z');
 
 /**
  * Dynamic XML sitemap — served at /sitemap.xml
@@ -52,6 +55,7 @@ export default function sitemap() {
   return [
     ...staticRoutes,
     ...collection(services, '/services', 'monthly', 0.8, DETAIL_UPDATED),
+    ...collection(additionalServices, '/services', 'monthly', 0.8, ADDITIONAL_SERVICES_PUBLISHED),
     ...collection(industries, '/industries', 'monthly', 0.8, DETAIL_UPDATED),
     ...collection(caseStudies, '/case-studies', 'monthly', 0.6),
     ...collection(blogPosts, '/blog', 'monthly', 0.6),

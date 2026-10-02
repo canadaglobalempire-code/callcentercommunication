@@ -9,19 +9,23 @@ import CtaBanner from '@/components/sections/CtaBanner';
 import FAQ from '@/components/sections/FAQ';
 import JsonLd from '@/components/seo/JsonLd';
 import { services } from '@/data/services';
+import { additionalServices } from '@/data/additionalServices';
 import { industries } from '@/data/industries';
 import { generateMetadata as genMeta } from '@/lib/metadata';
 import styles from './page.module.css';
 
+/* Core services plus the extra service pages (kept out of the shared grids). */
+const allServices = [...services, ...additionalServices];
+
 /* ===== Static Params ===== */
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return allServices.map((s) => ({ slug: s.slug }));
 }
 
 /* ===== Dynamic Metadata ===== */
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const service = allServices.find((s) => s.slug === slug);
   if (!service) return {};
 
   return genMeta({
@@ -312,7 +316,7 @@ function buildFaqs(service, shortName) {
 /* ===== Page Component ===== */
 export default async function ServiceDetailPage({ params }) {
   const { slug } = await params;
-  const service = services.find((s) => s.slug === slug);
+  const service = allServices.find((s) => s.slug === slug);
 
   if (!service) {
     notFound();
@@ -336,7 +340,7 @@ export default async function ServiceDetailPage({ params }) {
 
   const otherServices = services.filter((s) => s.slug !== slug);
 
-  const shortName = shortNames[svcKey(slug)] || service.title;
+  const shortName = shortNames[svcKey(slug)] || service.shortName || service.title;
   const faqs = buildFaqs(service, shortName);
 
   const processSteps = [
@@ -385,7 +389,7 @@ export default async function ServiceDetailPage({ params }) {
             </div>
             <span className={styles.heroBadge}>
               <span className={styles.heroBadgeIcon}>
-                {serviceIcons[svcKey(slug)]}
+                {serviceIcons[service.iconKey || svcKey(slug)]}
               </span>
               Call Center Service
             </span>
