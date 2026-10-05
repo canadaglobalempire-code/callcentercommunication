@@ -235,6 +235,20 @@ export default async function IndustryPage({ params }) {
               : 'proven processes'}, and the
             ability to scale with your business. That is exactly what Call Center
             Communications delivers.
+            {/*
+              Inbound-heavy industries get one extra pointer to the inbound
+              providers guide — same conditional-link pattern as above.
+            */}
+            {(industry.slug === 'retail-call-center-services' ||
+              industry.slug === 'ecommerce-call-center-services') && (
+              <>
+                {' '}When you are ready to compare providers, our guide to the{' '}
+                <Link href="/blog/top-10-inbound-call-center-companies">
+                  top inbound call center companies
+                </Link>{' '}
+                is a good place to start.
+              </>
+            )}
           </p>
         </div>
       </section>

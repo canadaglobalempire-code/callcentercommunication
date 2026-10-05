@@ -12,6 +12,7 @@ import { services } from '@/data/services';
 import { additionalServices } from '@/data/additionalServices';
 import { industries } from '@/data/industries';
 import { generateMetadata as genMeta } from '@/lib/metadata';
+import { parseInline } from '@/lib/markdown';
 import styles from './page.module.css';
 
 /* Core services plus the extra service pages (kept out of the shared grids). */
@@ -222,9 +223,9 @@ const benefitIcons = [
 /* ===== Overview Content ===== */
 const overviewContent = {
   inbound: [
-    'Inbound call center services form the backbone of customer-facing operations for businesses of every size. When a customer picks up the phone, sends a chat message, or reaches out on social media, that moment is your chance to build trust and loyalty. The providers in our network understand that every inbound interaction is an opportunity — not just to resolve an issue, but to strengthen the relationship between your brand and your customer.',
+    'Inbound call center services form the backbone of customer-facing operations for businesses of every size. When a customer picks up the phone, sends a chat message, or reaches out on social media, that moment is your chance to build trust and loyalty. The providers in our network understand that every inbound interaction is an opportunity — not just to resolve an issue, but to strengthen the relationship between your brand and your customer. If you are shortlisting providers, our guide to the [top inbound call center companies](/blog/top-10-inbound-call-center-companies) compares ten of the best.',
     'Our vetted inbound partners bring deep expertise in high-volume environments where quality cannot be compromised. From 24/7 technical support desks staffed by certified professionals to dedicated retail order processing teams trained on your product catalog, these providers operate as a true extension of your brand. They bring the infrastructure, the talent, and the operational expertise while you retain full control over service standards and customer outcomes.',
-    'Whether you need omnichannel coverage spanning phone, email, live chat, text, and social media, or specialized support for a single high-priority channel, Call Center Communications matches you with providers whose capabilities and culture align with your business goals.',
+    'Whether you need [omnichannel coverage](/services/omnichannel-call-center-services) spanning phone, email, live chat, text, and social media, or specialized support for a single high-priority channel, Call Center Communications matches you with providers whose capabilities and culture align with your business goals.',
   ],
   outbound: [
     'Outbound call center operations drive proactive customer engagement that directly impacts your bottom line. Unlike inbound services that respond to customer-initiated contact, outbound campaigns reach customers and prospects on your terms — generating leads, closing sales, recovering revenue, and gathering market intelligence.',
@@ -239,7 +240,7 @@ const overviewContent = {
   automated: [
     'Interactive and automated services modernize customer engagement at scale. By combining intelligent IVR systems, AI-powered avatars, and unified omnichannel platforms, businesses can resolve routine inquiries instantly while directing complex issues to live agents who have the full context they need.',
     'The providers in our network are at the forefront of contact center automation. From sophisticated IVR systems that handle common requests without agent intervention to avatar-based lead generation tools that engage website visitors around the clock, these solutions multiply your capacity without multiplying your headcount.',
-    'Omnichannel customer support ties every channel together into a unified experience. Customers move between phone, email, chat, SMS, and social media without repeating themselves, and agents see the full interaction history in one view. The result is faster resolution times, higher satisfaction scores, and significantly lower cost per contact.',
+    '[Omnichannel customer support](/services/omnichannel-call-center-services) ties every channel together into a unified experience. Customers move between phone, email, chat, SMS, and social media without repeating themselves, and agents see the full interaction history in one view. The result is faster resolution times, higher satisfaction scores, and significantly lower cost per contact.',
   ],
   reporting: [
     'Visibility into your outsourced operations is not a luxury — it is a necessity. Without real-time data and responsive account management, even the best call center partnership can drift off course. Responsiveness and reporting services ensure you always know exactly how your programs are performing.',
@@ -311,6 +312,25 @@ function buildFaqs(service, shortName) {
         'Our network spans onshore (USA/Canada), nearshore (Latin America), and offshore (Asia, Europe, Africa). We help you choose the location strategy that best balances your budget, time zones, and quality requirements.',
     },
   ];
+}
+
+/* ===== Overview paragraph rendering =====
+   Body paragraphs may carry hand-written markdown links; everything else
+   renders exactly as written. When a paragraph has no markdown links, the
+   first "24/7" mention still links to the 24/7 services page. */
+function renderOverviewParagraph(paragraph) {
+  if (paragraph.includes('](')) return parseInline(paragraph);
+  if (paragraph.includes('24/7')) {
+    const at = paragraph.indexOf('24/7');
+    return (
+      <>
+        {paragraph.slice(0, at)}
+        <Link href="/24-7-call-center-services">24/7</Link>
+        {paragraph.slice(at + 4)}
+      </>
+    );
+  }
+  return paragraph;
 }
 
 /* ===== Page Component ===== */
@@ -454,10 +474,7 @@ export default async function ServiceDetailPage({ params }) {
             <div className={styles.overviewContent}>
               {(overviewContent[svcKey(slug)] || service.description.split('\n\n')).map(
                 (paragraph, i) => (
-                  <p key={i}>{paragraph.includes('24/7') ? (() => {
-                    const at = paragraph.indexOf('24/7');
-                    return <>{paragraph.slice(0, at)}<Link href="/24-7-call-center-services">24/7</Link>{paragraph.slice(at + 4)}</>;
-                  })() : paragraph}</p>
+                  <p key={i}>{renderOverviewParagraph(paragraph)}</p>
                 )
               )}
             </div>

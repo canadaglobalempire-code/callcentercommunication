@@ -1,6 +1,6 @@
 import React from 'react';
 
-function parseInline(text) {
+export function parseInline(text) {
   const nodes = [];
   const regex = /(\*\*[^*]+\*\*|!?\[[^\]]+\]\([^)]+\))/g;
   let lastIndex = 0;
