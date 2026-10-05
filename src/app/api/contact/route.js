@@ -21,12 +21,32 @@ const REQUIRED_BY_TYPE = {
 };
 
 export async function POST(request) {
+  let data;
   try {
-    const data = await request.json();
+    data = await request.json();
+  } catch {
+    return Response.json(
+      { success: false, message: 'Invalid form submission.' },
+      { status: 400 }
+    );
+  }
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    return Response.json(
+      { success: false, message: 'Invalid form submission.' },
+      { status: 400 }
+    );
+  }
+  try {
     const formType = data.formType || 'contact';
+    if (typeof formType !== 'string' || !Object.hasOwn(REQUIRED_BY_TYPE, formType)) {
+      return Response.json(
+        { success: false, message: 'Invalid form type.' },
+        { status: 400 }
+      );
+    }
     const required = REQUIRED_BY_TYPE[formType] || REQUIRED_BY_TYPE.contact;
 
-    const missing = required.filter((field) => !data[field]?.trim());
+    const missing = required.filter((field) => typeof data[field] !== 'string' || !data[field].trim());
     if (missing.length > 0) {
       return Response.json(
         { success: false, message: `Missing required fields: ${missing.join(', ')}` },
@@ -62,7 +82,7 @@ export async function POST(request) {
       fields,
     });
 
-    if (!result.success && !result.ok) {
+    if (!result.ok || result.success !== true || result.payment_url) {
       return Response.json(
         { success: false, message: result.message || 'Unable to send your message. Please try again.' },
         { status: 502 }

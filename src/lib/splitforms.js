@@ -7,23 +7,25 @@ export async function submitToSplitForms({ subject, fields }) {
   }
 
   const formData = new FormData();
-  formData.set('access_key', accessKey);
-  formData.set('subject', subject);
-
   for (const [key, value] of Object.entries(fields)) {
     if (value != null && String(value).trim() !== '') {
       formData.set(key, String(value).trim());
     }
   }
 
+  // Credentials and routing belong to server configuration, never request fields.
+  formData.set('access_key', accessKey);
+  formData.set('subject', subject);
+
   const res = await fetch(SPLITFORMS_URL, {
     method: 'POST',
     body: formData,
     headers: { Accept: 'application/json' },
+    signal: AbortSignal.timeout(10000),
   });
 
   const json = await res.json();
-  return { ok: res.ok, ...json };
+  return { ...json, ok: res.ok };
 }
 
 export function buildContactSummary(data) {

@@ -147,7 +147,9 @@ export default function ServicesPage() {
                       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {feature}
+                      {feature.startsWith('24/7')
+                        ? <Link href="/24-7-call-center-services">{feature}</Link>
+                        : feature}
                     </span>
                   ))}
                 </div>
