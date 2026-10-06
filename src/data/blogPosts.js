@@ -199,6 +199,28 @@ export const blogPosts = [
       },
       {
         "rank": 7,
+        "name": "B2B Appointment Setting (Enterprise)",
+        "hq": "United States",
+        "founded": "2002",
+        "website": "https://www.b2bappointmentsetting.com",
+        "bestFor": "Larger companies that want a hands-on, managed BPO program built and run for them over several years.",
+        "blurb": "B2B Appointment Setting (Enterprise) is the bigger-company side of the same firm, built for organizations that need more than a few callers. Instead of just handing you agents, they help map out the process, set up the tech, and run the whole program as a long-term partnership. They are a fit when you want a steady team that learns your business and sticks around for the long haul.",
+        "capabilities": [
+          "Managed BPO programs run end to end so your team is not juggling the day-to-day",
+          "Process consulting that maps your sales and support steps before any calling starts",
+          "Technology setup, including CRM, dialer, and reporting tools wired together for you",
+          "Dedicated multi-year teams that grow with you and keep your account knowledge in-house",
+          "Follows US calling rules (TCPA) and data-security standards like PCI DSS and HIPAA where needed"
+        ],
+        "industries": "Technology, financial services, healthcare, manufacturing, professional services, SaaS",
+        "clients": "Mid-size and larger US companies with complex sales cycles or high call volume who want a long-term outsourced program rather than a quick, short project.",
+        "pricing": "Custom monthly program pricing based on team size and scope, usually set up as multi-year engagements.",
+        "strengths": "They treat your program as a long-term build, handling the process and tech setup so you do not have to.",
+        "weaknesses": "The multi-year, fully managed approach is overkill if you just need a few callers or a short trial.",
+        "whyStandOut": "They do not just staff seats, they design and run the whole program with you for years."
+      },
+      {
+        "rank": 8,
         "name": "Contact Center USA",
         "hq": "United States",
         "founded": "1999",
@@ -220,7 +242,7 @@ export const blogPosts = [
         "whyStandOut": "A 100% US-based team with 25-plus years of experience and bilingual agents, all under one roof."
       },
       {
-        "rank": 8,
+        "rank": 9,
         "name": "Call Center Communications",
         "hq": "United States",
         "founded": "1988",
@@ -242,7 +264,7 @@ export const blogPosts = [
         "whyStandOut": "They are paid by providers, not you, so the advice stays honest and the matchmaking costs nothing."
       },
       {
-        "rank": 9,
+        "rank": 10,
         "name": "Business Process Outsourcing",
         "hq": "United States",
         "founded": "2006",
@@ -262,28 +284,6 @@ export const blogPosts = [
         "strengths": "Their blend of automation and live agents keeps replies fast while still feeling human.",
         "weaknesses": "The heavy focus on tech-style support means they are a weaker pick for old-school phone-only or highly regulated work.",
         "whyStandOut": "They let AI clear the easy questions so human agents can spend their time where it really counts."
-      },
-      {
-        "rank": 10,
-        "name": "B2B Appointment Setting (Enterprise)",
-        "hq": "United States",
-        "founded": "2002",
-        "website": "https://www.b2bappointmentsetting.com",
-        "bestFor": "Larger companies that want a hands-on, managed BPO program built and run for them over several years.",
-        "blurb": "B2B Appointment Setting (Enterprise) is the bigger-company side of the same firm, built for organizations that need more than a few callers. Instead of just handing you agents, they help map out the process, set up the tech, and run the whole program as a long-term partnership. They are a fit when you want a steady team that learns your business and sticks around for the long haul.",
-        "capabilities": [
-          "Managed BPO programs run end to end so your team is not juggling the day-to-day",
-          "Process consulting that maps your sales and support steps before any calling starts",
-          "Technology setup, including CRM, dialer, and reporting tools wired together for you",
-          "Dedicated multi-year teams that grow with you and keep your account knowledge in-house",
-          "Follows US calling rules (TCPA) and data-security standards like PCI DSS and HIPAA where needed"
-        ],
-        "industries": "Technology, financial services, healthcare, manufacturing, professional services, SaaS",
-        "clients": "Mid-size and larger US companies with complex sales cycles or high call volume who want a long-term outsourced program rather than a quick, short project.",
-        "pricing": "Custom monthly program pricing based on team size and scope, usually set up as multi-year engagements.",
-        "strengths": "They treat your program as a long-term build, handling the process and tech setup so you do not have to.",
-        "weaknesses": "The multi-year, fully managed approach is overkill if you just need a few callers or a short trial.",
-        "whyStandOut": "They do not just staff seats, they design and run the whole program with you for years."
       }
     ],
     "faq": [
