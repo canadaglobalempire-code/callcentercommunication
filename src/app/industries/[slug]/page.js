@@ -249,6 +249,20 @@ export default async function IndustryPage({ params }) {
                 is a good place to start.
               </>
             )}
+            {/*
+              Spanish-speaking callers are common on healthcare lines; one
+              extra pointer to the Spanish bilingual services page — same
+              conditional-link pattern as above.
+            */}
+            {industry.slug === 'healthcare-call-center-services' && (
+              <>
+                {' '}If part of your patient line is Spanish-speaking, our{' '}
+                <Link href="/services/spanish-bilingual-call-center-services">
+                  Spanish bilingual call center services
+                </Link>{' '}
+                page explains how bilingual teams are staffed and scored.
+              </>
+            )}
           </p>
         </div>
       </section>

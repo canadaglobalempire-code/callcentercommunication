@@ -178,7 +178,7 @@ Nearshore sits between the other two location strategies. Onshore means a team i
 
 Call Center Communications is a free outsourcing brokerage. We do not operate a nearshore center ourselves. We learn what you need handled, in which languages and during which hours, then introduce you to pre-vetted nearshore call center providers in Latin America that fit. Because our network also covers onshore and offshore providers, we can tell you honestly when nearshore is the right answer and when another location, or a blend of locations, would serve you better. The matching costs you nothing.
 
-Nearshore teams commonly handle inbound customer service, technical support, order handling, appointment setting, outbound sales and bilingual English and Spanish programs. The shared working day matters most when your own staff need to collaborate with agents in real time: joining calibration sessions, answering escalations quickly, or adjusting a campaign during the day. It also matters when your customers are concentrated in the Americas and expect to be served during their own hours.
+Nearshore teams commonly handle inbound customer service, technical support, order handling, appointment setting, outbound sales and bilingual English and Spanish programs. The shared working day matters most when your own staff need to collaborate with agents in real time: joining calibration sessions, answering escalations quickly, or adjusting a campaign during the day. It also matters when your customers are concentrated in the Americas and expect to be served during their own hours. If most of that bilingual volume is English and Spanish, our [Spanish bilingual call center services](/services/spanish-bilingual-call-center-services) page explains how those teams are staffed and scored.
 
 Nearshore is not the right fit for every program. If you need round-the-clock coverage, an offshore site whose daytime is your night may staff overnight hours more naturally. If your conversations are heavily regulated or depend on detailed local knowledge, an onshore team may be the safer choice. And if you need languages that are rare in Latin America, a multilingual hub elsewhere may have deeper talent. Many companies keep complex work onshore, send bilingual and daytime volume nearshore, and use offshore for overnight or high-volume contacts.
 
@@ -321,6 +321,87 @@ Location works the same way as for any call center program. Our network spans on
         question: "How do I compare the omnichannel providers I am matched with?",
         answer:
           "Ask each provider how agents switch between channels during a single conversation, how first response and resolution times are measured on each channel, and whether channels share one queue and one reporting view. Ask to see a sample of the unified reporting, and how quality is scored across channels where the skills differ. Providers that can only show separate channel reports are selling multichannel, not omnichannel.",
+      },
+    ],
+  },
+  {
+    slug: "spanish-bilingual-call-center-services",
+    title: "Spanish Bilingual Call Center Services",
+    shortName: "Spanish Bilingual Support",
+    iconKey: "multilingual",
+    seoTitle: "Spanish Bilingual Call Center Services | Bilingual Support",
+    shortDescription:
+      "Spanish bilingual call center services with agents fluent in English and Spanish. Compare pre-vetted onshore and nearshore providers through free matching.",
+    description: `Spanish bilingual call center services are outsourced customer operations staffed by agents who speak both English and Spanish and can serve a caller in either language. Instead of running one team for English speakers and another for Spanish speakers, you work with providers whose agents are recruited and tested in both languages, so the same coverage applies to the whole program: inbound customer service, order and account support, technical support, appointment setting, outbound sales and after-hours care.
+
+Call Center Communications is a free outsourcing brokerage. We do not operate a bilingual contact center ourselves. We learn how many conversations you handle and when, which channels they arrive on, what share of your customers prefer Spanish, and whether agents should handle both languages or sit in dedicated Spanish pods, then introduce you to pre-vetted providers whose bilingual teams fit. You compare their proposals, speak with them directly and choose the partner you trust. Our matching costs you nothing, and you are under no obligation to move forward.
+
+Bilingual teams can sit onshore or nearshore, and each placement serves a different purpose. Some US-based providers staff English and Spanish speakers on every shift, which keeps Spanish-speaking callers close to home alongside your English queue. Nearshore providers across Latin America are a frequent choice for bilingual English and Spanish programs: agents share time zones with North American customers, and bilingual agents are a standard hire rather than a specialty there. Many companies blend the two, keeping sensitive conversations onshore and sending daytime bilingual volume nearshore.
+
+The benefits of bilingual call center outsourcing show up in reach and in consistency. Serving customers in the language they prefer lets you reach more customers without hiring a bigger in-house team, and it removes the moment where a Spanish-speaking caller cannot get help and quietly takes their business elsewhere. One bilingual team also behaves like one operation: the same service standards, the same escalation rules and the same reporting cover both languages, so the experience does not depend on which language a customer happens to call in.
+
+Quality in two languages starts with hiring. Ask providers how agents are tested for English and Spanish, and how they keep pace, courtesy and accuracy consistent in both. Strong bilingual programs also train for cultural fit, because expectations, formalities and communication styles differ between markets even when the words translate, so agents can navigate regional customs with confidence. Quality reviews should score calls in both languages too, so Spanish service is never the afterthought.
+
+Before you request quotes, prepare a simple brief: your conversation volume by language and channel, your busiest hours, the systems agents would use, and how Spanish coverage should work alongside your English queue. Then compare providers on the things that separate genuinely bilingual operations from translated scripts — listen to sample calls in both languages, ask how bilingual staffing is scheduled, and check that both languages carry the same service standards in writing. If you are still deciding where the team should sit, our [nearshore call center services](/services/nearshore-call-center-services) guide covers Latin American delivery in depth; and if Spanish is the first of several languages you need, the same brief extends to broader [multilingual call center support](/services/multilingual-call-center-services).`,
+    image: "/images/agents-office-pair.jpg",
+    processImage: "/images/hd-office-team.jpg",
+    features: [
+      "Bilingual English & Spanish Agents",
+      "Inbound Customer Service in Both Languages",
+      "Bilingual Outbound Sales & Appointment Setting",
+      "Order & Account Support",
+      "Technical Support in Both Languages",
+      "US-Based Bilingual Teams",
+      "Nearshore Teams in Latin America",
+      "Spanish-First Recruiting & Language Testing",
+      "Cultural Fit & Regional Sensitivity Training",
+      "English & Spanish Served From One Team",
+      "Overflow & After-Hours Coverage",
+      "Bilingual Quality Monitoring & Reporting",
+    ],
+    benefits: [
+      "Serve customers in the language they prefer without running two separate teams",
+      "Reach more customers, including Spanish-speaking callers, without hiring a bigger in-house team",
+      "Keep service standards, escalation rules and reporting consistent across both languages",
+      "Build trust through cultural fit, not just translated scripts",
+    ],
+    relatedIndustries: [
+      "healthcare-call-center-services",
+      "retail-call-center-services",
+      "insurance-call-center-services",
+      "telecommunications-call-center-services",
+      "automotive-call-center-services",
+    ],
+    faqs: [
+      {
+        question: "What are Spanish bilingual call center services?",
+        answer:
+          "Spanish bilingual call center services are outsourced customer operations staffed by agents who speak both English and Spanish. The provider recruits, tests and manages the bilingual agents, supplies the contact center technology and reports on performance, while you set the policies, service standards and escalation rules. The same team covers inbound care, outbound work and support in either language, so customers are served in the language they prefer without you staffing two separate teams.",
+      },
+      {
+        question: "Do I need fully bilingual agents, or separate English and Spanish teams?",
+        answer:
+          "It depends on your volume in each language. Fully bilingual agents can take either language in one queue, which keeps staffing flexible and service consistent when Spanish calls arrive alongside English ones. Separate English and Spanish pods can suit programs with enough volume in each language to keep dedicated specialists busy all day. Ask every shortlisted provider how it schedules bilingual coverage, because that staffing choice shapes cost, quality and how callers experience the handoff.",
+      },
+      {
+        question: "Where are Spanish bilingual call center agents located?",
+        answer:
+          "Both onshore and nearshore. Some US-based providers staff English and Spanish speakers on every shift, which suits sensitive or regulated conversations and keeps callers close to home. Nearshore providers across Latin America are a frequent choice for bilingual English and Spanish programs because agents share time zones with North American customers and bilingual hiring is routine there. Many companies blend the two, and our network covers both, so we can shortlist providers by fit rather than by a single country.",
+      },
+      {
+        question: "What are the benefits of bilingual call center outsourcing?",
+        answer:
+          "You can serve customers in the language they prefer without hiring a bigger in-house team, reach Spanish-speaking callers who might otherwise go unanswered, and keep one set of service standards, escalation rules and reports across both languages. Bilingual coverage also extends to overflow, evenings and weekends without overtime for your own staff. The result is a wider customer base served by one operation instead of two parallel teams.",
+      },
+      {
+        question: "How is quality kept high in both languages?",
+        answer:
+          "It starts with hiring: agents should be recruited and tested in both English and Spanish, not simply assigned calls in their stronger language. Cultural sensitivity training helps agents navigate regional customs and different communication styles, and quality reviews should score calls in both languages so Spanish interactions get the same calibration and coaching as English ones. Listen to sample recordings in each language during selection, and keep your knowledge base current in both languages after launch.",
+      },
+      {
+        question: "What drives the cost of a Spanish bilingual call center?",
+        answer:
+          "The main cost drivers are the location of the team, the hours of coverage, the channels involved, the complexity of the contacts, the training required, and whether agents are dedicated to your account or shared across clients. Recruiting and testing agents in two languages also takes more effort than hiring for one. Compare every quote against the same written scope that names both languages. Our matching service is free to businesses; the provider you choose charges for the delivery scope you agree with it.",
       },
     ],
   },
