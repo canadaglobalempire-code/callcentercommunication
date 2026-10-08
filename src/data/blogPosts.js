@@ -1,3 +1,5 @@
+import dashboardGuides from "./dashboardGuides.json";
+
 export const blogPosts = [
   {
     "slug": "top-10-bpo-companies-usa",
@@ -1212,4 +1214,5 @@ If you would rather not sort through it alone, we can help. Our [inbound call ce
     author: "Call Center Communications",
     category: "BPO Rankings",
   },
+  ...dashboardGuides,
 ];

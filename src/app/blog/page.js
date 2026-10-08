@@ -59,7 +59,7 @@ export default function BlogPage() {
       {/* ===== Featured post (split card) ===== */}
       <section className={styles.featured}>
         <div className={styles.featuredInner}>
-          <Link href={`/blog/${featured.slug}`} className={styles.featuredCard}>
+          <Link href={featured.path ?? `/blog/${featured.slug}`} className={styles.featuredCard}>
             <div className={styles.featuredImageWrap}>
               <Image
                 src={featured.image}
@@ -113,7 +113,7 @@ export default function BlogPage() {
           <div className={styles.postsGrid}>
             {rest.map((post) => (
               <article key={post.slug} className={styles.card}>
-                <Link href={`/blog/${post.slug}`} className={styles.cardLink}>
+                <Link href={post.path ?? `/blog/${post.slug}`} className={styles.cardLink}>
                   <div className={styles.cardImageWrap}>
                     <Image
                       src={post.image}

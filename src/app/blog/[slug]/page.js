@@ -22,12 +22,14 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return {};
-  return genMeta({
+  const metadata = genMeta({
     title: post.title,
     description: post.seoDescription || post.excerpt,
-    path: `/blog/${post.slug}`,
+    path: post.path ?? `/blog/${post.slug}`,
     ogImage: post.image,
   });
+  if (post.path) metadata.title = { absolute: post.title };
+  return metadata;
 }
 
 function initial(name = '') {
@@ -77,7 +79,7 @@ export default async function BlogPostPage({ params }) {
     day: 'numeric',
   });
   const hasRanking = post.companies?.length > 0;
-  const articleUrl = `${siteConfig.url}/blog/${post.slug}`;
+  const articleUrl = `${siteConfig.url}${post.path ?? `/blog/${post.slug}`}`;
 
   /* ===== Structured data (Article + additive FAQPage / ItemList) ===== */
   const articleSchema = {
@@ -427,7 +429,7 @@ export default async function BlogPostPage({ params }) {
             <div className={styles.relatedGrid}>
               {related.map((r) => (
                 <article key={r.slug} className={styles.relatedCard}>
-                  <Link href={`/blog/${r.slug}`} className={styles.relatedLink}>
+                  <Link href={r.path ?? `/blog/${r.slug}`} className={styles.relatedLink}>
                     <div className={styles.relatedFigure}>
                       <Image
                         src={r.image}

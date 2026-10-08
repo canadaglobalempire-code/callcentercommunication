@@ -46,7 +46,7 @@ export default function sitemap() {
   // Detail pages generated from the data layer.
   const collection = (items, prefix, changeFrequency, priority, fallback = lastModified) =>
     items.map((item) => ({
-      url: `${BASE_URL}${prefix}/${item.slug}`,
+      url: `${BASE_URL}${prefix === "/blog" && item.path ? item.path : `${prefix}/${item.slug}`}`,
       lastModified: item.updated ? new Date(item.updated) : fallback,
       changeFrequency,
       priority,
