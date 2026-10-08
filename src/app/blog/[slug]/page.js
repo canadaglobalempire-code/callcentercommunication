@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
   if (!post) return {};
   return genMeta({
     title: post.title,
-    description: post.excerpt,
+    description: post.seoDescription || post.excerpt,
     path: `/blog/${post.slug}`,
     ogImage: post.image,
   });

@@ -245,6 +245,7 @@ When you compare nearshore providers, look past the country name. Ask where each
   },
   {
     slug: "omnichannel-call-center-services",
+    seoDescription: "Connect phone, chat, email and social support through an omnichannel call center. Compare providers for your channels, workflows and coverage needs.",
     title: "Omnichannel Call Center Services",
     shortName: "Omnichannel Support",
     iconKey: "inbound",

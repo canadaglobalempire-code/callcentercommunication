@@ -31,7 +31,7 @@ export async function generateMetadata({ params }) {
 
   return genMeta({
     title: service.seoTitle || service.title,
-    description: service.shortDescription,
+    description: service.seoDescription || service.shortDescription,
     path: `/services/${service.slug}`,
   });
 }
