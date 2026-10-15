@@ -1,24 +1,82 @@
-/* Layout only: borders, font, height and focus come from the host form's input class. */
+/* Layout only: borders, font, height and padding come from the host form's input class,
+   applied to both the left group and the number input. */
 .group {
   display: flex;
   align-items: stretch;
   width: 100%;
 }
 
+/* Left group: [flag][dial input][chevron]; the invisible <select> covers it underneath. */
 .group .country {
+  position: relative;
   flex: 0 0 auto;
   width: auto;
-  max-width: 120px;
-  padding-right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: normal;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 14px;
+}
+
+.picker {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px; /* avoids iOS zoom on focus */
+}
+
+.flag {
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.dial {
+  position: relative;
+  z-index: 2;
+  width: 4.2ch;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: text;
+}
+
+.chevron {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")
+    no-repeat center / 14px;
+}
+
+/* The group is a div, so mirror the host inputs' focus ring when anything inside is focused. */
+.group .country:focus-within {
+  position: relative;
+  z-index: 1;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(246, 120, 10, 0.12);
+}
+
+.group .dialInvalid,
+.group .dialInvalid:hover,
+.group .dialInvalid:focus-within {
+  border-color: #ef4444;
+}
+
+.group .dialInvalid:focus-within {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 
 .group .number {
@@ -30,7 +88,6 @@
   border-bottom-left-radius: 0;
 }
 
-.group .country:focus,
 .group .number:focus {
   position: relative;
   z-index: 1;
