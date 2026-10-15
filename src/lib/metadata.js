@@ -19,11 +19,15 @@ export function generateMetadata({ title, description, path = '', ogImage }) {
     '/services/inbound-call-center-services': 'Compare inbound call center providers for customer support, order handling and overflow coverage. Free matching based on your volume and needs.',
     '/24-7-call-center-services': 'Compare 24/7 call center services for live customer support, after-hours calls and overflow coverage. Find a provider for continuous availability.',
     '/medical-answering-service': 'Compare medical answering services for HIPAA-compliant healthcare support, appointment scheduling and patient communication, available 24/7.',
+    '/blog/top-10-bpo-companies-usa': 'Compare the top 10 BPO companies in the USA for 2026: what each US provider does best, who it suits, and how to build a shortlist.',
+    '/blog/top-15-bpo-companies-in-the-world': 'Compare the top 15 BPO companies in the world for 2026 by global delivery footprint, service focus and industries, then shortlist the right fit.',
   };
   const titles = {
     '/services/outbound-call-center-services': 'Outbound Call Center Services: Lead Generation and Sales',
     '/services/responsiveness-reporting': 'Call Center Reporting and Performance Analytics',
     '/blog/onshore-nearshore-offshore-call-centers': 'Onshore vs Nearshore vs Offshore Call Centers (2026)',
+    '/blog/top-10-bpo-companies-usa': 'Top 10 BPO Companies in the USA (2026 Rankings)',
+    '/blog/top-15-bpo-companies-in-the-world': 'Top 15 BPO Companies in the World (2026 Rankings)',
   };
   Object.assign(titles, {
     '/industries/banking-call-center-services': 'Banking Call Center Services: Financial Customer Support',
