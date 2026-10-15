@@ -1,4 +1,5 @@
 import { buildContactSummary, submitToSplitForms } from '@/lib/splitforms';
+import { isValidPhone } from '@/lib/phone';
 
 const SUBJECTS = {
   consultation: 'New free consultation request',
@@ -12,7 +13,7 @@ const SUBJECTS = {
 // and were rejected for missing name and productService.
 const REQUIRED_BY_TYPE = {
   consultation: ['name', 'email', 'company', 'website', 'phone', 'needs'],
-  lead: ['firstName', 'lastName', 'email', 'company', 'website', 'serviceType', 'callVolume', 'message'],
+  lead: ['firstName', 'lastName', 'email', 'phone', 'company', 'website', 'serviceType', 'callVolume', 'message'],
   contact: [
     'companyName', 'name', 'title', 'phone', 'email', 'website', 'callDirection',
     'callLength', 'productService', 'monthlyCallVolume', 'callPurpose', 'agentCount',
@@ -57,6 +58,14 @@ export async function POST(request) {
     if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
       return Response.json(
         { success: false, message: 'Invalid email address.' },
+        { status: 400 }
+      );
+    }
+
+    // Phone arrives as "+<dial code><digits>" from the shared PhoneField.
+    if (required.includes('phone') && !isValidPhone(data.phone)) {
+      return Response.json(
+        { success: false, message: 'Invalid phone number.' },
         { status: 400 }
       );
     }

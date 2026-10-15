@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import PhoneField from '@/components/PhoneField/PhoneField';
+import { isValidPhone } from '@/lib/phone';
 import styles from './ContactForm.module.css';
 
 const SERVICE_OPTIONS = [
@@ -74,6 +76,7 @@ const INITIAL_DATA = {
   firstName: '',
   lastName: '',
   email: '',
+  phone: '',
   company: '',
   website: '',
   serviceType: '',
@@ -89,6 +92,11 @@ function validateForm(data) {
     errors.email = 'Work email is required.';
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
     errors.email = 'Please enter a valid email address.';
+  }
+  if (!data.phone.trim()) {
+    errors.phone = 'Phone number is required.';
+  } else if (!isValidPhone(data.phone)) {
+    errors.phone = 'Please enter a valid phone number (digits only, without the country code).';
   }
   if (!data.company.trim()) errors.company = 'Company is required.';
   if (!data.website.trim()) errors.website = 'Website is required. Enter N/A if you do not have one.';
@@ -286,6 +294,21 @@ export default function ContactForm() {
                   aria-invalid={!!errors.email}
                 />
                 {errors.email && <p className={styles.errorMsg}>{errors.email}</p>}
+              </div>
+
+              <div className={styles.formField}>
+                <label htmlFor="lead-phone" className={styles.formLabel}>
+                  Your mobile number <span className={styles.required}>*</span>
+                </label>
+                <PhoneField
+                  id="lead-phone"
+                  name="phone"
+                  inputClassName={`${styles.formInput} ${errors.phone ? styles.inputError : ''}`}
+                  invalid={!!errors.phone}
+                  errorId="lead-phone-error"
+                  onChange={handleChange}
+                />
+                {errors.phone && <p id="lead-phone-error" className={styles.errorMsg}>{errors.phone}</p>}
               </div>
 
               <div className={styles.formRow}>

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import PhoneField from '@/components/PhoneField/PhoneField';
+import { isValidPhone } from '@/lib/phone';
 import styles from './ContactForm.module.css';
 
 const CALL_PURPOSE_OPTIONS = [
@@ -42,8 +44,8 @@ function validateForm(data) {
 
   if (!data.phone.trim()) {
     errors.phone = 'Phone number is required.';
-  } else if (!/^[\d\s()+-]{7,20}$/.test(data.phone.trim())) {
-    errors.phone = 'Please enter a valid phone number.';
+  } else if (!isValidPhone(data.phone)) {
+    errors.phone = 'Please enter a valid phone number (digits only, without the country code).';
   }
 
   if (!data.email.trim()) {
@@ -207,16 +209,15 @@ export default function ContactForm() {
           <label htmlFor="phone" className={styles.label}>
             Phone Number<span className={styles.required}>*</span>
           </label>
-          <input
+          <PhoneField
             id="phone"
             name="phone"
-            type="tel"
-            className={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
-            value={formData.phone}
+            inputClassName={`${styles.input} ${errors.phone ? styles.inputError : ''}`}
+            invalid={!!errors.phone}
+            errorId="phone-error"
             onChange={handleChange}
-            placeholder="(555) 123-4567"
           />
-          {errors.phone && <p className={styles.errorMsg}>{errors.phone}</p>}
+          {errors.phone && <p id="phone-error" className={styles.errorMsg}>{errors.phone}</p>}
         </div>
       </div>
 
