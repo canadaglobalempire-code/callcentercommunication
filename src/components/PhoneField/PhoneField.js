@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { COUNTRIES, DEFAULT_COUNTRY } from './countries';
-import { normaliseDial, isValidDial, countryForDial, combinePhone } from './dial';
+import { normaliseDial, isValidDial, isPartialDial, countryForDial, combinePhone } from './dial';
 import styles from './PhoneField.module.css';
 
 const DEFAULT_DIAL = COUNTRIES.find((c) => c.iso2 === DEFAULT_COUNTRY)?.dial || '+1';
@@ -24,7 +24,26 @@ export default function PhoneField({
   const [dial, setDial] = useState(DEFAULT_DIAL);
   const [national, setNational] = useState('');
 
-  const dialInvalid = !isValidDial(dial);
+  const [dialTouched, setDialTouched] = useState(false); // blurred or form submitted
+  const dialRef = useRef(null);
+
+  const dialValid = isValidDial(dial);
+  // Unknown complete codes show the error at once; a partial code only after blur/submit.
+  const dialInvalid = !dialValid && (dialTouched || !isPartialDial(dial));
+
+  useEffect(() => {
+    dialRef.current?.setCustomValidity(
+      dialValid ? '' : 'Enter a valid country code, e.g. +1 or +44'
+    );
+  }, [dialValid]);
+
+  useEffect(() => {
+    const form = dialRef.current?.form;
+    if (!form) return undefined;
+    const onSubmit = () => setDialTouched(true);
+    form.addEventListener('submit', onSubmit);
+    return () => form.removeEventListener('submit', onSubmit);
+  }, []);
   const flag = COUNTRIES.find((c) => c.iso2 === country)?.flag || '🌐';
 
   function emit(nextDial, nextNational) {
@@ -41,6 +60,7 @@ export default function PhoneField({
   function handleSelect(e) {
     const picked = COUNTRIES.find((c) => c.iso2 === e.target.value);
     if (!picked) return;
+    dialRef.current?.setCustomValidity('');
     setCountry(picked.iso2);
     setDial(picked.dial);
     emit(picked.dial, national);
@@ -71,6 +91,7 @@ export default function PhoneField({
           {flag}
         </span>
         <input
+          ref={dialRef}
           id={`${id}-dial`}
           type="text"
           inputMode="numeric"
@@ -79,8 +100,10 @@ export default function PhoneField({
           aria-label="Country dial code"
           aria-invalid={dialInvalid || undefined}
           className={styles.dial}
+          style={{ width: `${Math.min(Math.max(dial.length, 2), 5)}ch` }}
           value={dial}
           onChange={handleDialChange}
+          onBlur={() => setDialTouched(true)}
         />
         <span className={styles.chevron} aria-hidden="true" />
       </div>

@@ -102,3 +102,6 @@ export const COUNTRIES = [
 ];
 
 export const DEFAULT_COUNTRY = 'US';
+
+// Every known dial code ("+1", "+44", "+380", ...). A dial code is valid only on an exact match.
+export const DIAL_CODES = new Set(all.map((c) => c.dial));

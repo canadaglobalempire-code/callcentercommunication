@@ -1,6 +1,4 @@
-import { COUNTRIES } from './countries.js';
-
-export const DIAL_PATTERN = /^\+\d{1,4}$/;
+import { COUNTRIES, DIAL_CODES } from './countries.js';
 
 // Whatever was typed -> "+digits" (max 4 digits); empty stays empty so the field can be cleared.
 export function normaliseDial(raw) {
@@ -8,8 +6,17 @@ export function normaliseDial(raw) {
   return `+${String(raw).replace(/\D/g, '').slice(0, 4)}`;
 }
 
+// Valid only on an exact match with a dial code in the country list (+000, +999, +0 are not).
 export function isValidDial(dial) {
-  return DIAL_PATTERN.test(dial);
+  return DIAL_CODES.has(dial);
+}
+
+// Still being typed: empty/"+" or a strict prefix of a real code (e.g. "+3" on the way to "+380").
+export function isPartialDial(dial) {
+  if (!dial || dial === '+') return true;
+  if (isValidDial(dial)) return false;
+  for (const code of DIAL_CODES) if (code.startsWith(dial)) return true;
+  return false;
 }
 
 // Exact dial-code match. Keeps the current country if it shares the code (e.g. Canada on +1),
