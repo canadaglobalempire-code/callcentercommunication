@@ -70,10 +70,15 @@ export async function POST(request) {
       );
     }
 
+    // splitforms embed.js session id: forwarded so the partial lead is closed.
+    const sfSid = typeof data.sf_sid === 'string' && /^[A-Za-z0-9_-]{1,128}$/.test(data.sf_sid) ? data.sf_sid : '';
+    delete data.sf_sid;
+
     const fields = {
       form_type: formType,
       ...data,
       message: data.message || data.needs || data.productService || buildContactSummary(data),
+      ...(sfSid ? { sf_sid: sfSid } : {}),
     };
 
     delete fields.formType;

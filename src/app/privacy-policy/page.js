@@ -52,6 +52,10 @@ export default function PrivacyPolicyPage() {
             contact us directly via email or phone.
           </li>
         </ul>
+        <p className={styles.text}>
+          Our forms use Splitforms to save what you type into an enquiry form,
+          even if you do not submit it, so we can follow up on your request.
+        </p>
       </div>
 
       <div className={styles.section}>

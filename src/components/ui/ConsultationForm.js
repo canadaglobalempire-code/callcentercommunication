@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Script from 'next/script';
 import PhoneField from '@/components/PhoneField/PhoneField';
 import { isValidPhone } from '@/lib/phone';
+import { SPLITFORMS_FORM_KEY, partialLeadDone, partialSessionId } from '@/lib/splitforms-tracker';
 import styles from './ConsultationForm.module.css';
 
 const initialFormData = {
@@ -63,6 +65,7 @@ export default function ConsultationForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const form = e.currentTarget;
     setServerError('');
 
     const validationErrors = validateForm(formData);
@@ -77,12 +80,13 @@ export default function ConsultationForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'consultation' }),
+        body: JSON.stringify({ ...formData, formType: 'consultation', sf_sid: partialSessionId(form) }),
       });
 
       const result = await res.json();
 
       if (result.success) {
+        partialLeadDone(form);
         setIsSuccess(true);
       } else {
         setServerError(result.message || 'Something went wrong. Please try again.');
@@ -114,7 +118,8 @@ export default function ConsultationForm() {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
+      <Script src="https://splitforms.com/embed.js" strategy="afterInteractive" />
       <h3 className={styles.formTitle}>Request Your Free Consultation</h3>
       <p className={styles.formSubtitle}>
         Fill in your details and we will be in touch shortly.

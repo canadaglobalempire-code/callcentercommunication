@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Script from 'next/script';
 import PhoneField from '@/components/PhoneField/PhoneField';
 import { isValidPhone } from '@/lib/phone';
+import { SPLITFORMS_FORM_KEY, partialLeadDone, partialSessionId } from '@/lib/splitforms-tracker';
 import styles from './ContactForm.module.css';
 
 const CALL_PURPOSE_OPTIONS = [
@@ -94,6 +96,7 @@ export default function ContactForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const form = e.currentTarget;
     setServerError('');
 
     const validationErrors = validateForm(formData);
@@ -108,12 +111,13 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'contact' }),
+        body: JSON.stringify({ ...formData, formType: 'contact', sf_sid: partialSessionId(form) }),
       });
 
       const result = await res.json();
 
       if (result.success) {
+        partialLeadDone(form);
         setIsSuccess(true);
       } else {
         setServerError(result.message || 'Something went wrong. Please try again.');
@@ -145,7 +149,8 @@ export default function ContactForm() {
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
+      <Script src="https://splitforms.com/embed.js" strategy="afterInteractive" />
       <h2 className={styles.formTitle}>Tell Us About Your Needs</h2>
       <p className={styles.formSubtitle}>
         Fill out the form below and we will get back to you with a customized
