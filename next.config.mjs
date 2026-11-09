@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Hostinger build containers cap threads; Next's default (cores-1 = 63 workers) aborts with os error 11.
+  experimental: { cpus: 2, workerThreads: false },
   // Hostinger must not keep HTML from an obsolete deployment for a year.
   expireTime: 600,
   async redirects() {
