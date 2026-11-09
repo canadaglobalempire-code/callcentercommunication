@@ -1,10 +1,13 @@
 import { buildContactSummary, submitToSplitForms } from '@/lib/splitforms';
 import { isValidPhone } from '@/lib/phone';
+import { INQUIRY_SUBJECT } from '@/lib/formFeedback';
 
+// Every lead form emails with the same subject (SplitForms uses `subject` verbatim).
+// The server sets it, so whatever the client sends is overridden.
 const SUBJECTS = {
-  consultation: 'New free consultation request',
-  lead: 'New homepage lead form submission',
-  contact: 'New contact form submission',
+  consultation: INQUIRY_SUBJECT,
+  lead: INQUIRY_SUBJECT,
+  contact: INQUIRY_SUBJECT,
   newsletter: 'New newsletter signup',
 };
 
@@ -82,6 +85,7 @@ export async function POST(request) {
     };
 
     delete fields.formType;
+    delete fields.subject;
 
     if (!process.env.SPLITFORMS_ACCESS_KEY) {
       console.error('[contact] SPLITFORMS_ACCESS_KEY is not configured.');

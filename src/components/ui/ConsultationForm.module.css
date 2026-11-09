@@ -68,6 +68,7 @@
 
 .inputError {
   border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
 }
 
 .inputError:focus {
@@ -201,4 +202,27 @@
   .form {
     padding: 28px 20px;
   }
+}
+
+.newRequestBtn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newRequestBtn:hover {
+  background: rgba(247, 106, 16, 0.1);
+}
+
+.newRequestBtn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }

@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import PhoneField from '@/components/PhoneField/PhoneField';
 import { isValidPhone } from '@/lib/phone';
+import {
+  INQUIRY_SUBJECT,
+  INVALID_BANNER,
+  RESET_AFTER_MS,
+  focusFirstInvalid,
+  thankYouText,
+} from '@/lib/formFeedback';
 import { SPLITFORMS_FORM_KEY, partialLeadDone, partialSessionId } from '@/lib/splitforms-tracker';
 import styles from './ContactForm.module.css';
 
@@ -114,6 +121,15 @@ export default function ContactForm() {
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState('');
   const [formData, setFormData] = useState(INITIAL_DATA);
+  const [successName, setSuccessName] = useState('');
+  const formRef = useRef(null);
+
+  // Bring the empty form back on its own after the thank-you.
+  useEffect(() => {
+    if (!isSubmitted) return undefined;
+    const timer = setTimeout(() => setIsSubmitted(false), RESET_AFTER_MS);
+    return () => clearTimeout(timer);
+  }, [isSubmitted]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -135,6 +151,7 @@ export default function ContactForm() {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      focusFirstInvalid(formRef.current, styles.inputError);
       return;
     }
 
@@ -143,11 +160,14 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'lead', sf_sid: partialSessionId(form) }),
+        body: JSON.stringify({ ...formData, formType: 'lead', subject: INQUIRY_SUBJECT, sf_sid: partialSessionId(form) }),
       });
       const result = await res.json();
       if (result.success) {
         partialLeadDone(form);
+        setSuccessName(formData.firstName);
+        setFormData(INITIAL_DATA);
+        setErrors({});
         setIsSubmitted(true);
       } else {
         setServerError(result.message || 'Something went wrong. Please try again.');
@@ -172,19 +192,15 @@ export default function ContactForm() {
               </div>
             </div>
             <h2 className={styles.successTitle}>Thank You!</h2>
-            <p className={styles.successText}>
-              Your request has been submitted. One of our experts will contact you within 24-48 hours to discuss your call center outsourcing needs.
+            <p className={styles.successText} role="status">
+              {thankYouText(successName)}
             </p>
             <button
+              type="button"
               className={styles.newRequestBtn}
-              onClick={() => {
-                setIsSubmitted(false);
-                setErrors({});
-                setServerError('');
-                setFormData(INITIAL_DATA);
-              }}
+              onClick={() => setIsSubmitted(false)}
             >
-              Submit Another Request
+              Submit another inquiry
             </button>
           </div>
         </div>
@@ -241,8 +257,13 @@ export default function ContactForm() {
 
           {/* Right Side - Form */}
           <div className={styles.formWrapper}>
-            <form className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
+            <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
               <Script src="https://splitforms.com/embed.js" strategy="afterInteractive" />
+              {Object.keys(errors).length > 0 && (
+                <p className={styles.formError} role="alert">
+                  {INVALID_BANNER}
+                </p>
+              )}
               {serverError && (
                 <p className={styles.formError} role="alert">
                   {serverError}

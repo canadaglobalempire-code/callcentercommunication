@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import PhoneField from '@/components/PhoneField/PhoneField';
 import { isValidPhone } from '@/lib/phone';
+import {
+  INQUIRY_SUBJECT,
+  INVALID_BANNER,
+  RESET_AFTER_MS,
+  focusFirstInvalid,
+  thankYouText,
+} from '@/lib/formFeedback';
 import { SPLITFORMS_FORM_KEY, partialLeadDone, partialSessionId } from '@/lib/splitforms-tracker';
 import styles from './ConsultationForm.module.css';
 
@@ -50,6 +57,15 @@ export default function ConsultationForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [successName, setSuccessName] = useState('');
+  const formRef = useRef(null);
+
+  // Bring the empty form back on its own after the thank-you.
+  useEffect(() => {
+    if (!isSuccess) return undefined;
+    const timer = setTimeout(() => setIsSuccess(false), RESET_AFTER_MS);
+    return () => clearTimeout(timer);
+  }, [isSuccess]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -71,6 +87,7 @@ export default function ConsultationForm() {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      focusFirstInvalid(formRef.current, styles.inputError);
       return;
     }
 
@@ -80,13 +97,16 @@ export default function ConsultationForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'consultation', sf_sid: partialSessionId(form) }),
+        body: JSON.stringify({ ...formData, formType: 'consultation', subject: INQUIRY_SUBJECT, sf_sid: partialSessionId(form) }),
       });
 
       const result = await res.json();
 
       if (result.success) {
         partialLeadDone(form);
+        setSuccessName(formData.name);
+        setFormData(initialFormData);
+        setErrors({});
         setIsSuccess(true);
       } else {
         setServerError(result.message || 'Something went wrong. Please try again.');
@@ -108,23 +128,28 @@ export default function ConsultationForm() {
             </svg>
           </div>
           <h3 className={styles.successTitle}>Request Received!</h3>
-          <p className={styles.successText}>
-            Thank you for your interest. We will reach out within one business day
-            to schedule your free consultation.
+          <p className={styles.successText} role="status">
+            {thankYouText(successName)}
           </p>
+          <button type="button" className={styles.newRequestBtn} onClick={() => setIsSuccess(false)}>
+            Submit another inquiry
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
+    <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
       <Script src="https://splitforms.com/embed.js" strategy="afterInteractive" />
       <h3 className={styles.formTitle}>Request Your Free Consultation</h3>
       <p className={styles.formSubtitle}>
         Fill in your details and we will be in touch shortly.
       </p>
 
+      {Object.keys(errors).length > 0 && (
+        <div className={styles.formError} role="alert">{INVALID_BANNER}</div>
+      )}
       {serverError && <div className={styles.formError}>{serverError}</div>}
 
       <div className={styles.field}>

@@ -1,9 +1,16 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
 import PhoneField from '@/components/PhoneField/PhoneField';
 import { isValidPhone } from '@/lib/phone';
+import {
+  INQUIRY_SUBJECT,
+  INVALID_BANNER,
+  RESET_AFTER_MS,
+  focusFirstInvalid,
+  thankYouText,
+} from '@/lib/formFeedback';
 import { SPLITFORMS_FORM_KEY, partialLeadDone, partialSessionId } from '@/lib/splitforms-tracker';
 import styles from './ContactForm.module.css';
 
@@ -81,6 +88,15 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [serverError, setServerError] = useState('');
+  const [successName, setSuccessName] = useState('');
+  const formRef = useRef(null);
+
+  // Bring the empty form back on its own after the thank-you.
+  useEffect(() => {
+    if (!isSuccess) return undefined;
+    const timer = setTimeout(() => setIsSuccess(false), RESET_AFTER_MS);
+    return () => clearTimeout(timer);
+  }, [isSuccess]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -102,6 +118,7 @@ export default function ContactForm() {
     const validationErrors = validateForm(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      focusFirstInvalid(formRef.current, styles.inputError);
       return;
     }
 
@@ -111,13 +128,16 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, formType: 'contact', sf_sid: partialSessionId(form) }),
+        body: JSON.stringify({ ...formData, formType: 'contact', subject: INQUIRY_SUBJECT, sf_sid: partialSessionId(form) }),
       });
 
       const result = await res.json();
 
       if (result.success) {
         partialLeadDone(form);
+        setSuccessName(formData.name);
+        setFormData(initialFormData);
+        setErrors({});
         setIsSuccess(true);
       } else {
         setServerError(result.message || 'Something went wrong. Please try again.');
@@ -139,17 +159,19 @@ export default function ContactForm() {
             </svg>
           </div>
           <h3 className={styles.successTitle}>Thank You!</h3>
-          <p className={styles.successText}>
-            Your message has been received. A member of our team will contact you
-            shortly to discuss your call center needs.
+          <p className={styles.successText} role="status">
+            {thankYouText(successName)}
           </p>
+          <button type="button" className={styles.newRequestBtn} onClick={() => setIsSuccess(false)}>
+            Submit another inquiry
+          </button>
         </div>
       </div>
     );
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
+    <form ref={formRef} className={styles.form} onSubmit={handleSubmit} noValidate data-sf-key={SPLITFORMS_FORM_KEY}>
       <Script src="https://splitforms.com/embed.js" strategy="afterInteractive" />
       <h2 className={styles.formTitle}>Tell Us About Your Needs</h2>
       <p className={styles.formSubtitle}>
@@ -157,6 +179,9 @@ export default function ContactForm() {
         outsourcing solution.
       </p>
 
+      {Object.keys(errors).length > 0 && (
+        <div className={styles.formError} role="alert">{INVALID_BANNER}</div>
+      )}
       {serverError && <div className={styles.formError}>{serverError}</div>}
 
       {/* Row: Company / Name */}
@@ -266,7 +291,11 @@ export default function ContactForm() {
           Does your program require inbound calls, outbound calls, or both?
           <span className={styles.required}>*</span>
         </legend>
-        <div className={styles.radioGroup}>
+        <div
+          className={`${styles.radioGroup} ${errors.callDirection ? styles.inputError : ''}`}
+          role="radiogroup"
+          aria-invalid={!!errors.callDirection}
+        >
           {['Inbound', 'Outbound', 'Both'].map((option) => (
             <label
               key={option}

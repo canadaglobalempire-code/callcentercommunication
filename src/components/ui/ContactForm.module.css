@@ -77,6 +77,13 @@
 
 .inputError {
   border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.radioGroup.inputError {
+  padding: 8px 10px;
+  border: 1px solid #ef4444;
+  border-radius: var(--radius-sm);
 }
 
 .inputError:focus {
@@ -330,4 +337,27 @@
     padding: 6px 12px;
     font-size: 0.8rem;
   }
+}
+
+.newRequestBtn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newRequestBtn:hover {
+  background: rgba(247, 106, 16, 0.1);
+}
+
+.newRequestBtn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
