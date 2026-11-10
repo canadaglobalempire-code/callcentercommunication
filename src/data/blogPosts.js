@@ -703,7 +703,7 @@ If onshore is the model you are leaning toward, our [onshore call centers](/onsh
 
 ### Onshore BPO and contact centers
 
-Onshore BPO can cover phone conversations, written customer support and back-office processes. Define the tasks before choosing the location. A customer enquiry that needs a local specialist may benefit from shared operating hours; a well-documented administrative task may not need the same arrangement. Ask how the proposed agents learn your procedures and who reviews their work.
+Onshore BPO can cover phone conversations, written customer support and back-office processes. Define the tasks before choosing the location. A customer inquiry that needs a local specialist may benefit from shared operating hours; a well-documented administrative task may not need the same arrangement. Ask how the proposed agents learn your procedures and who reviews their work.
 
 Domestic delivery also needs deliberate management. US time zones span several hours, and an agent's shift may still differ from the customer's day. Check the actual schedule, escalation contacts and holiday plan. Review the provider's procedures and evidence rather than treating an onshore address as a quality certificate.
 
@@ -731,7 +731,7 @@ An onshore team can make local coordination simpler when customer expectations o
 
 If nearshore is on your shortlist, our [nearshore call centers](/nearshore-call-centers) page explains how nearby delivery works and what to ask a provider.
 
-Use a representative sample of enquiries to compare proposals. Include common cases and the exceptions that create repeat contacts. Ask each team to demonstrate the information it needs, the action it may take and the next owner when it cannot finish. Select the model that handles that actual work within the agreed conditions.
+Use a representative sample of inquiries to compare proposals. Include common cases and the exceptions that create repeat contacts. Ask each team to demonstrate the information it needs, the action it may take and the next owner when it cannot finish. Select the model that handles that actual work within the agreed conditions.
 
 ## Compare the Full Commercial Scope
 
@@ -759,13 +759,13 @@ Specialist requirements depend on the information and tasks involved. State thos
 
 ## Which Model Fits Which Work?
 
-Order-status enquiries can be suitable for a documented outside queue when agents have reliable source records and a clear exception route. Customer technical support needs known-issue instructions and an engineering handoff. Sales enquiries need accurate qualification and access to the right calendar. Compare these operating requirements before assigning a delivery region.
+Order-status inquiries can be suitable for a documented outside queue when agents have reliable source records and a clear exception route. Customer technical support needs known-issue instructions and an engineering handoff. Sales inquiries need accurate qualification and access to the right calendar. Compare these operating requirements before assigning a delivery region.
 
 A blended programme can keep specialist decisions with your team while an outside team handles agreed first-contact tasks. The boundary should be understandable to both teams and to the customer. Our [customer service outsourcing](/services/customer-service-outsourcing) and [technical support outsourcing](/services/technical-support-outsourcing) pages can help you define the relevant queue.
 
 ## A Practical Provider Review
 
-Bring contacts by channel and hour, examples of difficult enquiries, approved procedures and the available escalation owners. Ask each provider to work through the same cases. Inspect the written handoff, not only the presentation. Record what could be completed and what needed additional access, knowledge or approval.
+Bring contacts by channel and hour, examples of difficult inquiries, approved procedures and the available escalation owners. Ask each provider to work through the same cases. Inspect the written handoff, not only the presentation. Record what could be completed and what needed additional access, knowledge or approval.
 
 During a pilot, review case accuracy, repeat contacts, escalation quality and customer experience against agreed definitions. Keep changes in workload or policy visible so the results can be interpreted. Choose the region and team together; a location decision should support a workable operating process.
 

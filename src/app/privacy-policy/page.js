@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
           </li>
         </ul>
         <p className={styles.text}>
-          Our forms use Splitforms to save what you type into an enquiry form,
+          Our forms use Splitforms to save what you type into an inquiry form,
           even if you do not submit it, so we can follow up on your request.
         </p>
       </div>

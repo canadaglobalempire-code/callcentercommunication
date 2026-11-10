@@ -7,7 +7,7 @@ export const services = [
       },
       {
         "question": "What should I prepare for an inbound call center quote?",
-        "answer": "Bring typical call volumes, busy periods, average handling time if available, coverage hours, languages and the systems agents need. Include examples of enquiries they can resolve and situations that must reach your team. If you only need overflow or after-hours coverage, specify that instead of requesting a full replacement for your internal operation."
+        "answer": "Bring typical call volumes, busy periods, average handling time if available, coverage hours, languages and the systems agents need. Include examples of inquiries they can resolve and situations that must reach your team. If you only need overflow or after-hours coverage, specify that instead of requesting a full replacement for your internal operation."
       },
       {
         "question": "Is the matching service free, and what does the provider charge for?",
