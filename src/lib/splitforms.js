@@ -27,18 +27,3 @@ export async function submitToSplitForms({ subject, fields }) {
   const json = await res.json();
   return { ...json, ok: res.ok };
 }
-
-export function buildContactSummary(data) {
-  const lines = Object.entries(data)
-    .filter(([key, value]) => key !== 'formType' && value != null && String(value).trim() !== '')
-    .map(([key, value]) => `${formatFieldLabel(key)}: ${value}`);
-
-  return lines.join('\n');
-}
-
-function formatFieldLabel(key) {
-  return key
-    .replace(/([A-Z])/g, ' $1')
-    .replace(/^./, (char) => char.toUpperCase())
-    .trim();
-}

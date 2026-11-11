@@ -1,4 +1,4 @@
-import { buildContactSummary, submitToSplitForms } from '@/lib/splitforms';
+import { submitToSplitForms } from '@/lib/splitforms';
 import { isValidPhone } from '@/lib/phone';
 import { INQUIRY_SUBJECT } from '@/lib/formFeedback';
 
@@ -80,9 +80,13 @@ export async function POST(request) {
     const fields = {
       form_type: formType,
       ...data,
-      message: data.message || data.needs || data.productService || buildContactSummary(data),
       ...(sfSid ? { sf_sid: sfSid } : {}),
     };
+    // The consultation form's comment box is "needs": send it once, as Message.
+    // (It used to be copied into a separate message field too, so the lead
+    // email showed the same text twice as "Message" and "Needs".)
+    if (!fields.message && fields.needs) fields.message = fields.needs;
+    delete fields.needs;
 
     delete fields.formType;
     delete fields.subject;
